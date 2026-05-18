@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOS Natural Pet — 300 Receitas Naturais Para Seu Pet</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --green: #2e7d32;
+      --green-mid: #388e3c;
+      --green-light: #e8f5e9;
+      --green-neon: #43a047;
+      --orange: #e65100;
+      --yellow: #f9a825;
+      --red: #c62828;
+      --dark: #1a1a1a;
+      --gray: #555;
+      --light: #f7f7f7;
+      --white: #fff;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--dark);
+      background: #fff;
+      line-height: 1.65;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ── helpers ── */
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .sec {
+      padding: 68px 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: .75rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .h2 {
+      font-size: clamp(1.5rem, 4vw, 2.1rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .h2 em {
+      color: var(--green);
+      font-style: normal;
+    }
+
+    /* ── URGENCY BAR ── */
+    .urgency-bar {
+      background: var(--red);
+      color: #fff;
+      text-align: center;
+      padding: 11px 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: .88rem;
+      letter-spacing: .4px;
+    }
+
+    .urgency-bar strong {
+      background: #fff;
+      color: var(--red);
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin-left: 8px;
+      font-size: 1rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, #1b5e20 0%, #2e7d32 55%, #1b5e20 100%);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px 72px;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: .78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      border-radius: 30px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.7rem, 5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.2;
+      max-width: 800px;
+      margin: 0 auto 18px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 em {
+      color: var(--yellow);
+      font-style: normal;
+    }
+
+    .hero .sub {
+      font-size: 1.08rem;
+      max-width: 620px;
+      margin: 0 auto 36px;
+      color: #c8f0cc;
+    }
+
+    /* ── CTA BUTTON ── */
+    .btn-cta {
+      display: inline-block;
+      background: linear-gradient(180deg, #66bb6a 0%, #388e3c 100%);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 18px 40px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 22px rgba(0, 0, 0, .28);
+      transition: transform .15s, box-shadow .15s;
+      animation: pulse 2s infinite;
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .32);
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 6px 20px rgba(67, 160, 71, .45);
+      }
+
+      50% {
+        box-shadow: 0 6px 36px rgba(67, 160, 71, .85);
+      }
+    }
+
+    .btn-cta.orange {
+      background: linear-gradient(180deg, #ff8f00 0%, #e65100 100%);
+      animation: pulse-orange 2s infinite;
+    }
+
+    @keyframes pulse-orange {
+
+      0%,
+      100% {
+        box-shadow: 0 6px 20px rgba(230, 81, 0, .45);
+      }
+
+      50% {
+        box-shadow: 0 6px 36px rgba(230, 81, 0, .85);
+      }
+    }
+
+    .hero .sub-cta {
+      margin-top: 12px;
+      font-size: .82rem;
+      color: rgba(255, 255, 255, .55);
+    }
+
+    .social-bar {
+      background: rgba(255, 255, 255, .08);
+      border-radius: 8px;
+      max-width: 460px;
+      margin: 28px auto 0;
+      padding: 13px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: .92rem;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      background: #66bb6a;
+      border-radius: 50%;
+      animation: blink 1.2s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .25
+      }
+    }
+
+    /* ── STORY ── */
+    .story {
+      background: var(--light);
+    }
+
+    .story-box {
+      background: #fff;
+      border-left: 5px solid var(--green);
+      border-radius: 0 12px 12px 0;
+      padding: 28px 26px;
+      font-size: 1rem;
+      color: var(--dark);
+      line-height: 1.75;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+    }
+
+    .story-box p {
+      margin-bottom: 14px;
+    }
+
+    .story-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .story-box .highlight {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* ── PAIN BLOCKS ── */
+    .pain {
+      background: #fff;
+    }
+
+    .pain-intro {
+      font-size: 1.1rem;
+      color: var(--gray);
+      max-width: 620px;
+      margin-bottom: 40px;
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .pain-block {
+      border: 2px solid #e8f5e9;
+      border-radius: 12px;
+      padding: 24px 20px;
+      background: #f9fffe;
+    }
+
+    .pain-block h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: .95rem;
+      color: var(--green);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pain-block ul {
+      list-style: none;
+      display: grid;
+      gap: 7px;
+    }
+
+    .pain-block ul li {
+      font-size: .92rem;
+      color: var(--dark);
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .pain-block ul li::before {
+      content: "✅";
+      flex-shrink: 0;
+    }
+
+    .pain-closer {
+      margin-top: 36px;
+      background: linear-gradient(135deg, #1b5e20, #2e7d32);
+      color: #fff;
+      border-radius: 12px;
+      padding: 26px 28px;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .pain-closer em {
+      color: var(--yellow);
+      font-style: normal;
+    }
+
+    /* ── WHAT IS ── */
+    .whatis {
+      background: var(--light);
+    }
+
+    .whatis-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .wcard {
+      background: #fff;
+      border-radius: 12px;
+      padding: 22px 18px;
+      text-align: center;
+      border: 2px solid #e8f5e9;
+    }
+
+    .wcard .ico {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .wcard h4 {
+      font-size: .95rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .wcard p {
+      font-size: .85rem;
+      color: var(--gray);
+    }
+
+    /* ── BENEFITS ── */
+    .benefits {
+      background: #fff;
+    }
+
+    .benefits-list {
+      list-style: none;
+      display: grid;
+      gap: 13px;
+      margin-top: 28px;
+    }
+
+    .benefits-list li {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+      font-size: 1rem;
+      padding: 14px 18px;
+      background: var(--light);
+      border-radius: 10px;
+    }
+
+    .benefits-list li::before {
+      content: "✅";
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ── BONUSES ── */
+    .bonuses {
+      background: linear-gradient(160deg, #1b5e20 0%, #2e7d32 100%);
+      color: #fff;
+    }
+
+    .bonuses .tag {
+      color: var(--yellow);
+    }
+
+    .bonuses .h2 {
+      color: #fff;
+    }
+
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .bonus-card {
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 12px;
+      padding: 24px 20px;
+    }
+
+    .bonus-card .bnum {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: var(--yellow);
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: .95rem;
+      border-radius: 50%;
+      margin-bottom: 12px;
+    }
+
+    .bonus-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--yellow);
+      margin-bottom: 8px;
+    }
+
+    .bonus-card p {
+      font-size: .88rem;
+      color: #c8f0cc;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testi {
+      background: var(--light);
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .tcard {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 20px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .07);
+      position: relative;
+    }
+
+    .tcard .stars {
+      color: var(--yellow);
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .tcard p {
+      font-size: .92rem;
+      color: var(--gray);
+      font-style: italic;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .tcard .author {
+      font-weight: 700;
+      font-size: .88rem;
+      color: var(--dark);
+    }
+
+    /* ── PRICING ── */
+    .pricing {
+      background: linear-gradient(160deg, #1b5e20 0%, #2e7d32 100%);
+      color: #fff;
+      text-align: center;
+    }
+
+    .pricing .tag {
+      color: var(--yellow);
+    }
+
+    .pricing .h2 {
+      color: #fff;
+    }
+
+    .pricing .sub {
+      color: #c8f0cc;
+      font-size: 1rem;
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .plan-card {
+      background: rgba(255, 255, 255, .08);
+      border: 2px solid rgba(255, 255, 255, .2);
+      border-radius: 16px;
+      padding: 32px 26px;
+      text-align: center;
+    }
+
+    .plan-card.featured {
+      background: rgba(255, 255, 255, .14);
+      border-color: var(--yellow);
+      position: relative;
+    }
+
+    .plan-card.featured::before {
+      content: "MAIS POPULAR";
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--yellow);
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: .7rem;
+      letter-spacing: 2px;
+      padding: 4px 14px;
+      border-radius: 20px;
+    }
+
+    .plan-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .6);
+      margin-bottom: 12px;
+    }
+
+    .plan-price-orig {
+      font-size: .95rem;
+      text-decoration: line-through;
+      color: rgba(255, 255, 255, .4);
+      margin-bottom: 4px;
+    }
+
+    .plan-price {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 3.2rem;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .plan-price sup {
+      font-size: 1.3rem;
+      vertical-align: super;
+    }
+
+    .plan-install {
+      font-size: .88rem;
+      color: #c8f0cc;
+      margin: 10px 0 24px;
+    }
+
+    .plan-items {
+      list-style: none;
+      text-align: left;
+      display: grid;
+      gap: 9px;
+      margin-bottom: 26px;
+    }
+
+    .plan-items li {
+      font-size: .9rem;
+      color: #e8f5e9;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .plan-items li::before {
+      content: "✅";
+      flex-shrink: 0;
+    }
+
+    .plan-card .btn-cta {
+      width: 100%;
+      font-size: 1rem;
+      padding: 16px;
+    }
+
+    /* ── GUARANTEE ── */
+    .guarantee {
+      background: var(--green-light);
+    }
+
+    .gbox {
+      border: 3px solid var(--green);
+      border-radius: 16px;
+      padding: 40px 32px;
+      max-width: 580px;
+      margin: 0 auto;
+      background: #fff;
+      text-align: center;
+    }
+
+    .gbox .shield {
+      font-size: 3.8rem;
+      margin-bottom: 14px;
+    }
+
+    .gbox h3 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .gbox p {
+      font-size: .95rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ── FAQ ── */
+    .faq {
+      background: #fff;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .faq-item {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 17px 20px;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: .93rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      color: var(--dark);
+      transition: background .2s;
+    }
+
+    .faq-q:hover {
+      background: var(--light);
+    }
+
+    .faq-q .arr {
+      color: var(--green);
+      font-size: 1.1rem;
+      transition: transform .25s;
+      flex-shrink: 0;
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease, padding .3s;
+      font-size: .93rem;
+      color: var(--gray);
+      padding: 0 20px;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 300px;
+      padding: 0 20px 18px;
+    }
+
+    .faq-item.open .arr {
+      transform: rotate(180deg);
+    }
+
+    /* ── FINAL CTA ── */
+    .final {
+      background: linear-gradient(160deg, #1b5e20 0%, #2e7d32 100%);
+      color: #fff;
+      text-align: center;
+      padding: 72px 20px;
+    }
+
+    .final h2 {
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .final h2 em {
+      color: var(--yellow);
+      font-style: normal;
+    }
+
+    .final p {
+      font-size: 1rem;
+      color: #c8f0cc;
+      max-width: 520px;
+      margin: 0 auto 32px;
+    }
+
+    /* ── MODAL / UPSELL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .72);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 540px;
+      width: 100%;
+      padding: 36px 28px;
+      text-align: center;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #999;
+    }
+
+    .modal .upsell-tag {
+      background: var(--red);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: .75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .modal h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.25;
+      margin-bottom: 14px;
+      color: var(--dark);
+    }
+
+    .modal h2 em {
+      color: var(--green);
+      font-style: normal;
+    }
+
+    .modal .modal-items {
+      list-style: none;
+      text-align: left;
+      display: grid;
+      gap: 8px;
+      margin: 18px 0 22px;
+    }
+
+    .modal .modal-items li {
+      font-size: .92rem;
+      color: var(--dark);
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .modal .modal-items li::before {
+      content: "✅";
+      flex-shrink: 0;
+    }
+
+    .modal .orig {
+      font-size: .95rem;
+      text-decoration: line-through;
+      color: #999;
+      margin-bottom: 4px;
+    }
+
+    .modal .price {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 2.8rem;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .modal .price sup {
+      font-size: 1.2rem;
+      vertical-align: super;
+    }
+
+    .modal .btn-cta {
+      width: 100%;
+      font-size: 1.05rem;
+      padding: 17px;
+      margin-top: 18px;
+    }
+
+    .modal .skip-link {
+      display: block;
+      margin-top: 16px;
+      font-size: .82rem;
+      color: #999;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .modal .skip-link:hover {
+      color: var(--dark);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: rgba(255, 255, 255, .45);
+      text-align: center;
+      padding: 28px 20px;
+      font-size: .8rem;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, .45);
+      text-decoration: underline;
+      margin: 0 7px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    footer .disc {
+      margin-top: 14px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: .76rem;
+      line-height: 1.65;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:600px) {
+      .hero {
+        padding: 40px 16px 52px;
+      }
+
+      .plans {
+        grid-template-columns: 1fr;
+      }
+
+      .pain-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .plan-price {
+        font-size: 2.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- URGENCY BAR -->
+  <div class="urgency-bar">
+    ⚠️ Oferta por tempo limitado — preço pode subir a qualquer momento
+    <strong id="bar-timer">09:59</strong>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="badge">🐾 SOS Natural Pet</div>
+    <h1><em>300 Receitas Naturais</em> Para Ajudar Seu Pet a Aliviar os Problemas Mais Comuns <em>Sem Gastar
+        Fortunas</em> em Veterinário</h1>
+    <p class="sub">Descubra soluções naturais simples, econômicas e fáceis de preparar usando ingredientes que você
+      provavelmente já tem em casa.</p>
+
+    <a href="#planos" class="btn-cta orange">🐶 QUERO ACESSO IMEDIATO</a>
+    <p class="sub-cta">Acesso imediato após o pagamento • Garantia de 7 dias • Sem risco</p>
+
+    <img src="mockup.webp" alt="SOS Natural Pet — Kit Completo"
+      style="max-width:780px;width:100%;margin:28px auto 0;display:block;border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,0.18);" />
+
+    <div class="social-bar">
+      <div class="dot"></div>
+      <span>+1.800 donos já baixaram o guia</span>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="sec story">
+    <div class="wrap">
+      <p class="tag">Como tudo começou</p>
+      <h2 class="h2">A História Que Me Fez <em>Pesquisar Tudo Isso</em></h2>
+
+      <div class="story-box">
+        <p>Tudo começou quando minha cadela <strong>Luna</strong> começou a se coçar sem parar. Patas, barriga, pescoço
+          — ela não parava. Fui ao veterinário. Depois fui de novo. E de novo.</p>
+        <p>Em menos de 4 meses, <span class="highlight">gastei mais de R$ 2.000</span> entre consultas, exames, shampoos
+          especiais e remédios caros. O problema melhorava um pouco… e voltava. Sempre voltava.</p>
+        <p>Foi quando decidi pesquisar a fundo. Encontrei receitas naturais usadas há gerações. Comecei a aplicar com
+          cuidado — e a <span class="highlight">melhora foi progressiva e consistente</span>, sem os efeitos colaterais
+          dos remédios.</p>
+        <p>Juntei tudo em um guia: receitas naturais, cuidados simples do dia a dia, alimentação complementar, higiene
+          natural e soluções para momentos de emergência. Hoje você tem acesso a esse material por uma fração do que eu
+          gastei tentando resolver no veterinário.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN BLOCKS -->
+  <section class="sec pain">
+    <div class="wrap">
+      <p class="tag">Identificação</p>
+      <h2 class="h2">Mais de 300 Cuidados Naturais Para os Problemas Mais Comuns em <em>Cães e Gatos</em></h2>
+      <p class="pain-intro">Receitas simples e acessíveis para ajudar no conforto, higiene e bem-estar do seu pet —
+        organizadas por tipo de desconforto.</p>
+
+      <div class="pain-grid">
+
+        <div class="pain-block">
+          <img src="pelesealergias.webp" alt="Pele e Alergias"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);" />
+          <h4>🐾 Pele e Alergias</h4>
+          <ul>
+            <li>Coceira constante</li>
+            <li>Lambedura excessiva nas patas</li>
+            <li>Vermelhidão na pele</li>
+            <li>Queda excessiva de pelo</li>
+            <li>Feridas e irritações na pele</li>
+            <li>Mau cheiro mesmo após banho</li>
+            <li>Alergia recorrente</li>
+          </ul>
+        </div>
+
+        <div class="pain-block">
+          <img src="pulgasecarrapatos.webp" alt="Pulgas e Carrapatos"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);" />
+          <h4>🦟 Pulgas e Carrapatos</h4>
+          <ul>
+            <li>Infestação de pulgas</li>
+            <li>Carrapatos frequentes</li>
+            <li>Coceira causada por picadas</li>
+            <li>Ambiente contaminado</li>
+            <li>Reação alérgica a parasitas</li>
+          </ul>
+        </div>
+
+        <div class="pain-block">
+          <img src="intestinoedisgestao.webp" alt="Intestino e Digestão"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);" />
+          <h4>🍃 Intestino e Digestão</h4>
+          <ul>
+            <li>Diarreia</li>
+            <li>Vômitos leves</li>
+            <li>Falta de apetite</li>
+            <li>Gases excessivos</li>
+            <li>Prisão de ventre</li>
+            <li>Barriga sensível</li>
+          </ul>
+        </div>
+
+        <div class="pain-block">
+          <img src="respiracaoegarganta.webp" alt="Respiração e Garganta"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);" />
+          <h4>🌬️ Respiração e Garganta</h4>
+          <ul>
+            <li>Tosse frequente</li>
+            <li>Irritação na garganta</li>
+            <li>Desconforto respiratório leve</li>
+            <li>Secreção nasal</li>
+          </ul>
+        </div>
+
+        <div class="pain-block">
+          <img src="comportamentoebemestar.webp" alt="Comportamento e Bem-estar"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);" />
+          <h4>🧠 Comportamento e Bem-estar</h4>
+          <ul>
+            <li>Ansiedade e agitação</li>
+            <li>Estresse e medo</li>
+            <li>Tristeza e apatia</li>
+            <li>Falta de energia</li>
+            <li>Dificuldade para dormir</li>
+          </ul>
+        </div>
+
+        <div class="pain-block">
+          <img src="petsidosos.webp" alt="Pets Idosos"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);" />
+          <h4>🦴 Pets Idosos</h4>
+          <ul>
+            <li>Dificuldade para se movimentar</li>
+            <li>Desconforto nas articulações</li>
+            <li>Falta de disposição</li>
+            <li>Baixa imunidade</li>
+            <li>Recuperação lenta</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pain-closer">
+        <em>"Mesmo que você já tenha tentado shampoos, remédios ou consultas caras sem resultado consistente…"</em><br>
+        <span style="font-weight:400;font-size:.97rem;color:rgba(255,255,255,.85);">
+          Este guia foi pensado para quem já tentou de tudo e ainda busca uma alternativa natural, simples e acessível.
+        </span>
+      </div>
+
+      <div style="text-align:center;margin-top:36px;">
+        <a href="#planos" class="btn-cta">🐾 QUERO ACESSO IMEDIATO</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS -->
+  <section class="sec whatis">
+    <div class="wrap">
+      <p class="tag">O que é o SOS Natural Pet</p>
+      <h2 class="h2">Um Guia Completo de <em>Cuidados Naturais</em> na Palma da Sua Mão</h2>
+      <p style="color:var(--gray);font-size:1rem;">300 receitas e orientações organizadas para que qualquer dono consiga
+        preparar em casa, com ingredientes simples e acessíveis.</p>
+
+      <div class="whatis-cards">
+        <div class="wcard">
+          <div class="ico">📖</div>
+          <h4>300+ Receitas</h4>
+          <p>Organizadas por sintoma para você achar rápido o que precisa.</p>
+        </div>
+        <div class="wcard">
+          <div class="ico">🛒</div>
+          <h4>Ingredientes Acessíveis</h4>
+          <p>A maioria você provavelmente já tem em casa ou encontra no mercado.</p>
+        </div>
+        <div class="wcard">
+          <div class="ico">⚡</div>
+          <h4>Fácil e Rápido</h4>
+          <p>Receitas simples de preparar, mesmo para quem nunca fez isso antes.</p>
+        </div>
+        <div class="wcard">
+          <div class="ico">🐱</div>
+          <h4>Cães e Gatos</h4>
+          <p>Conteúdo adaptado para as principais raças e idades.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="sec benefits">
+    <div class="wrap">
+      <p class="tag">O que você vai conseguir</p>
+      <h2 class="h2">Benefícios Para <em>Você e Seu Pet</em></h2>
+
+      <ul class="benefits-list">
+        <li>Receitas simples e rápidas de preparar em qualquer momento</li>
+        <li>Ingredientes acessíveis que você já provavelmente tem em casa</li>
+        <li>Alternativas naturais para desconfortos do dia a dia</li>
+        <li>Mais economia — sem depender de consultas para cada pequeno problema</li>
+        <li>Mais conforto e bem-estar para o seu pet</li>
+        <li>Soluções práticas para situações de emergência em casa</li>
+        <li>Mais tranquilidade para você como dono</li>
+        <li>Conteúdo claro, organizado e fácil de seguir</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- BONUSES -->
+  <section class="sec bonuses">
+    <div class="wrap">
+      <p class="tag">Bônus exclusivos</p>
+      <h2 class="h2">Você Também Leva <em style="color:var(--yellow);">4 Bônus</em> Completamente Grátis</h2>
+
+      <div class="bonus-grid">
+        <div class="bonus-card">
+          <img src="bonus1.webp" alt="Bônus 1"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.15);" />
+          <div class="bnum">B1</div>
+          <h4>Guia Natural Contra Pulgas e Carrapatos</h4>
+          <p>Receitas e estratégias naturais para afastar parasitas de casa e do pet, sem químicos agressivos.</p>
+        </div>
+        <div class="bonus-card">
+          <img src="bonus 2.webp" alt="Bônus 2"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.15);" />
+          <div class="bnum">B2</div>
+          <h4>Alimentação Natural Para Fortalecer a Imunidade</h4>
+          <p>O que incluir na dieta do seu pet para melhorar a resistência e a vitalidade de forma natural.</p>
+        </div>
+        <div class="bonus-card">
+          <img src="bonus3.webp" alt="Bônus 3"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.15);" />
+          <div class="bnum">B3</div>
+          <h4>Kit Emergencial Natural Para Pets</h4>
+          <p>O que fazer em situações de urgência enquanto aguarda atendimento veterinário. Essencial em casa.</p>
+        </div>
+        <div class="bonus-card">
+          <img src="bonus4.webp" alt="Bônus 4"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.15);" />
+          <div class="bnum">B4</div>
+          <h4>Lista de Plantas e Ingredientes Proibidos</h4>
+          <p>Saiba o que NUNCA usar com seu pet. Este bônus sozinho pode evitar acidentes graves em casa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="sec testi">
+    <div class="wrap">
+      <p class="tag">Resultados reais</p>
+      <h2 class="h2">O Que Dizem Quem Já <em>Baixou o Guia</em></h2>
+
+      <div class="testi-grid">
+        <div class="tcard">
+          <img src="test01.webp" alt="Depoimento 1"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.08);" />
+        </div>
+        <div class="tcard">
+          <img src="test02.webp" alt="Depoimento 2"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.08);" />
+        </div>
+        <div class="tcard">
+          <img src="test03.webp" alt="Depoimento 3"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.08);" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="sec pricing" id="planos">
+    <div class="wrap" style="text-align:center;">
+      <p class="tag">Escolha seu plano</p>
+      <h2 class="h2">Garanta Agora Por Um <em style="color:var(--yellow);">Valor Acessível</em></h2>
+      <p class="sub">Acesso imediato. Sem mensalidade. Pagamento único.</p>
+
+      <div class="plans">
+
+        <div class="plan-card">
+          <div class="plan-name">Plano Básico</div>
+          <div class="plan-price"><sup>R$</sup>4<sup>,90</sup></div>
+          <p class="plan-install">pagamento único</p>
+          <ul class="plan-items">
+            <li>Ebook principal com 300 receitas</li>
+            <li>Acesso imediato após pagamento</li>
+          </ul>
+          <a href="#" class="btn-cta" id="btn-basico" onclick="openModal(event)">QUERO COMEÇAR AGORA</a>
+        </div>
+
+        <div class="plan-card featured">
+          <img src="mockup.webp" alt="SOS Natural Pet Kit Completo"
+            style="width:100%;max-width:340px;margin:0 auto 16px;display:block;border-radius:16px;box-shadow:0 6px 28px rgba(0,0,0,0.15);" />
+          <div class="plan-name">Plano Completo</div>
+          <div class="plan-price-orig">De R$ 47,90</div>
+          <div class="plan-price"><sup>R$</sup>27<sup>,90</sup></div>
+          <p class="plan-install">pagamento único · acesso vitalício</p>
+          <ul class="plan-items">
+            <li>Ebook principal com 300 receitas</li>
+            <li>Bônus 1 — Anti Pulgas e Carrapatos</li>
+            <li>Bônus 2 — Alimentação Natural</li>
+            <li>Bônus 3 — Kit Emergencial</li>
+            <li>Bônus 4 — Ingredientes Proibidos</li>
+            <li>Atualizações futuras inclusas</li>
+          </ul>
+          <a href="#" class="btn-cta orange">KIT COMPLETO — R$ 27,90</a>
+        </div>
+
+      </div>
+
+      <p style="margin-top:28px;font-size:.82rem;color:rgba(255,255,255,.5);">
+        🛡️ 7 dias de garantia incondicional · Acesso imediato · Compra 100% segura
+      </p>
+    </div>
+  </section>
+
+  <!-- GUARANTEE -->
+  <section class="sec guarantee">
+    <div class="wrap">
+      <div class="gbox">
+        <div class="shield">🛡️</div>
+        <h3>Garantia Incondicional de 7 Dias</h3>
+        <p>Se você achar que o conteúdo não é útil por qualquer motivo, basta enviar um e-mail em até 7 dias e
+          devolvemos 100% do seu dinheiro — sem perguntas, sem burocracia.</p>
+        <p style="margin-top:12px;font-weight:700;color:var(--green);">Você não tem absolutamente nada a perder.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec faq">
+    <div class="wrap">
+      <p class="tag">Dúvidas frequentes</p>
+      <h2 class="h2">Perguntas <em>Frequentes</em></h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">Como recebo o ebook após a compra? <span class="arr">▼</span></button>
+          <div class="faq-a">Imediatamente após a confirmação do pagamento você recebe um e-mail com o link de acesso. O
+            processo é automático e funciona 24h por dia.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Funciona para gatos também? <span class="arr">▼</span></button>
+          <div class="faq-a">Sim! O guia foi desenvolvido para cães e gatos, com receitas adaptadas para cada espécie.
+            Sempre indicado quais são aplicáveis para cada um.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">O guia substitui o veterinário? <span class="arr">▼</span></button>
+          <div class="faq-a">Não. O guia é um material educativo de apoio para cuidados naturais do dia a dia. Para
+            diagnósticos, doenças graves ou emergências, consulte sempre um veterinário.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Quais são as formas de pagamento? <span class="arr">▼</span></button>
+          <div class="faq-a">Aceitamos cartão de crédito, PIX e boleto bancário. O pagamento é processado com total
+            segurança.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Como funciona a garantia de 7 dias? <span class="arr">▼</span></button>
+          <div class="faq-a">Se dentro de 7 dias você não estiver satisfeito por qualquer motivo, basta enviar um e-mail
+            solicitando o reembolso. Devolvemos 100% do valor pago, sem questionamentos.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Os ingredientes são difíceis de encontrar? <span class="arr">▼</span></button>
+          <div class="faq-a">Não! A maior parte das receitas usa ingredientes simples como azeite, aloe vera, vinagre,
+            camomila e outros itens facilmente encontrados em mercados ou feiras.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final">
+    <h2>Seu Pet <em>Depende de Você</em></h2>
+    <p>Aprenda hoje cuidados naturais simples que podem ajudar seu melhor amigo a ter mais conforto e qualidade de vida.
+    </p>
+    <a href="#planos" class="btn-cta orange" style="font-size:1.2rem;padding:22px 48px;">🐾 QUERO CUIDAR DO MEU PET
+      AGORA</a>
+    <p style="margin-top:18px;font-size:.82rem;color:rgba(255,255,255,.45);">Compra segura · 7 dias de garantia · Acesso
+      imediato</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2024 SOS Natural Pet — Todos os direitos reservados</p>
+    <p style="margin-top:8px;">
+      <a href="#">Política de Privacidade</a>
+      <a href="#">Termos de Uso</a>
+      <a href="#">Contato</a>
+    </p>
+    <p class="disc">
+      Este material tem caráter educativo e informativo. Não substitui orientação veterinária. Os resultados variam de
+      acordo com cada animal e situação. Sempre consulte um veterinário para diagnóstico e tratamento de doenças.
+    </p>
+  </footer>
+
+  <!-- UPSELL MODAL -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal">
+      <button class="close-btn" onclick="closeModal()">✕</button>
+      <div class="upsell-tag">⚡ Oferta única — aparece só uma vez</div>
+      <h2>Espere! Complete Seu <em>Kit Natural Pet</em> Com 4 Bônus Exclusivos</h2>
+      <img src="mockup.webp" alt="SOS Natural Pet Kit Completo"
+        style="width:100%;max-width:380px;margin:12px auto 16px;display:block;border-radius:16px;box-shadow:0 6px 28px rgba(0,0,0,0.12);" />
+      <p style="color:var(--gray);font-size:.92rem;">Você está levando o ebook principal. Mas por apenas um pouco mais,
+        leve o kit completo:</p>
+
+      <ul class="modal-items">
+        <li>Ebook principal com 300 receitas naturais</li>
+        <li>Guia Natural Contra Pulgas e Carrapatos</li>
+        <li>Alimentação Natural Para Fortalecer a Imunidade</li>
+        <li>Kit Emergencial Natural Para Pets</li>
+        <li>Lista de Plantas e Ingredientes Proibidos</li>
+        <li>Atualizações futuras inclusas</li>
+      </ul>
+
+      <div class="orig">De R$ 47,90</div>
+      <div class="price"><sup>R$</sup>14<sup style="font-size:1rem">,90</sup></div>
+      <p style="font-size:.82rem;color:#999;margin-top:4px;">pagamento único — acesso vitalício</p>
+
+      <a href="#" class="btn-cta orange">SIM! QUERO O KIT COMPLETO — R$ 14,90</a>
+      <a class="skip-link" onclick="closeModal()">Não, quero continuar apenas com o básico por R$ 4,90</a>
+    </div>
+  </div>
+
+  <script>
+    /* ── COUNTDOWN ── */
+    (function () {
+      const end = Date.now() + 10 * 60 * 1000;
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function tick() {
+        const diff = Math.max(0, end - Date.now());
+        const m = Math.floor(diff / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        const el = document.getElementById('bar-timer');
+        if (el) el.textContent = pad(m) + ':' + pad(s);
+        if (diff > 0) setTimeout(tick, 1000);
+      }
+      tick();
+    })();
+
+    /* ── FAQ ACCORDION ── */
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!open) item.classList.add('open');
+      });
+    });
+
+    /* ── UPSELL MODAL ── */
+    function openModal(e) {
+      e.preventDefault();
+      document.getElementById('modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modal').addEventListener('click', function (e) {
+      if (e.target === this) closeModal();
+    });
+  </script>
+</body>
+
+</html>

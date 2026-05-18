@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>SOS Natural Pet — 200 Receitas Naturais (Parte 1: Receitas 1–50)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap');
+
+  :root {
+    --green:#2e7d32; --green-light:#e8f5e9; --yellow:#f9a825;
+    --dark:#1a1a1a; --gray:#555; --white:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Open Sans',sans-serif;color:var(--dark);background:#fff;font-size:13pt;line-height:1.7;}
+
+  /* CAPA */
+  .cover{
+    background:linear-gradient(160deg,#1b5e20 0%,#2e7d32 100%);
+    color:#fff;min-height:100vh;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;padding:60px 40px;
+    page-break-after:always;
+  }
+  .cover .logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2.8rem;
+               letter-spacing:-1px;margin-bottom:8px;}
+  .cover .logo span{color:var(--yellow);}
+  .cover .sub{font-size:1.1rem;color:rgba(255,255,255,.7);margin-bottom:40px;}
+  .cover h1{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2rem;
+             line-height:1.25;max-width:640px;margin-bottom:16px;}
+  .cover h1 em{color:var(--yellow);font-style:normal;}
+  .cover .part{background:var(--yellow);color:#000;font-family:'Montserrat',sans-serif;
+               font-weight:800;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;
+               padding:8px 22px;border-radius:30px;margin-top:32px;}
+  .cover .paw{font-size:5rem;margin-bottom:24px;}
+
+  /* AVISO */
+  .aviso{
+    background:#fff3e0;border-left:5px solid #e65100;
+    padding:24px 28px;margin:40px 0;border-radius:0 10px 10px 0;
+    page-break-after:always;
+  }
+  .aviso h3{font-family:'Montserrat',sans-serif;color:#e65100;font-size:1rem;margin-bottom:10px;}
+  .aviso p{font-size:.92rem;color:#555;line-height:1.7;}
+
+  /* ÍNDICE */
+  .toc{page-break-after:always;padding:40px;}
+  .toc h2{font-family:'Montserrat',sans-serif;font-size:1.6rem;color:var(--green);margin-bottom:24px;}
+  .toc-cat{margin-bottom:18px;}
+  .toc-cat h4{font-family:'Montserrat',sans-serif;font-size:1rem;color:var(--dark);
+              border-bottom:2px solid var(--green-light);padding-bottom:6px;margin-bottom:8px;}
+  .toc-cat ul{list-style:none;columns:2;gap:16px;}
+  .toc-cat ul li{font-size:.88rem;color:var(--gray);padding:2px 0;}
+
+  /* CATEGORIA HEADER */
+  .cat-header{
+    background:linear-gradient(135deg,#1b5e20,#43a047);
+    color:#fff;padding:36px 40px;margin:0 -40px 40px;
+    page-break-before:always;
+  }
+  .cat-header .cat-num{font-size:.78rem;letter-spacing:3px;text-transform:uppercase;
+                        color:rgba(255,255,255,.6);margin-bottom:6px;}
+  .cat-header h2{font-family:'Montserrat',sans-serif;font-size:1.8rem;font-weight:900;}
+  .cat-header p{color:rgba(255,255,255,.8);margin-top:8px;font-size:.97rem;}
+
+  /* RECEITA */
+  .recipe{
+    border:1px solid #e0e0e0;border-radius:12px;padding:26px 28px;
+    margin-bottom:28px;background:#fff;page-break-inside:avoid;
+  }
+  .recipe-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:18px;}
+  .recipe-num{
+    background:var(--green);color:#fff;font-family:'Montserrat',sans-serif;
+    font-weight:900;font-size:1rem;min-width:42px;height:42px;
+    border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .recipe-title h3{font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:800;
+                    color:var(--dark);margin-bottom:4px;}
+  .recipe-title .tags{display:flex;gap:6px;flex-wrap:wrap;}
+  .tag-pill{
+    background:var(--green-light);color:var(--green);font-size:.72rem;
+    font-weight:700;padding:2px 9px;border-radius:20px;letter-spacing:.5px;
+  }
+  .tag-pill.cat{background:#fff8e1;color:#f57f17;}
+
+  .recipe-body{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media print{.recipe-body{grid-template-columns:1fr 1fr;}}
+
+  .recipe-section h4{
+    font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:1.5px;color:var(--green);
+    margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid var(--green-light);
+  }
+  .recipe-section ul{list-style:none;display:grid;gap:5px;}
+  .recipe-section ul li{font-size:.88rem;color:var(--dark);display:flex;gap:7px;align-items:flex-start;}
+  .recipe-section ul li::before{content:"•";color:var(--green);font-weight:700;flex-shrink:0;}
+  .recipe-section p{font-size:.88rem;color:var(--dark);line-height:1.65;}
+
+  .recipe-full{grid-column:1/-1;}
+
+  .recipe-tip{
+    background:var(--green-light);border-radius:8px;padding:10px 14px;
+    font-size:.83rem;color:var(--green);margin-top:14px;grid-column:1/-1;
+    display:flex;gap:8px;align-items:flex-start;
+  }
+  .recipe-tip::before{content:"💡";flex-shrink:0;}
+
+  .recipe-warn{
+    background:#fff3e0;border-radius:8px;padding:10px 14px;
+    font-size:.83rem;color:#e65100;margin-top:8px;grid-column:1/-1;
+    display:flex;gap:8px;align-items:flex-start;
+  }
+  .recipe-warn::before{content:"⚠️";flex-shrink:0;}
+
+  .freq-badge{
+    display:inline-block;background:#e3f2fd;color:#1565c0;
+    font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:20px;
+    margin-top:10px;
+  }
+
+  /* PAGE */
+  body{padding:40px;}
+  @media print{
+    body{padding:0;}
+    .cat-header{margin:0 0 40px;}
+    .recipe{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="cover">
+  <div class="paw">🐾</div>
+  <div class="logo">SOS <span>Natural</span> Pet</div>
+  <div class="sub">O Guia Completo de Cuidados Naturais para Cães e Gatos</div>
+  <h1>200 Receitas Naturais Para Ajudar Seu Pet a <em>Viver Melhor</em></h1>
+  <div class="part">Parte 1 — Receitas 1 a 50</div>
+</div>
+
+<!-- AVISO IMPORTANTE -->
+<div class="aviso">
+  <h3>⚠️ Aviso Importante — Leia Antes de Começar</h3>
+  <p>Este guia tem caráter <strong>educativo e de apoio</strong>. As receitas aqui apresentadas são baseadas em cuidados naturais tradicionais e não substituem diagnóstico ou tratamento veterinário. Em casos de doenças graves, sintomas persistentes, emergências ou dúvidas, <strong>consulte sempre um veterinário</strong>. Antes de introduzir qualquer novo ingrediente, observe seu pet por 24h para identificar possíveis reações. Cada animal é único — o que funciona para um pode não funcionar para outro.</p>
+</div>
+
+<!-- PARTE 1: PELE E ALERGIAS -->
+<div class="cat-header">
+  <div class="cat-num">Categoria 01</div>
+  <h2>🐾 Pele, Alergias e Coceira</h2>
+  <p>Receitas 1 a 25 — Soluções naturais para coceira, pele irritada, queda de pelo e mau cheiro</p>
+</div>
+
+<!-- R1 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">1</div>
+    <div class="recipe-title">
+      <h3>Banho de Aveia Para Coceira Intensa</h3>
+      <div class="tags">
+        <span class="tag-pill">🐶 Cães</span>
+        <span class="tag-pill">🐱 Gatos</span>
+        <span class="tag-pill cat">Pele</span>
+      </div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 xícara de aveia em flocos finos</li>
+        <li>2 litros de água morna</li>
+        <li>1 colher de sopa de mel puro (opcional)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Bata a aveia no liquidificador até virar pó fino. Dissolva em 2 litros de água morna, mexendo bem até turvar. Coe em pano limpo para remover grumos.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Após o banho normal, despeje a água de aveia sobre o pelo do pet (evite olhos e ouvidos) e massageie suavemente por 3–5 minutos. Enxágue levemente com água limpa ou deixe agir sem enxaguar. Seque com toalha macia.</p>
+    </div>
+    <div class="recipe-tip">A aveia tem propriedades calmantes e anti-inflamatórias naturais que aliviam a coceira e hidratam a pele ressecada.</div>
+    <span class="freq-badge">🔁 Frequência: 2–3x por semana ou sempre que necessário</span>
+  </div>
+</div>
+
+<!-- R2 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">2</div>
+    <div class="recipe-title">
+      <h3>Spray Calmante de Aloe Vera e Camomila</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Pele</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>3 colheres de sopa de gel de aloe vera puro</li>
+        <li>200ml de chá de camomila frio</li>
+        <li>1 colher de chá de óleo de coco (opcional)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Prepare o chá de camomila (2 saquinhos em 200ml de água fervente), deixe esfriar completamente. Misture com o gel de aloe vera e óleo de coco. Coloque em frasco spray limpo.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique diretamente nas áreas irritadas, com coceira ou avermelhadas. Massageie levemente. Não precisa enxaguar. Guarde na geladeira por até 7 dias.</p>
+    </div>
+    <div class="recipe-tip">A camomila tem ação anti-inflamatória e o aloe vera hidrata e regenera a pele. Combinados, aliviam rapidamente a coceira superficial.</div>
+    <span class="freq-badge">🔁 Frequência: 2x ao dia nas áreas afetadas</span>
+  </div>
+</div>
+
+<!-- R3 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">3</div>
+    <div class="recipe-title">
+      <h3>Compressas de Chá Verde Para Pele Irritada</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pele</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>2 saquinhos de chá verde</li>
+        <li>300ml de água fervente</li>
+        <li>Gaze ou pano de algodão limpo</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Prepare o chá verde forte e deixe esfriar até ficar morno/frio. Mergulhe a gaze no chá.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique a compressa morna (não quente) na área irritada por 5–10 minutos. Repita 2x ao dia. Ideal para áreas com vermelhidão, feridas superficiais e irritações localizadas.</p>
+    </div>
+    <div class="recipe-tip">O chá verde contém taninos e antioxidantes que reduzem inflamação e ajudam a secar feridas superficiais com segurança.</div>
+    <span class="freq-badge">🔁 Frequência: 2x ao dia</span>
+  </div>
+</div>
+
+<!-- R4 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">4</div>
+    <div class="recipe-title">
+      <h3>Óleo de Coco Para Hidratação do Pelo e Pele Seca</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Pele</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1–2 colheres de chá de óleo de coco extravirgem</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Aqueça levemente o óleo entre as palmas das mãos até derreter (se estiver sólido).</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique o óleo diretamente nas áreas com pele seca, descamação ou pelo opaco. Massageie bem. Pode ser usado após o banho como condicionador natural. Para uso interno, ofereça ½ colher de chá misturada na comida (para cães pequenos) ou 1 colher (para cães grandes) 3x por semana.</p>
+    </div>
+    <div class="recipe-tip">O óleo de coco hidrata, tem ação antifúngica leve e ajuda a dar brilho ao pelo. Internamente, auxilia na saúde da pele de dentro para fora.</div>
+    <div class="recipe-warn">Gatos podem ingerir pequenas quantidades, mas monitore a aceitação. Em excesso pode causar diarreia.</div>
+    <span class="freq-badge">🔁 Frequência: 3x por semana (uso externo e interno)</span>
+  </div>
+</div>
+
+<!-- R5 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">5</div>
+    <div class="recipe-title">
+      <h3>Vinagre de Maçã Para Mau Cheiro e Fungos Leves</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pele / Higiene</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 parte de vinagre de maçã orgânico</li>
+        <li>1 parte de água filtrada</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Misture em partes iguais e coloque em frasco spray.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique na pele e pelo após o banho, evitando olhos, ouvidos e feridas abertas. Massageie e deixe agir. Não enxaguar. Elimina odores e inibe leve proliferação de fungos na pele.</p>
+    </div>
+    <div class="recipe-warn">Não use em pele lesionada, feridas abertas ou áreas muito sensíveis — pode irritar. Nunca use puro, sempre diluído.</div>
+    <span class="freq-badge">🔁 Frequência: 1x por semana ou após cada banho</span>
+  </div>
+</div>
+
+<!-- R6 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">6</div>
+    <div class="recipe-title">
+      <h3>Pasta de Bicarbonato Para Coceira Pontual</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pele</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>2 colheres de sopa de bicarbonato de sódio</li>
+        <li>Água suficiente para formar pasta</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Misture o bicarbonato com água até obter uma pasta cremosa, nem muito líquida nem muito seca.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique a pasta diretamente no ponto de coceira intensa. Deixe agir por 10 minutos. Enxágue bem com água limpa. Ideal para picadas de inseto, reações pontuais e coceira localizada.</p>
+    </div>
+    <div class="recipe-tip">O bicarbonato neutraliza ácidos na pele e proporciona alívio imediato da coceira e ardência.</div>
+    <div class="recipe-warn">Use pontualmente, não em toda a pele. Não use com frequência excessiva pois pode ressecar.</div>
+    <span class="freq-badge">🔁 Frequência: Conforme necessidade (uso pontual)</span>
+  </div>
+</div>
+
+<!-- R7 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">7</div>
+    <div class="recipe-title">
+      <h3>Shampoo Natural de Aveia e Aloe Vera</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pele / Higiene</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>½ xícara de aveia em pó (bater no liquidificador)</li>
+        <li>3 colheres de sopa de gel de aloe vera</li>
+        <li>100ml de água filtrada</li>
+        <li>1 colher de chá de óleo de coco</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Misture todos os ingredientes até obter consistência cremosa homogênea. Guarde em pote fechado (dura até 5 dias na geladeira).</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique no pelo molhado do pet, massageie por 3–5 minutos, enxágue completamente. Substitui o shampoo comercial em banhos de rotina para pets com pele sensível ou alérgica.</p>
+    </div>
+    <div class="recipe-tip">Sem conservantes ou químicos agressivos. Ideal para pets que reagem mal a shampoos industriais.</div>
+    <span class="freq-badge">🔁 Frequência: A cada banho</span>
+  </div>
+</div>
+
+<!-- R8 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">8</div>
+    <div class="recipe-title">
+      <h3>Infusão de Calêndula Para Feridas Superficiais</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Pele</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>2 colheres de sopa de flores secas de calêndula</li>
+        <li>300ml de água fervente</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Despeje a água fervente sobre as flores. Tampe e deixe em infusão por 15 minutos. Coe bem e deixe esfriar completamente antes de usar.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Limpe suavemente a ferida superficial com gaze embebida na infusão. Aplique 2–3x ao dia. Ajuda na cicatrização e reduz risco de infecção superficial.</p>
+    </div>
+    <div class="recipe-tip">A calêndula é uma das plantas mais estudadas para cicatrização. Tem ação anti-inflamatória, antisséptica e regenerativa comprovada.</div>
+    <div class="recipe-warn">Feridas profundas, com pus ou sinais de infecção grave precisam de avaliação veterinária.</div>
+    <span class="freq-badge">🔁 Frequência: 2–3x ao dia até melhora</span>
+  </div>
+</div>
+
+<!-- R9 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">9</div>
+    <div class="recipe-title">
+      <h3>Máscara de Mel e Cúrcuma Para Pele Ressecada</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pele</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 colher de sopa de mel puro</li>
+        <li>½ colher de chá de cúrcuma em pó</li>
+        <li>1 colher de chá de óleo de coco</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Misture bem todos os ingredientes até formar pasta homogênea.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique nas áreas secas ou com descamação. Deixe agir por 10–15 minutos com supervisão (para o pet não lamber). Enxágue bem com água morna.</p>
+    </div>
+    <div class="recipe-tip">O mel hidrata, a cúrcuma tem ação anti-inflamatória e o coco nutre. Combinação poderosa para pele ressecada e áreas com descamação.</div>
+    <div class="recipe-warn">A cúrcuma pode manchar pelo claro temporariamente. Evite usar em áreas onde o pet lambe com frequência durante o tratamento.</div>
+    <span class="freq-badge">🔁 Frequência: 2x por semana</span>
+  </div>
+</div>
+
+<!-- R10 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">10</div>
+    <div class="recipe-title">
+      <h3>Spray de Babosa Para Queda de Pelo</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pele / Pelo</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>4 colheres de sopa de gel de aloe vera fresco</li>
+        <li>150ml de água de rosas ou água filtrada</li>
+        <li>5 gotas de óleo de lavanda (opcional)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Misture bem todos os ingredientes e coloque em frasco spray. Guarde na geladeira por até 10 dias.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique no couro cabeludo (raiz do pelo) do pet, massageie por 2 minutos. Não enxaguar. Use principalmente nas áreas com maior queda. Ideal após o banho com pelo ainda úmido.</p>
+    </div>
+    <div class="recipe-tip">O aloe vera estimula os folículos capilares e nutre o couro cabeludo. Auxilia na redução de queda de pelo por ressecamento ou irritação.</p>
+    <div class="recipe-warn">Queda de pelo excessiva pode indicar problemas hormonais ou parasitas — consulte o veterinário se não houver melhora em 3 semanas.</div>
+    <span class="freq-badge">🔁 Frequência: 3–4x por semana</span>
+  </div>
+</div>
+
+<!-- R11 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">11</div>
+    <div class="recipe-title">
+      <h3>Banho de Vinagre de Maçã Para Mau Cheiro Persistente</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Higiene / Pele</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>½ xícara de vinagre de maçã</li>
+        <li>2 litros de água morna</li>
+        <li>1 colher de sopa de bicarbonato (opcional)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Misture o vinagre na água morna. Se usar bicarbonato, adicione por último e misture (vai espumar levemente).</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Após o banho normal com shampoo, despeje a solução sobre o pelo do pet evitando olhos e ouvidos. Massageie e deixe agir por 3 minutos. Enxágue levemente. O cheiro de vinagre desaparece quando o pelo seca.</p>
+    </div>
+    <div class="recipe-tip">O vinagre neutraliza bactérias causadoras de mau cheiro e equilibra o pH da pele, reduzindo odores persistentes.</div>
+    <span class="freq-badge">🔁 Frequência: 1x por semana</span>
+  </div>
+</div>
+
+<!-- R12 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">12</div>
+    <div class="recipe-title">
+      <h3>Óleo de Girassol Para Pelo Opaco e Ressecado</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Pelo</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 colher de chá de óleo de girassol (frio pressionado)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Não precisa de preparo. Use o óleo puro diretamente.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p><strong>Externo:</strong> Aplique no pelo seco ou úmido após o banho, passando pelas pontas e pelo ao longo do comprimento. Não enxaguar. <strong>Interno:</strong> Misture ½–1 colher de chá na comida 3x por semana. O ômega-6 melhora a saúde do pelo de dentro para fora.</p>
+    </div>
+    <div class="recipe-tip">Rico em vitamina E e ácidos graxos essenciais. Melhora o brilho, a maciez e reduz o ressecamento do pelo em poucas semanas.</div>
+    <span class="freq-badge">🔁 Frequência: 3x por semana (interno) + após banho (externo)</span>
+  </div>
+</div>
+
+<!-- R13 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">13</div>
+    <div class="recipe-title">
+      <h3>Compressa de Babosa Para Vermelhidão e Irritação</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Pele</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 folha de babosa (aloe vera) fresca</li>
+        <li>Gaze ou pano de algodão</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Corte a folha de babosa e retire o gel transparente com uma colher. Use o gel diretamente ou dilua levemente em água.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique o gel diretamente na área vermelha ou irritada. Massageie suavemente. Deixe agir sem enxaguar. Repita 2–3x ao dia. Ideal para irritações por atrito, picadas e áreas com vermelhidão leve.</p>
+    </div>
+    <div class="recipe-tip">O gel de babosa fresca tem ação mais potente que o industrializado. Hidrata, refresca e reduz inflamação quase imediatamente.</div>
+    <span class="freq-badge">🔁 Frequência: 2–3x ao dia</span>
+  </div>
+</div>
+
+<!-- R14 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">14</div>
+    <div class="recipe-title">
+      <h3>Suplemento de Ovo Para Fortalecimento do Pelo</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pelo / Nutrição</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 ovo inteiro cozido ou cru (apenas a gema)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Cozinhe o ovo inteiro (sem sal ou temperos). Pode também oferecer a gema crua misturada na ração.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Misture na comida do pet 2–3x por semana. Para cães pequenos: metade do ovo. Para cães médios/grandes: 1 ovo inteiro. A gema é rica em biotina, que fortalece o pelo e reduz a queda.</p>
+    </div>
+    <div class="recipe-tip">A biotina (vitamina B7) presente na gema é fundamental para a saúde do pelo. Cães com deficiência apresentam queda excessiva e pelo opaco.</div>
+    <div class="recipe-warn">A clara crua contém avidina, que bloqueia a absorção de biotina. Prefira ovos cozidos ou apenas a gema crua.</div>
+    <span class="freq-badge">🔁 Frequência: 2–3x por semana</span>
+  </div>
+</div>
+
+<!-- R15 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">15</div>
+    <div class="recipe-title">
+      <h3>Spray de Chá de Hortelã Para Coceira e Refrescância</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pele</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>10 folhas frescas de hortelã</li>
+        <li>200ml de água fervente</li>
+        <li>100ml de água gelada</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Despeje água fervente sobre as folhas. Deixe em infusão por 10 minutos. Coe, adicione a água gelada e coloque em frasco spray. Guarde na geladeira.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique nas áreas com coceira. O frescor do mentol natural alivia imediatamente o desconforto. Ótimo para dias quentes quando o pet se coça mais.</p>
+    </div>
+    <div class="recipe-tip">O mentol natural da hortelã ativa receptores de frio na pele, criando sensação refrescante que interrompe o ciclo de coceira.</div>
+    <div class="recipe-warn">Não use em gatos — o mentol pode ser tóxico para felinos em maior quantidade.</div>
+    <span class="freq-badge">🔁 Frequência: 2–3x ao dia conforme necessidade</span>
+  </div>
+</div>
+
+<!-- R16 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">16</div>
+    <div class="recipe-title">
+      <h3>Creme Natural de Manteiga de Karité Para Cotoveleiras</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pele</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>2 colheres de sopa de manteiga de karité</li>
+        <li>1 colher de chá de óleo de coco</li>
+        <li>3 gotas de óleo essencial de lavanda</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Derreta o karité em banho-maria, misture o coco e a lavanda. Deixe esfriar até solidificar parcialmente. Guarde em potinho.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique nos cotovelos, joelhos e áreas com calosidades ou ressecamento extremo do pet. Massageie bem. Aplique preferencialmente à noite para máxima absorção.</p>
+    </div>
+    <div class="recipe-tip">O karité é um dos hidratantes mais eficazes para pele muito seca e calosidades. Penetra profundamente e restaura a maciez em poucos dias.</div>
+    <span class="freq-badge">🔁 Frequência: 1–2x ao dia</span>
+  </div>
+</div>
+
+<!-- R17 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">17</div>
+    <div class="recipe-title">
+      <h3>Banho de Ervas Para Alergia Recorrente</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pele / Alergia</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 colher de sopa de camomila seca</li>
+        <li>1 colher de sopa de lavanda seca</li>
+        <li>1 colher de sopa de calêndula seca</li>
+        <li>1 litro de água fervente</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Faça uma infusão forte com todas as ervas em 1 litro de água. Tampe e aguarde 20 minutos. Coe bem e complete com mais 1 litro de água morna.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Use como último enxague após o banho. Despeje sobre o corpo do pet e massageie bem. Pode enxaguar levemente ou não. Ideal para pets com histórico de alergia de pele recorrente.</p>
+    </div>
+    <div class="recipe-tip">A combinação de três ervas calmantes cria um efeito sinérgico anti-inflamatório muito superior ao uso individual de cada uma.</div>
+    <span class="freq-badge">🔁 Frequência: 2x por semana durante crises</span>
+  </div>
+</div>
+
+<!-- R18 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">18</div>
+    <div class="recipe-title">
+      <h3>Sardinha Para Saúde da Pele e Pelo (Suplemento Interno)</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Nutrição / Pelo</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 sardinha em azeite ou água (sem sal)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Não precisa de preparo. Pode oferecer diretamente ou misturar esmagada na ração.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Ofereça misturada na comida 2–3x por semana. Para gatos: meia sardinha. Para cães pequenos: meia sardinha. Cães médios/grandes: 1–2 sardinhas. Rica em ômega-3, melhora pele e pelo de dentro para fora.</p>
+    </div>
+    <div class="recipe-tip">O ômega-3 é o nutriente mais eficaz para saúde da pele em pets. Reduz inflamação, melhora o brilho do pelo e auxilia em alergias cutâneas.</div>
+    <div class="recipe-warn">Use sardinha sem sal adicionado. Sal em excesso é prejudicial para cães e gatos.</div>
+    <span class="freq-badge">🔁 Frequência: 2–3x por semana</span>
+  </div>
+</div>
+
+<!-- R19 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">19</div>
+    <div class="recipe-title">
+      <h3>Solução de Sal Marinho Para Limpeza de Feridas Leves</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Pele</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 colher de chá de sal marinho ou sal comum</li>
+        <li>500ml de água filtrada fervida e resfriada</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Dissolva o sal na água até incorporar completamente. A concentração deve ser aproximadamente a do soro fisiológico (isotônica).</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Limpe a ferida superficial com gaze embebida na solução. Aplique de forma suave sem esfregar. Use para limpar arranhões, cortes superficiais e feridas por lambedura.</p>
+    </div>
+    <div class="recipe-tip">A solução salina isotônica limpa sem agredir. É o método mais seguro para limpeza de feridas leves em casa.</div>
+    <div class="recipe-warn">Feridas profundas, com pus, inflamadas ou que não cicatrizam em 3 dias precisam de avaliação veterinária.</div>
+    <span class="freq-badge">🔁 Frequência: 2–3x ao dia até cicatrizar</span>
+  </div>
+</div>
+
+<!-- R20 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">20</div>
+    <div class="recipe-title">
+      <h3>Caldo de Frango Para Estimular Pelo Saudável</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Nutrição / Pelo</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 carcaça de frango sem pele</li>
+        <li>1,5 litros de água</li>
+        <li>1 cenoura pequena</li>
+        <li>1 colher de sopa de vinagre de maçã</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Cozinhe todos os ingredientes por 2–3 horas em fogo baixo. Coe, remova todos os ossos e deixe esfriar. Guarde na geladeira por até 5 dias ou congele em porções.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Misture algumas colheres na ração do pet ou ofereça como caldinho separado. O colágeno natural do caldo auxilia na saúde da pele, pelo e articulações.</p>
+    </div>
+    <div class="recipe-tip">O vinagre de maçã no preparo extrai mais minerais dos ossos para o caldo, aumentando o valor nutricional.</div>
+    <div class="recipe-warn">Nunca ofereça ossos cozidos ao pet — eles podem lascar e causar acidentes. Use apenas o caldo coado.</div>
+    <span class="freq-badge">🔁 Frequência: 3–4x por semana</span>
+  </div>
+</div>
+
+<!-- R21 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">21</div>
+    <div class="recipe-title">
+      <h3>Água de Coco Para Hidratação e Brilho do Pelo</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Nutrição / Pelo</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul><li>Água de coco natural (sem açúcar)</li></ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Não precisa de preparo. Use água de coco natural fresca ou de caixinha sem adição de açúcar.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Ofereça como parte da hidratação do pet, substituindo parte da água em alguns dias. Para cães pequenos: 50ml/dia. Médios: 100ml. Grandes: 150ml. Também pode ser usado como spray no pelo para dar brilho.</p>
+    </div>
+    <div class="recipe-tip">Rica em eletrólitos naturais, potássio e vitaminas do complexo B. Auxilia na hidratação da pele e no brilho do pelo.</div>
+    <div class="recipe-warn">Não substitua totalmente a água por água de coco. Ofereça como complemento apenas.</div>
+    <span class="freq-badge">🔁 Frequência: 3–4x por semana</span>
+  </div>
+</div>
+
+<!-- R22 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">22</div>
+    <div class="recipe-title">
+      <h3>Pasta Cicatrizante de Mel e Própolis</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pele</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 colher de sopa de mel puro (de preferência mel escuro)</li>
+        <li>5 gotas de extrato de própolis</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Misture o mel com o própolis até incorporar completamente.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique em feridas superficiais, áreas com crostas ou lesões por lambedura. Use com supervisão — o pet vai querer lamber. Cubra com gaze se possível. Aplique 2x ao dia.</p>
+    </div>
+    <div class="recipe-tip">O mel tem ação antibacteriana natural (peróxido de hidrogênio) e o própolis é um dos antisépticos naturais mais poderosos conhecidos. Juntos formam um cicatrizante eficaz.</div>
+    <span class="freq-badge">🔁 Frequência: 2x ao dia até cicatrizar</span>
+  </div>
+</div>
+
+<!-- R23 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">23</div>
+    <div class="recipe-title">
+      <h3>Infusão de Erva-doce Para Pele com Fungo Leve</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pele</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>2 colheres de sopa de sementes de erva-doce</li>
+        <li>300ml de água fervente</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Ferva as sementes na água por 5 minutos. Desligue e deixe em infusão por mais 10 minutos. Coe e esfrie.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique com gaze nas áreas afetadas por fungo superficial (áreas com descamação, odor de fungo, pele escurecida). Use 2x ao dia. Complemento ao tratamento — não substitui antifúngico veterinário em casos graves.</p>
+    </div>
+    <div class="recipe-tip">A erva-doce tem propriedades antifúngicas comprovadas que auxiliam no controle de fungos superficiais na pele.</div>
+    <div class="recipe-warn">Fungos com lesões extensas, odor intenso ou que não melhoram em 1 semana precisam de avaliação veterinária.</div>
+    <span class="freq-badge">🔁 Frequência: 2x ao dia</span>
+  </div>
+</div>
+
+<!-- R24 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">24</div>
+    <div class="recipe-title">
+      <h3>Máscara de Banana e Mel Para Pelo Ressecado</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pelo</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>½ banana madura amassada</li>
+        <li>1 colher de sopa de mel</li>
+        <li>1 colher de chá de óleo de coco</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Amasse bem a banana e misture com o mel e o coco até formar pasta homogênea.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique no pelo do pet após o banho com o pelo ainda úmido. Massageie bem. Deixe agir por 5–10 minutos (com supervisão). Enxágue completamente com água. Ideal para pelo muito seco e sem brilho.</p>
+    </div>
+    <div class="recipe-tip">A banana é rica em potássio e vitaminas B6 e C que nutrem e hidratam profundamente o pelo. O mel sela a hidratação.</div>
+    <span class="freq-badge">🔁 Frequência: 1x por semana</span>
+  </div>
+</div>
+
+<!-- R25 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">25</div>
+    <div class="recipe-title">
+      <h3>Spray Anti-Coceira de Lavanda e Camomila</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Pele</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>200ml de chá de camomila frio</li>
+        <li>5 gotas de óleo essencial de lavanda</li>
+        <li>1 colher de sopa de aloe vera</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Misture todos os ingredientes e coloque em frasco spray. Guarde na geladeira por até 7 dias.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique nas áreas de coceira sempre que necessário. Pode usar vários vezes ao dia pois é suave. Ideal para pets que se coçam constantemente e precisam de alívio rápido.</p>
+    </div>
+    <div class="recipe-tip">A lavanda tem propriedades calmantes e analgésicas leves. Combinada à camomila, cria o spray anti-coceira mais completo entre as opções naturais.</div>
+    <span class="freq-badge">🔁 Frequência: Sempre que necessário</span>
+  </div>
+</div>
+
+<!-- CATEGORIA 2: PULGAS E CARRAPATOS -->
+<div class="cat-header">
+  <div class="cat-num">Categoria 02</div>
+  <h2>🦟 Pulgas, Carrapatos e Parasitas</h2>
+  <p>Receitas 26 a 40 — Repelentes naturais, banhos e sprays para combater e prevenir infestações</p>
+</div>
+
+<!-- R26 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">26</div>
+    <div class="recipe-title">
+      <h3>Spray Repelente de Alho e Lavanda</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pulgas</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>3 dentes de alho amassados</li>
+        <li>500ml de água fervente</li>
+        <li>10 gotas de óleo essencial de lavanda</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Ferva a água com o alho por 5 minutos. Desligue, tampe e deixe esfriar completamente. Coe bem, adicione a lavanda e coloque em spray. Guarde na geladeira.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique no pelo do pet antes de passeios em áreas com mato, grama e locais com maior risco de infestação. Evite olhos, nariz e boca. Aplique também na cama e entorno do pet.</p>
+    </div>
+    <div class="recipe-tip">O alho repele pulgas e carrapatos pelo odor que eles detectam antes de chegar ao pet. A lavanda potencializa o efeito e deixa o cheiro agradável.</div>
+    <div class="recipe-warn">NÃO use em gatos — alho é tóxico para felinos. Não ofereça alho para ingestão — use apenas o spray externo com moderação.</div>
+    <span class="freq-badge">🔁 Frequência: Antes de cada passeio em área de risco</span>
+  </div>
+</div>
+
+<!-- R27 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">27</div>
+    <div class="recipe-title">
+      <h3>Banho Anti-Pulgas de Vinagre e Citronela</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pulgas</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 xícara de vinagre de maçã</li>
+        <li>10 gotas de óleo de citronela</li>
+        <li>2 litros de água morna</li>
+        <li>Shampoo neutro para pets (2 colheres)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Misture todos os ingredientes na água morna. O shampoo ajuda a distribuir os óleos uniformemente.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Dê o banho normalmente com a solução. Deixe agir por 5 minutos antes de enxaguar — isso dá tempo para as pulgas morrerem ou saírem. Use pente fino durante o banho para remover pulgas mortas.</p>
+    </div>
+    <div class="recipe-tip">O vinagre de maçã altera o pH do pelo tornando-o hostil às pulgas, enquanto a citronela repele e mata os parasitas por contato.</div>
+    <span class="freq-badge">🔁 Frequência: 1–2x por semana durante infestação</span>
+  </div>
+</div>
+
+<!-- R28 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">28</div>
+    <div class="recipe-title">
+      <h3>Pó de Terça de Diatomáceas Para o Ambiente</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Pulgas / Ambiente</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>Terra diatomácea (grau alimentar)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Não precisa de preparo. Use o pó puro de grau alimentar (não o industrial).</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p><strong>No ambiente:</strong> Polvilhe em tapetes, camas, frestas do piso e locais favoritos do pet. Deixe por 48–72h e aspire. Repita semanalmente. <strong>No pelo do pet:</strong> Polvilhe levemente no pelo, massageie e escove após 30 minutos. Mata pulgas por desidratação mecânica (sem química).</p>
+    </div>
+    <div class="recipe-tip">A terra diatomácea corta a cutícula das pulgas por ação mecânica, desidratando-as. Não cria resistência — as pulgas não se adaptam a ela.</div>
+    <div class="recipe-warn">Use máscara ao polvilhar — o pó fino pode irritar vias respiratórias. Use apenas grau alimentar.</div>
+    <span class="freq-badge">🔁 Frequência: 1x por semana no ambiente</span>
+  </div>
+</div>
+
+<!-- R29 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">29</div>
+    <div class="recipe-title">
+      <h3>Spray de Eucalipto e Alecrim Para Repelir Carrapatos</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Carrapatos</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>10 gotas de óleo essencial de eucalipto</li>
+        <li>10 gotas de óleo essencial de alecrim</li>
+        <li>200ml de água filtrada</li>
+        <li>1 colher de chá de álcool de cereais (para diluir os óleos)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Dissolva os óleos no álcool, depois adicione a água. Agite bem antes de cada uso. Coloque em frasco spray.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique no pelo do pet antes de passeios em matas, campos e áreas rurais. Concentre nas pernas, pescoço e barriga — locais preferidos dos carrapatos. Evite olhos e mucosas.</p>
+    </div>
+    <div class="recipe-tip">O eucalipto e o alecrim contêm compostos que interferem no sistema nervoso dos carrapatos, repelindo-os eficazmente.</div>
+    <div class="recipe-warn">Não use em gatos. Teste em pequena área antes do primeiro uso — alguns pets podem ter sensibilidade.</div>
+    <span class="freq-badge">🔁 Frequência: Antes de cada passeio em área de risco</span>
+  </div>
+</div>
+
+<!-- R30 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">30</div>
+    <div class="recipe-title">
+      <h3>Colar Natural Anti-Pulgas de Alecrim e Cedro</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pulgas</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>Colar/fita de tecido de algodão</li>
+        <li>5 gotas de óleo essencial de alecrim</li>
+        <li>5 gotas de óleo essencial de cedro</li>
+        <li>5 gotas de óleo essencial de lavanda</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Aplique os óleos na fita de tecido e deixe absorver por 30 minutos antes de usar. Guarde em saquinho fechado quando não estiver usando.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Coloque no pescoço do pet como colar. Os óleos evaporam lentamente e criam uma barreira aromática que repele pulgas. Renove os óleos a cada 7–10 dias.</p>
+    </div>
+    <div class="recipe-tip">Funciona como versão natural dos colares antipulgas industriais. O cedro especificamente é um dos repelentes naturais mais eficazes contra pulgas.</div>
+    <div class="recipe-warn">Observe se o pet apresenta irritação no pescoço. Retire se notar vermelhidão.</div>
+    <span class="freq-badge">🔁 Frequência: Renovar os óleos a cada 7–10 dias</span>
+  </div>
+</div>
+
+<!-- R31 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">31</div>
+    <div class="recipe-title">
+      <h3>Spray de Limão e Alecrim Para Pulgas</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pulgas</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>2 limões fatiados (com casca)</li>
+        <li>2 ramos de alecrim fresco</li>
+        <li>500ml de água fervente</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Ferva a água, adicione o limão e o alecrim. Tampe e deixe em infusão por toda a noite. Coe pela manhã e coloque em frasco spray. Guarde na geladeira.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique no pelo do pet, na cama, no ambiente e em áreas que o pet frequenta. O limoneno (composto cítrico) mata e repele pulgas por contato. Aplique também em tapetes e sofás.</p>
+    </div>
+    <div class="recipe-tip">O limoneno das cascas de limão é altamente tóxico para pulgas mas seguro para cães quando diluído. Tem ação de curto prazo — reaplicar frequentemente.</div>
+    <div class="recipe-warn">NÃO use em gatos — compostos cítricos são tóxicos para felinos.</div>
+    <span class="freq-badge">🔁 Frequência: Diariamente durante infestação</span>
+  </div>
+</div>
+
+<!-- R32 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">32</div>
+    <div class="recipe-title">
+      <h3>Banho de Sal Grosso Para Matar Pulgas</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pulgas</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>3 colheres de sopa de sal grosso</li>
+        <li>2 litros de água morna</li>
+        <li>1 colher de sopa de shampoo neutro</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Dissolva o sal na água morna. Adicione o shampoo e misture bem.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Molhe o pet completamente com a solução. Massageie por 5–7 minutos, dando atenção especial a pescoço, barriga e entre as patas. O sal desidrata as pulgas. Use pente fino durante o banho para remover os insetos. Enxágue bem.</p>
+    </div>
+    <div class="recipe-tip">O sal cria um ambiente hostil para as pulgas por osmose — desidratando-as rapidamente por contato.</div>
+    <div class="recipe-warn">Não deixe o sal agir por muito tempo — pode ressecar a pele do pet. Enxágue completamente após o tempo indicado.</div>
+    <span class="freq-badge">🔁 Frequência: 2x por semana durante infestação</span>
+  </div>
+</div>
+
+<!-- R33 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">33</div>
+    <div class="recipe-title">
+      <h3>Armadilha Caseira Para Pulgas no Ambiente</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Pulgas / Ambiente</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 prato fundo branco</li>
+        <li>Água com detergente líquido</li>
+        <li>Luminária ou vela (fonte de calor e luz)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Encha o prato com água misturada com detergente (a mistura impede que as pulgas nadem). Posicione a fonte de luz acima do prato.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Posicione o prato no chão à noite, em ambiente escuro, com a luz acesa acima. As pulgas são atraídas pelo calor e claridade, pulam no prato e afogam no detergente. Faça isso em todos os cômodos que o pet frequenta. Troque a água a cada manhã.</p>
+    </div>
+    <div class="recipe-tip">Método simples e eficaz para monitorar e reduzir a população de pulgas no ambiente sem usar químicos.</div>
+    <span class="freq-badge">🔁 Frequência: Todas as noites durante infestação</span>
+  </div>
+</div>
+
+<!-- R34 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">34</div>
+    <div class="recipe-title">
+      <h3>Sachê Repelente de Ervas Para a Cama do Pet</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Pulgas / Ambiente</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 colher de sopa de lavanda seca</li>
+        <li>1 colher de sopa de alecrim seco</li>
+        <li>1 colher de sopa de menta seca</li>
+        <li>Voal ou pano fino para o sachê</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Misture as ervas secas e coloque no sachê de voal. Amarre bem ou costure as pontas.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Coloque o sachê embaixo ou ao redor da cama/almofada do pet. As ervas liberam aromas que repelem pulgas continuamente. Troque as ervas a cada 3–4 semanas ou quando o aroma enfraquecer.</p>
+    </div>
+    <div class="recipe-tip">Método passivo e contínuo de prevenção. Ótimo complemento aos banhos e sprays repelentes.</div>
+    <span class="freq-badge">🔁 Frequência: Troque as ervas a cada 3–4 semanas</span>
+  </div>
+</div>
+
+<!-- R35 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">35</div>
+    <div class="recipe-title">
+      <h3>Solução de Bicarbonato Para o Ambiente Anti-Pulgas</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Pulgas / Ambiente</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>Bicarbonato de sódio (quantidade suficiente)</li>
+        <li>Sal fino (mesma quantidade do bicarbonato)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Misture bicarbonato e sal em partes iguais.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Polvilhe a mistura generosamente em carpetes, tapetes, sofás e camas do pet. Esfregue com escova para penetrar nas fibras. Deixe agir por 12–24 horas. Aspire tudo cuidadosamente. Descarte o saco do aspirador imediatamente.</p>
+    </div>
+    <div class="recipe-tip">A combinação de bicarbonato e sal desidrata ovos e larvas de pulgas nas fibras do tapete — atacando o ciclo de vida do parasita.</div>
+    <span class="freq-badge">🔁 Frequência: 1x por semana durante infestação</span>
+  </div>
+</div>
+
+<!-- R36 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">36</div>
+    <div class="recipe-title">
+      <h3>Óleo de Neem Diluído Para Repelir Parasitas</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Pulgas / Carrapatos</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 colher de chá de óleo de neem</li>
+        <li>200ml de água</li>
+        <li>½ colher de chá de detergente neutro (para emulsificar)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Misture o detergente com o neem primeiro. Depois adicione a água aos poucos. Agite bem antes de usar. Coloque em frasco spray.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique no pelo do pet, no ambiente e na cama. O odor forte do neem repele pulgas, carrapatos e mosquitos. Reaplicar a cada 2–3 dias.</p>
+    </div>
+    <div class="recipe-tip">O neem contém azadiractina, composto que interfere no ciclo reprodutivo de insetos e parasitas. É um dos repelentes naturais mais estudados e eficazes.</div>
+    <div class="recipe-warn">O cheiro é forte. Não use em gatos. Sempre diluído — nunca puro no pelo.</div>
+    <span class="freq-badge">🔁 Frequência: A cada 2–3 dias</span>
+  </div>
+</div>
+
+<!-- R37 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">37</div>
+    <div class="recipe-title">
+      <h3>Pente Fino com Vinagre Para Remoção de Pulgas</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Pulgas</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>Pente fino para pulgas</li>
+        <li>Tigela com água e vinagre de maçã (50/50)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Prepare a tigela com a solução de água e vinagre. Mantenha ao lado durante o processo.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Passe o pente fino pelo pelo do pet seção por seção. Após cada passagem, mergulhe o pente na solução (as pulgas morrem no vinagre). Continue até percorrer todo o corpo. Faça em área bem iluminada para ver os insetos.</p>
+    </div>
+    <div class="recipe-tip">O método manual com pente é o mais eficaz para remover pulgas adultas visivelmente. A solução de vinagre garante que não fujam.</div>
+    <span class="freq-badge">🔁 Frequência: Diariamente durante infestação ativa</span>
+  </div>
+</div>
+
+<!-- R38 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">38</div>
+    <div class="recipe-title">
+      <h3>Spray de Hortelã-Pimenta Para Repelir Carrapatos</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Carrapatos</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>20 folhas de hortelã-pimenta</li>
+        <li>300ml de água fervente</li>
+        <li>1 colher de chá de álcool (para preservar)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Faça a infusão, deixe esfriar, coe, adicione o álcool e coloque em spray. Guarde na geladeira por até 10 dias.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Aplique no pelo antes de passeios em áreas de risco. Concentre nas pernas, pescoço e barriga do pet — áreas preferidas dos carrapatos. O mentol repele carrapatos eficazmente.</p>
+    </div>
+    <div class="recipe-warn">Não use em gatos — o mentol pode ser prejudicial para felinos em maiores quantidades.</div>
+    <span class="freq-badge">🔁 Frequência: Antes de cada saída em área de risco</span>
+  </div>
+</div>
+
+<!-- R39 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">39</div>
+    <div class="recipe-title">
+      <h3>Como Remover Carrapato Com Segurança em Casa</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Carrapatos / Emergência</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>O que você precisa</h4>
+      <ul>
+        <li>Pinça fina de ponta reta (ou removedor de carrapatos)</li>
+        <li>Álcool 70%</li>
+        <li>Gaze ou algodão</li>
+        <li>Frasco com tampa para descartar</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Passo a Passo</h4>
+      <p>1. Limpe a área com álcool. 2. Com a pinça, segure o carrapato o mais próximo da pele possível. 3. Puxe para cima com pressão firme e constante — sem torcer. 4. Verifique se a cabeça saiu inteira. 5. Limpe a área com álcool novamente. 6. Coloque o carrapato em álcool para matar.</p>
+    </div>
+    <div class="recipe-tip">Nunca use vaselina, fósforo aceso ou esmagamento — podem fazer o carrapato liberar toxinas na ferida. A pinça reta é o método mais seguro.</div>
+    <div class="recipe-warn">Se a cabeça ficar presa na pele, ou se o pet apresentar febre, inchaço ou fraqueza após a retirada, procure o veterinário.</div>
+    <span class="freq-badge">📋 Procedimento de emergência — use quando necessário</span>
+  </div>
+</div>
+
+<!-- R40 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">40</div>
+    <div class="recipe-title">
+      <h3>Lavagem Anti-Pulgas do Ambiente com Vinagre</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Pulgas / Ambiente</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 litro de vinagre branco</li>
+        <li>1 litro de água</li>
+        <li>10 gotas de óleo de lavanda (opcional)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Misture o vinagre com a água. Adicione a lavanda se desejar.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Use para lavar o piso, soleiras das portas, áreas que o pet frequenta e rodapés. O vinagre mata pulgas e ovos por contato e deixa um cheiro que repele novos insetos. O cheiro desaparece em 30–60 minutos.</p>
+    </div>
+    <div class="recipe-tip">Lavar o ambiente é tão importante quanto tratar o pet — 95% das pulgas vivem no ambiente (ovos, larvas, pupas), não no animal.</div>
+    <span class="freq-badge">🔁 Frequência: 2–3x por semana durante infestação</span>
+  </div>
+</div>
+
+<!-- CATEGORIA 3: INTESTINO E DIGESTÃO -->
+<div class="cat-header">
+  <div class="cat-num">Categoria 03</div>
+  <h2>🍃 Intestino, Digestão e Alimentação</h2>
+  <p>Receitas 41 a 50 — Soluções naturais para diarreia, gases, vômitos e intestino sensível</p>
+</div>
+
+<!-- R41 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">41</div>
+    <div class="recipe-title">
+      <h3>Arroz Com Frango Para Diarreia (Dieta de Recuperação)</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Digestão</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 xícara de arroz branco</li>
+        <li>1 peito de frango sem pele e sem osso</li>
+        <li>3 xícaras de água</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Cozinhe o frango em água sem sal, sem temperos. Desfie. Cozinhe o arroz na mesma água. Misture numa proporção de 2 partes de arroz para 1 de frango.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Substitua a ração normal por essa dieta durante 2–3 dias em episódios de diarreia. Ofereça em porções menores e mais frequentes. Retorne gradualmente à ração normal misturando aos poucos.</p>
+    </div>
+    <div class="recipe-tip">A dieta branda de arroz e frango é o padrão ouro veterinário para recuperação intestinal. O arroz firma as fezes e o frango é facilmente digerível.</div>
+    <div class="recipe-warn">Se a diarreia contiver sangue, durar mais de 48h ou vier acompanhada de vômito intenso e apatia, vá ao veterinário.</div>
+    <span class="freq-badge">🔁 Frequência: Durante episódios de diarreia (2–3 dias)</span>
+  </div>
+</div>
+
+<!-- R42 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">42</div>
+    <div class="recipe-title">
+      <h3>Chá de Camomila Para Cólica e Gases</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Digestão</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 saquinho de chá de camomila</li>
+        <li>200ml de água fervente</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Prepare o chá normalmente. Deixe esfriar completamente até temperatura ambiente ou geladeira.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Ofereça ao pet por seringa sem agulha ou misturado na água. Dose: cães pequenos (5ml), médios (10ml), grandes (20ml). Pode dar 2–3x ao dia. Para gatos: 3–5ml. O chá acalma os espasmos intestinais e alivia gases.</p>
+    </div>
+    <div class="recipe-tip">A camomila tem propriedade antiespasmódica — relaxa a musculatura intestinal, aliviando cólicas e gases rapidamente.</div>
+    <span class="freq-badge">🔁 Frequência: 2–3x ao dia durante desconforto digestivo</span>
+  </div>
+</div>
+
+<!-- R43 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">43</div>
+    <div class="recipe-title">
+      <h3>Abóbora Cozida Para Regular o Intestino</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Digestão</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>Abóbora cabotiá ou moranga (sem temperos)</li>
+        <li>Água para cozimento</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Cozinhe a abóbora sem sal até ficar bem macia. Amasse até virar purê. Deixe esfriar antes de oferecer.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Misture na comida: 1 colher de sopa para pets pequenos, 2–3 para médios, 4–5 para grandes. Funciona tanto para diarreia (fibra absorve excesso de líquido) quanto para prisão de ventre (fibra estimula o trânsito).</p>
+    </div>
+    <div class="recipe-tip">A fibra solúvel da abóbora é um dos reguladores intestinais mais eficazes e seguros para pets. Funciona nos dois sentidos do intestino.</div>
+    <span class="freq-badge">🔁 Frequência: Diariamente até regularizar, depois 3x/semana</span>
+  </div>
+</div>
+
+<!-- R44 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">44</div>
+    <div class="recipe-title">
+      <h3>Iogurte Natural Para Equilibrar a Flora Intestinal</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Digestão</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>Iogurte natural integral (sem açúcar, sem adoçante, sem lactose se possível)</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Não precisa de preparo. Use o iogurte puro direto na tigela do pet.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Ofereça misturado na comida: 1 colher de chá para pequenos, 1 colher de sopa para médios, 2 colheres para grandes. Ideal após tratamento com antibióticos para reequilibrar a flora intestinal.</p>
+    </div>
+    <div class="recipe-tip">Os probióticos naturais do iogurte recolonizam o intestino com bactérias benéficas. Essencial após uso de antibióticos que destroem a flora.</div>
+    <div class="recipe-warn">Alguns cães são intolerantes à lactose. Se notar aumento de gases ou diarreia, interrompa. Prefira versão sem lactose.</div>
+    <span class="freq-badge">🔁 Frequência: Diariamente por 2 semanas (pós-antibiótico) ou 3x/semana (manutenção)</span>
+  </div>
+</div>
+
+<!-- R45 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">45</div>
+    <div class="recipe-title">
+      <h3>Chá de Erva-doce Para Gases e Digestão Lenta</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill">🐱 Gatos</span><span class="tag-pill cat">Digestão</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 colher de chá de sementes de erva-doce</li>
+        <li>200ml de água fervente</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Ferva as sementes na água por 3 minutos. Desligue, tampe e deixe descansar por 10 minutos. Coe e deixe esfriar.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Ofereça por seringa ou misturado na água após as refeições. Dose: 5ml para pequenos, 10–15ml para médios e grandes. Alivia gases, digestão lenta e barriga estufada.</p>
+    </div>
+    <div class="recipe-tip">A erva-doce é carminativa — facilita a eliminação de gases do trato digestivo e estimula as enzimas digestivas.</div>
+    <span class="freq-badge">🔁 Frequência: Após refeições quando necessário</span>
+  </div>
+</div>
+
+<!-- R46 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">46</div>
+    <div class="recipe-title">
+      <h3>Cenoura Crua Para Prisão de Ventre</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Digestão</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 cenoura média crua</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Lave bem e corte em pedaços adequados ao tamanho do pet. Pode ralar também.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Ofereça como petisco ou misture ralada na comida. A fibra insolúvel da cenoura crua estimula o peristaltismo intestinal e ajuda a resolver prisão de ventre leve.</p>
+    </div>
+    <div class="recipe-tip">A cenoura crua é uma das fontes de fibra mais seguras para cães. Além do efeito laxante leve, auxilia na limpeza dos dentes.</div>
+    <div class="recipe-warn">Prisão de ventre por mais de 48h, com dor ou vômito associados requer avaliação veterinária.</div>
+    <span class="freq-badge">🔁 Frequência: Diariamente durante prisão de ventre</span>
+  </div>
+</div>
+
+<!-- R47 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">47</div>
+    <div class="recipe-title">
+      <h3>Jejum Supervisionado Para Vômito Leve</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Digestão / Emergência</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>O que fazer</h4>
+      <ul>
+        <li>Retirar comida por 12–24h</li>
+        <li>Manter acesso livre à água</li>
+        <li>Oferecer gelo para lamber se recusar água</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Quando usar</h4>
+      <p>Vômito isolado (1–2 episódios) sem sangue, sem apatia extrema, sem diarreia simultânea intensa. Pet continua ativo e alerta.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Proceder</h4>
+      <p>Após 12–24h de jejum, ofereça pequenas porções da dieta branda (arroz + frango — receita 41). Aumente gradualmente nas próximas 24h. Retorne à ração normal após 48h de melhora.</p>
+    </div>
+    <div class="recipe-tip">O jejum curto dá descanso ao trato gastrointestinal e permite que se recupere. É a primeira linha de manejo para vômito leve.</div>
+    <div class="recipe-warn">Vômito com sangue, bile amarela intensa, frequente (mais de 3x), com apatia ou dor abdominal = veterinário imediatamente.</div>
+    <span class="freq-badge">📋 Procedimento — 12–24h de jejum seguido de dieta branda</span>
+  </div>
+</div>
+
+<!-- R48 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">48</div>
+    <div class="recipe-title">
+      <h3>Soro Caseiro de Hidratação Para Diarreia</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Digestão / Emergência</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 litro de água filtrada fervida</li>
+        <li>1 colher de chá de sal</li>
+        <li>1 colher de sopa de açúcar</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Dissolva o sal e o açúcar completamente na água. Deixe esfriar até temperatura ambiente.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Ofereça ao pet em pequenas quantidades ao longo do dia durante episódios de diarreia para prevenir desidratação. Pode usar seringa para administrar se o pet recusar. Dose: 5–10ml a cada 30 minutos para pequenos; 20–30ml para médios/grandes.</p>
+    </div>
+    <div class="recipe-tip">A diarreia causa perda rápida de eletrólitos. O soro caseiro repõe sódio, potássio e glicose de forma segura e imediata.</div>
+    <div class="recipe-warn">Medida de suporte emergencial. Não substitui hidratação veterinária em casos graves de desidratação.</div>
+    <span class="freq-badge">📋 Uso em emergência durante diarreia</span>
+  </div>
+</div>
+
+<!-- R49 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">49</div>
+    <div class="recipe-title">
+      <h3>Babinha de Linhaça Para Intestino Preso</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Digestão</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 colher de sopa de semente de linhaça dourada</li>
+        <li>150ml de água</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Deixe a linhaça de molho na água por pelo menos 4 horas ou de um dia para o outro. A água ficará gelatinosa — isso é o que queremos.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Ofereça a "babinha" (água gelatinosa com a semente) misturada na comida. Para pequenos: 1 colher de sopa. Médios: 2 colheres. Grandes: 3–4 colheres. O gel lubrifica o intestino e facilita a evacuação.</p>
+    </div>
+    <div class="recipe-tip">O mucilagem da linhaça cria um gel natural que lubrifica e suaviza o conteúdo intestinal, facilitando o trânsito sem causar cólicas.</div>
+    <span class="freq-badge">🔁 Frequência: 1x ao dia até regularizar</span>
+  </div>
+</div>
+
+<!-- R50 -->
+<div class="recipe">
+  <div class="recipe-header">
+    <div class="recipe-num">50</div>
+    <div class="recipe-title">
+      <h3>Mel Diluído Para Falta de Apetite</h3>
+      <div class="tags"><span class="tag-pill">🐶 Cães</span><span class="tag-pill cat">Digestão / Nutrição</span></div>
+    </div>
+  </div>
+  <div class="recipe-body">
+    <div class="recipe-section">
+      <h4>Ingredientes</h4>
+      <ul>
+        <li>1 colher de chá de mel puro</li>
+        <li>50ml de água morna</li>
+      </ul>
+    </div>
+    <div class="recipe-section">
+      <h4>Modo de Preparo</h4>
+      <p>Dissolva o mel na água morna até incorporar completamente.</p>
+    </div>
+    <div class="recipe-section recipe-full">
+      <h4>Como Usar</h4>
+      <p>Ofereça por seringa ou no bebedouro do pet. A glicose do mel fornece energia rápida e estimula o apetite em pets que recusam comida. Pode também passar uma fina camada de mel puro na gengiva do pet para fornecer energia de emergência.</p>
+    </div>
+    <div class="recipe-tip">A glicose natural do mel estimula a produção de insulina e aumenta a sensação de fome. Útil em recuperação pós-doença ou em pets muito debilitados.</div>
+    <div class="recipe-warn">Não use em cães com diabetes ou sobrepeso. O mel é calórico — use com moderação e por curto período.</div>
+    <span class="freq-badge">🔁 Frequência: 2–3x ao dia por até 3 dias</span>
+  </div>
+</div>
+
+<!-- RODAPÉ DO ARQUIVO -->
+<div style="text-align:center;padding:40px;margin-top:40px;border-top:2px solid #e8f5e9;color:#888;">
+  <p style="font-family:'Montserrat',sans-serif;font-weight:700;color:#2e7d32;font-size:1.1rem;">🐾 SOS Natural Pet</p>
+  <p style="margin-top:6px;font-size:.88rem;">Parte 1 de 4 — Receitas 1 a 50</p>
+  <p style="margin-top:6px;font-size:.82rem;">© SOS Natural Pet · Material educativo · Não substitui orientação veterinária</p>
+</div>
+
+</body>
+</html>
