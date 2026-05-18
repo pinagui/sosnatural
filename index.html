@@ -5,9 +5,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SOS Natural Pet — 300 Receitas Naturais Para Seu Pet</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap"
-    rel="stylesheet" />
+  <!-- preconnect para reduzir latência das fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- carregamento não-bloqueante das fontes -->
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" />
+  </noscript>
   <style>
     *,
     *::before,
@@ -952,8 +960,8 @@
     <a href="#planos" class="btn-cta orange">⚡ QUERO TER ISSO EM CASA</a>
     <p class="sub-cta">Acesso imediato após o pagamento • Garantia de 7 dias • Sem risco</p>
 
-    <img src="mockup.webp" alt="SOS Natural Pet — Kit Completo"
-      style="max-width:780px;width:100%;margin:28px auto 0;display:block;border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,0.18);" />
+    <img src="mockup.webp" alt="SOS Natural Pet — Kit Completo" fetchpriority="high" decoding="async"
+      style="max-width:780px;width:100%;margin:28px auto 0;display:block;border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,0.18);aspect-ratio:16/9;object-fit:contain;" />
 
     <div class="social-bar">
       <div class="dot"></div>
@@ -993,8 +1001,8 @@
       <div class="pain-grid">
 
         <div class="pain-block">
-          <img src="pelesealergias.webp" alt="Pele e Alergias"
-            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);" />
+          <img src="pelesealergias.webp" alt="Pele e Alergias" loading="lazy" decoding="async"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);aspect-ratio:4/3;object-fit:cover;" />
           <h4>🐾 Pele e Alergias</h4>
           <ul>
             <li>Coceira constante</li>
@@ -1008,8 +1016,8 @@
         </div>
 
         <div class="pain-block">
-          <img src="pulgasecarrapatos.webp" alt="Pulgas e Carrapatos"
-            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);" />
+          <img src="pulgasecarrapatos.webp" alt="Pulgas e Carrapatos" loading="lazy" decoding="async"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);aspect-ratio:4/3;object-fit:cover;" />
           <h4>🦟 Pulgas e Carrapatos</h4>
           <ul>
             <li>Infestação de pulgas</li>
@@ -1021,8 +1029,8 @@
         </div>
 
         <div class="pain-block">
-          <img src="intestinoedisgestao.webp" alt="Intestino e Digestão"
-            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);" />
+          <img src="intestinoedisgestao.webp" alt="Intestino e Digestão" loading="lazy" decoding="async"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);aspect-ratio:4/3;object-fit:cover;" />
           <h4>🍃 Intestino e Digestão</h4>
           <ul>
             <li>Diarreia</li>
@@ -1035,8 +1043,8 @@
         </div>
 
         <div class="pain-block">
-          <img src="respiracaoegarganta.webp" alt="Respiração e Garganta"
-            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);" />
+          <img src="respiracaoegarganta.webp" alt="Respiração e Garganta" loading="lazy" decoding="async"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);aspect-ratio:4/3;object-fit:cover;" />
           <h4>🌬️ Respiração e Garganta</h4>
           <ul>
             <li>Tosse frequente</li>
@@ -1047,8 +1055,8 @@
         </div>
 
         <div class="pain-block">
-          <img src="comportamentoebemestar.webp" alt="Comportamento e Bem-estar"
-            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);" />
+          <img src="comportamentoebemestar.webp" alt="Comportamento e Bem-estar" loading="lazy" decoding="async"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);aspect-ratio:4/3;object-fit:cover;" />
           <h4>🧠 Comportamento e Bem-estar</h4>
           <ul>
             <li>Ansiedade e agitação</li>
@@ -1060,8 +1068,8 @@
         </div>
 
         <div class="pain-block">
-          <img src="petsidosos.webp" alt="Pets Idosos"
-            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);" />
+          <img src="petsidosos.webp" alt="Pets Idosos" loading="lazy" decoding="async"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.10);aspect-ratio:4/3;object-fit:cover;" />
           <h4>🦴 Pets Idosos</h4>
           <ul>
             <li>Dificuldade para se movimentar</li>
@@ -1149,29 +1157,29 @@
 
       <div class="bonus-grid">
         <div class="bonus-card">
-          <img src="bonus1.webp" alt="Bônus 1"
-            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.15);" />
+          <img src="bonus1.webp" alt="Bônus 1" loading="lazy" decoding="async"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.15);aspect-ratio:4/3;object-fit:cover;" />
           <div class="bnum">B1</div>
           <h4>Guia Natural Contra Pulgas e Carrapatos</h4>
           <p>Receitas e estratégias naturais para afastar parasitas de casa e do pet, sem químicos agressivos.</p>
         </div>
         <div class="bonus-card">
-          <img src="bonus 2.webp" alt="Bônus 2"
-            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.15);" />
+          <img src="bonus 2.webp" alt="Bônus 2" loading="lazy" decoding="async"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.15);aspect-ratio:4/3;object-fit:cover;" />
           <div class="bnum">B2</div>
           <h4>Alimentação Natural Para Fortalecer a Imunidade</h4>
           <p>O que incluir na dieta do seu pet para melhorar a resistência e a vitalidade de forma natural.</p>
         </div>
         <div class="bonus-card">
-          <img src="bonus3.webp" alt="Bônus 3"
-            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.15);" />
+          <img src="bonus3.webp" alt="Bônus 3" loading="lazy" decoding="async"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.15);aspect-ratio:4/3;object-fit:cover;" />
           <div class="bnum">B3</div>
           <h4>Kit Emergencial Natural Para Pets</h4>
           <p>O que fazer em situações de urgência enquanto aguarda atendimento veterinário. Essencial em casa.</p>
         </div>
         <div class="bonus-card">
-          <img src="bonus4.webp" alt="Bônus 4"
-            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.15);" />
+          <img src="bonus4.webp" alt="Bônus 4" loading="lazy" decoding="async"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.15);aspect-ratio:4/3;object-fit:cover;" />
           <div class="bnum">B4</div>
           <h4>Lista de Plantas e Ingredientes Proibidos</h4>
           <p>Saiba o que NUNCA usar com seu pet. Este bônus sozinho pode evitar acidentes graves em casa.</p>
@@ -1188,16 +1196,16 @@
 
       <div class="testi-grid">
         <div class="tcard">
-          <img src="test01.webp" alt="Depoimento 1"
-            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.08);" />
+          <img src="test01.webp" alt="Depoimento 1" loading="lazy" decoding="async"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.08);aspect-ratio:4/3;object-fit:cover;" />
         </div>
         <div class="tcard">
-          <img src="test02.webp" alt="Depoimento 2"
-            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.08);" />
+          <img src="test02.webp" alt="Depoimento 2" loading="lazy" decoding="async"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.08);aspect-ratio:4/3;object-fit:cover;" />
         </div>
         <div class="tcard">
-          <img src="test03.webp" alt="Depoimento 3"
-            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.08);" />
+          <img src="test03.webp" alt="Depoimento 3" loading="lazy" decoding="async"
+            style="width:100%;border-radius:12px;margin-bottom:14px;box-shadow:0 4px 16px rgba(0,0,0,0.08);aspect-ratio:4/3;object-fit:cover;" />
         </div>
       </div>
     </div>
@@ -1224,8 +1232,8 @@
         </div>
 
         <div class="plan-card featured">
-          <img src="mockup.webp" alt="SOS Natural Pet Kit Completo"
-            style="width:100%;max-width:340px;margin:0 auto 16px;display:block;border-radius:16px;box-shadow:0 6px 28px rgba(0,0,0,0.15);" />
+          <img src="mockup.webp" alt="SOS Natural Pet Kit Completo" loading="lazy" decoding="async"
+            style="width:100%;max-width:340px;margin:0 auto 16px;display:block;border-radius:16px;box-shadow:0 6px 28px rgba(0,0,0,0.15);aspect-ratio:16/9;object-fit:contain;" />
           <div class="plan-name">Plano Completo</div>
           <div class="plan-price-orig">De R$ 47,90</div>
           <div class="plan-price"><sup>R$</sup>27<sup>,90</sup></div>
@@ -1333,8 +1341,8 @@
       <button class="close-btn" onclick="closeModal()">✕</button>
       <div class="upsell-tag">⚡ Oferta única — aparece só uma vez</div>
       <h2>Espere! Complete Seu <em>Kit Natural Pet</em> Com 4 Bônus Exclusivos</h2>
-      <img src="mockup.webp" alt="SOS Natural Pet Kit Completo"
-        style="width:100%;max-width:380px;margin:12px auto 16px;display:block;border-radius:16px;box-shadow:0 6px 28px rgba(0,0,0,0.12);" />
+      <img src="mockup.webp" alt="SOS Natural Pet Kit Completo" loading="lazy" decoding="async"
+        style="width:100%;max-width:380px;margin:12px auto 16px;display:block;border-radius:16px;box-shadow:0 6px 28px rgba(0,0,0,0.12);aspect-ratio:16/9;object-fit:contain;" />
       <p style="color:var(--gray);font-size:.92rem;">Você está levando o ebook principal. Mas por apenas um pouco mais,
         leve o kit completo:</p>
 
