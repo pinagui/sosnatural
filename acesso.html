@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Acesso — Protocolo Anti-Lambedura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;font-family:'Open Sans',sans-serif;}
+body{
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;
+  background:#f5f5f5;
+  padding:20px;
+}
+
+.card{
+  background:#fff;
+  border-radius:20px;
+  padding:56px 52px;
+  max-width:520px;
+  width:100%;
+  text-align:center;
+  box-shadow:0 8px 40px rgba(0,0,0,.10);
+}
+
+.logo{
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:1.45rem;
+  color:#2e7d32;
+  margin-bottom:4px;
+}
+.logo span{color:#f9a825;}
+
+.logo-sub{
+  font-size:.78rem;
+  color:#bbb;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-bottom:36px;
+}
+
+.pata{font-size:3rem;margin-bottom:20px;display:block;}
+
+.titulo{
+  font-family:'Montserrat',sans-serif;
+  font-weight:900;
+  font-size:1.35rem;
+  color:#1a1a1a;
+  line-height:1.35;
+  margin-bottom:10px;
+}
+
+.subtitulo{
+  font-size:.9rem;
+  color:#777;
+  margin-bottom:36px;
+  line-height:1.6;
+}
+
+.btn{
+  display:inline-block;
+  width:100%;
+  padding:18px 24px;
+  background:linear-gradient(180deg,#43a047 0%,#2e7d32 100%);
+  color:#fff;
+  text-decoration:none;
+  border-radius:12px;
+  font-family:'Montserrat',sans-serif;
+  font-weight:800;
+  font-size:1.05rem;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+  box-shadow:0 4px 18px rgba(46,125,50,.35);
+  transition:transform .15s, box-shadow .15s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(46,125,50,.4);}
+
+.aviso{
+  margin-top:24px;
+  background:#fff8e1;
+  border:1.5px solid #f9a825;
+  border-radius:10px;
+  padding:14px 18px;
+  font-size:.86rem;
+  color:#7a5900;
+  line-height:1.6;
+}
+.aviso strong{display:block;font-family:'Montserrat',sans-serif;font-size:.84rem;margin-bottom:3px;color:#5a3e00;}
+
+.rodape{
+  margin-top:28px;
+  font-size:.74rem;
+  color:#ccc;
+}
+
+/* PRINT */
+@media print{
+  body{background:#fff;}
+  .card{box-shadow:none;border:1px solid #e0e0e0;border-radius:12px;}
+  .btn{
+    background:#2e7d32 !important;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+    box-shadow:none;
+  }
+  .aviso{
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+}
+</style>
+</head>
+<body>
+<div class="card">
+
+  <div class="logo">SOS <span>Natural</span> Pet</div>
+  <div class="logo-sub">Área Exclusiva de Membros</div>
+
+  <span class="pata">🐾</span>
+
+  <h1 class="titulo">Protocolo Anti-Lambedura<br>Pele &amp; Patas</h1>
+  <p class="subtitulo">Seu acesso está pronto. Clique no botão abaixo para entrar na sua área de membros e acessar o protocolo completo + todos os bônus.</p>
+
+  <a class="btn" href="area-membros.html">
+    🔓 Clique aqui para acessar o Protocolo
+  </a>
+
+  <div class="aviso">
+    <strong>⚠️ ATENÇÃO</strong>
+    Entre com o e-mail que você utilizou na compra para ter acesso ao conteúdo.
+  </div>
+
+  <p class="rodape">🔒 Conteúdo digital exclusivo · Uso pessoal</p>
+
+</div>
+</body>
+</html>

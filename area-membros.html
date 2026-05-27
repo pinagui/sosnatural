@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Área de Membros — Protocolo Anti-Lambedura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --green:#2e7d32;--green-mid:#388e3c;--green-light:#e8f5e9;--green-dark:#1b5e20;
+  --yellow:#f9a825;--orange:#e65100;--red:#c62828;--dark:#1a1a1a;
+  --gray:#555;--light:#f5f5f5;--white:#fff;--sidebar:260px;
+}
+body{font-family:'Open Sans',sans-serif;color:var(--dark);background:var(--light);line-height:1.65;}
+h1,h2,h3,h4,h5{font-family:'Montserrat',sans-serif;}
+
+/* LOGIN */
+#login-page{
+  min-height:100vh;
+  background:linear-gradient(160deg,var(--green-dark) 0%,var(--green-mid) 100%);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.login-box{
+  background:#fff;border-radius:20px;padding:48px 40px;
+  max-width:440px;width:100%;text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.22);
+}
+.login-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.6rem;color:var(--green);margin-bottom:4px;}
+.login-logo span{color:var(--yellow);}
+.login-sub{font-size:.82rem;color:#aaa;margin-bottom:32px;}
+.login-box h2{font-size:1.25rem;margin-bottom:8px;}
+.login-desc{font-size:.88rem;color:var(--gray);margin-bottom:28px;}
+.form-group{text-align:left;margin-bottom:20px;}
+.form-group label{display:block;font-size:.83rem;font-weight:600;margin-bottom:6px;}
+.form-group input{
+  width:100%;padding:14px 16px;border:2px solid #e0e0e0;border-radius:10px;
+  font-size:1rem;font-family:'Open Sans',sans-serif;outline:none;transition:border-color .2s;
+}
+.form-group input:focus{border-color:var(--green);}
+.btn-login{
+  width:100%;padding:16px;
+  background:linear-gradient(180deg,#43a047 0%,var(--green) 100%);
+  color:#fff;border:none;border-radius:10px;
+  font-family:'Montserrat',sans-serif;font-weight:800;font-size:1rem;
+  text-transform:uppercase;letter-spacing:1px;cursor:pointer;
+  box-shadow:0 4px 16px rgba(46,125,50,.35);transition:transform .15s,box-shadow .15s;
+}
+.btn-login:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(46,125,50,.45);}
+.login-sec{margin-top:18px;font-size:.76rem;color:#bbb;}
+
+/* MEMBERS */
+#members-area{display:none;}
+
+.ma-header{
+  position:fixed;top:0;left:0;right:0;height:60px;
+  background:var(--green-dark);display:flex;align-items:center;
+  padding:0 16px;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2);
+  gap:8px;
+}
+.ma-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.1rem;color:#fff;}
+.ma-logo span{color:var(--yellow);}
+.ma-user{margin-left:auto;display:flex;align-items:center;gap:12px;}
+.user-email{font-size:.8rem;color:rgba(255,255,255,.7);}
+.btn-logout{
+  background:rgba(255,255,255,.15);color:#fff;
+  border:1px solid rgba(255,255,255,.3);border-radius:6px;
+  padding:6px 14px;font-size:.78rem;cursor:pointer;transition:background .2s;
+}
+.btn-logout:hover{background:rgba(255,255,255,.25);}
+.hamburger{display:none;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer;margin-right:14px;}
+
+.ma-layout{display:flex;min-height:100vh;padding-top:60px;}
+
+.sidebar{
+  width:var(--sidebar);background:#fff;border-right:1px solid #e0e0e0;
+  position:fixed;top:60px;bottom:0;left:0;overflow-y:auto;z-index:50;transition:transform .3s;
+}
+.sb-section{padding:16px 12px 6px;font-size:.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#aaa;}
+.sb-item{
+  display:flex;align-items:center;gap:10px;padding:11px 16px;cursor:pointer;
+  border-radius:8px;margin:2px 8px;font-size:.87rem;color:var(--gray);
+  transition:all .15s;border:none;background:none;width:calc(100% - 16px);text-align:left;
+}
+.sb-item:hover{background:var(--green-light);color:var(--green);}
+.sb-item.active{background:var(--green-light);color:var(--green);font-weight:700;}
+.sb-item .ico{font-size:.95rem;width:20px;text-align:center;flex-shrink:0;}
+.sb-badge{margin-left:auto;background:var(--yellow);color:#000;font-size:.62rem;font-weight:800;padding:1px 7px;border-radius:20px;}
+
+.ma-content{margin-left:var(--sidebar);flex:1;padding:32px;max-width:920px;}
+
+.content-section{display:none;}
+.content-section.active{display:block;}
+
+/* WELCOME */
+.welcome-banner{
+  background:linear-gradient(135deg,var(--green-dark),var(--green-mid));
+  border-radius:16px;padding:32px 36px;color:#fff;margin-bottom:28px;
+}
+.welcome-banner h2{font-size:1.35rem;margin-bottom:8px;}
+.welcome-banner p{font-size:.92rem;color:rgba(255,255,255,.8);}
+
+.quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:28px;}
+.quick-card{
+  background:#fff;border-radius:12px;padding:20px;cursor:pointer;
+  border:2px solid transparent;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.quick-card:hover{border-color:var(--green);transform:translateY(-2px);}
+.quick-card .qc-icon{font-size:1.9rem;margin-bottom:10px;}
+.quick-card .qc-type{display:block;font-size:.64rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:6px;}
+.quick-card h4{font-size:.87rem;color:var(--dark);margin-bottom:4px;}
+.quick-card p{font-size:.76rem;color:var(--gray);}
+
+/* SECTION HEADER */
+.sec-header{margin-bottom:28px;}
+.sec-tag{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);margin-bottom:8px;}
+.sec-header h1{font-size:clamp(1.25rem,3vw,1.75rem);margin-bottom:8px;}
+.sec-header p{font-size:.91rem;color:var(--gray);}
+
+/* MODULE CARD */
+.module-card{
+  background:#fff;border-radius:14px;padding:28px;margin-bottom:20px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);border-left:4px solid var(--green);
+}
+.module-card h3{font-size:1.05rem;color:var(--dark);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.module-card p{font-size:.9rem;color:var(--gray);margin-bottom:12px;line-height:1.75;}
+.module-card p:last-child{margin-bottom:0;}
+
+/* INFO / WARN */
+.info-box{background:var(--green-light);border-radius:10px;padding:14px 18px;font-size:.86rem;color:var(--green-dark);display:flex;gap:10px;align-items:flex-start;margin:14px 0;}
+.warn-box{background:#fff3e0;border-left:4px solid var(--orange);border-radius:0 10px 10px 0;padding:14px 18px;font-size:.86rem;color:#bf360c;margin:12px 0;line-height:1.7;}
+
+/* STEPS */
+.steps{list-style:none;display:grid;gap:14px;margin:16px 0;}
+.step{display:flex;gap:14px;align-items:flex-start;background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+.step-num{background:var(--green);color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:900;font-size:.85rem;flex-shrink:0;}
+.step h4{font-size:.9rem;margin-bottom:4px;}
+.step p{font-size:.84rem;color:var(--gray);margin:0;}
+
+/* RECIPE */
+.recipe-box{background:var(--green-dark);color:#fff;border-radius:14px;padding:28px;margin:18px 0;}
+.recipe-box h4{font-size:1rem;color:var(--yellow);margin-bottom:16px;}
+.recipe-box .rl{list-style:none;display:grid;gap:8px;margin-bottom:18px;}
+.recipe-box .rl li{font-size:.86rem;color:rgba(255,255,255,.85);display:flex;gap:8px;align-items:flex-start;}
+.recipe-box .rl li::before{content:"•";color:var(--yellow);flex-shrink:0;}
+.recipe-box .method-text{font-size:.86rem;color:rgba(255,255,255,.8);line-height:1.75;}
+.recipe-box .method-label{font-size:.75rem;color:rgba(255,255,255,.5);letter-spacing:1.5px;text-transform:uppercase;margin:14px 0 8px;}
+
+/* INGREDIENT CARDS */
+.ic-grid{display:grid;gap:14px;}
+.ic-card{background:#fff;border-radius:12px;padding:20px;display:flex;gap:14px;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.ic-num{background:var(--red);color:#fff;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:900;font-size:.88rem;flex-shrink:0;}
+.ic-card h4{font-size:.92rem;margin-bottom:5px;}
+.ic-card p{font-size:.83rem;color:var(--gray);margin:0;line-height:1.65;}
+
+/* CHECKLIST */
+.checklist{list-style:none;display:grid;gap:12px;}
+.chk-item{background:#fff;border-radius:10px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:background .2s;}
+.chk-item.done{background:var(--green-light);}
+.chk-item input[type="checkbox"]{width:22px;height:22px;accent-color:var(--green);cursor:pointer;flex-shrink:0;margin-top:2px;}
+.chk-item label{font-size:.88rem;cursor:pointer;line-height:1.65;}
+.chk-item label strong{display:block;margin-bottom:3px;color:var(--dark);}
+.chk-item label span{font-size:.8rem;color:var(--gray);}
+.chk-item.done label strong{text-decoration:line-through;color:var(--green);}
+
+/* PROGRESS */
+.prog-wrap{margin:20px 0;}
+.prog-label{display:flex;justify-content:space-between;font-size:.79rem;margin-bottom:6px;}
+.prog-bar{height:8px;background:#e0e0e0;border-radius:4px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--green),#66bb6a);border-radius:4px;transition:width .4s;}
+
+/* SEVERITY */
+.sev-grid{display:grid;gap:16px;}
+.sev-card{border-radius:12px;padding:22px;border-left:6px solid;}
+.sev-1{background:#f1f8e9;border-color:#7cb342;}
+.sev-2{background:#fff8e1;border-color:#ffa000;}
+.sev-3{background:#fce4ec;border-color:#c62828;}
+.sev-card h4{margin-bottom:10px;font-size:.95rem;}
+.sev-list{list-style:none;display:grid;gap:6px;}
+.sev-list li{font-size:.83rem;color:var(--gray);display:flex;gap:8px;align-items:flex-start;}
+.sev-list li::before{content:"→";flex-shrink:0;font-weight:700;}
+.sev-action{margin-top:14px;background:rgba(255,255,255,.7);border-radius:8px;padding:10px 14px;font-size:.82rem;font-weight:600;}
+
+/* COMPARE */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0;}
+.cmp-card{background:#fff;border-radius:12px;padding:22px;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.cmp-card h4{font-size:.93rem;margin-bottom:12px;padding-bottom:10px;border-bottom:2px solid var(--green-light);}
+.cmp-card ul{list-style:none;display:grid;gap:7px;}
+.cmp-card ul li{font-size:.83rem;color:var(--gray);display:flex;gap:8px;align-items:flex-start;}
+.cmp-card ul li::before{content:"•";color:var(--green);font-weight:700;flex-shrink:0;}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;font-size:.83rem;margin:14px 0;}
+.data-table th{background:var(--green-dark);color:#fff;padding:10px 14px;text-align:left;font-family:'Montserrat',sans-serif;font-size:.8rem;}
+.data-table td{padding:10px 14px;border-bottom:1px solid #eee;}
+.data-table tr:nth-child(even) td{background:var(--green-light);}
+.bad{color:var(--red);font-weight:600;}
+.good{color:var(--green);font-weight:600;}
+
+/* TAGS */
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;}
+.tag{background:var(--green-light);color:var(--green);padding:4px 12px;border-radius:20px;font-size:.76rem;font-weight:700;}
+.tag.orange{background:#fff3e0;color:var(--orange);}
+
+/* OVERLAY */
+.sb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:40;}
+.sb-overlay.active{display:block;}
+
+hr{border:none;border-top:1px solid #eee;margin:24px 0;}
+
+@media(max-width:768px){
+  /* Sidebar */
+  .sidebar{transform:translateX(-100%);}
+  .sidebar.open{transform:translateX(0);}
+  .hamburger{display:block;}
+  .user-email{display:none;}
+
+  /* Layout */
+  .ma-content{margin-left:0;padding:16px 12px;}
+
+  /* Login */
+  .login-box{padding:32px 20px;}
+
+  /* Header banner */
+  .welcome-banner{padding:20px 18px;}
+  .welcome-banner h2{font-size:1.1rem;}
+
+  /* Quick grid */
+  .quick-grid{grid-template-columns:1fr 1fr;}
+  .quick-card{padding:14px;}
+  .quick-card .qc-icon{font-size:1.5rem;margin-bottom:6px;}
+  .quick-card h4{font-size:.82rem;}
+  .quick-card p{font-size:.72rem;}
+
+  /* Section header */
+  .sec-header h1{font-size:1.2rem;}
+
+  /* Cards */
+  .module-card{padding:16px 14px;}
+  .module-card h3{font-size:.95rem;}
+
+  /* All 2-col inline grids → 1 col */
+  .compare-grid{grid-template-columns:1fr;}
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr !important;}
+  [style*="grid-template-columns:repeat(2"]{grid-template-columns:1fr !important;}
+
+  /* Tables: horizontal scroll */
+  .data-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;font-size:.76rem;}
+  .data-table td,.data-table th{padding:8px 10px;white-space:normal;min-width:70px;}
+
+  /* Steps */
+  .step{gap:10px;padding:12px;}
+  .step-num{width:28px;height:28px;font-size:.78rem;}
+  .step h4{font-size:.85rem;}
+  .step p{font-size:.8rem;}
+
+  /* IC cards */
+  .ic-card{flex-direction:column;gap:8px;padding:14px;}
+  .ic-card h4{font-size:.87rem;}
+  .ic-card p{font-size:.8rem;}
+
+  /* Recipe */
+  .recipe-box{padding:20px 14px;}
+
+  /* Severity */
+  .sev-card{padding:16px 14px;}
+  .sev-card h4{font-size:.88rem;}
+
+  /* Checklist */
+  .chk-item{padding:12px 14px;gap:10px;}
+  .chk-item label{font-size:.84rem;}
+  .chk-item label span{font-size:.76rem;}
+
+  /* Overflow for wide content */
+  .info-box,.warn-box{font-size:.82rem;padding:12px 14px;}
+
+  /* Context checklist grids in b2 */
+  .module-card > div[style*="grid"]{grid-template-columns:1fr !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== LOGIN ===== -->
+<div id="login-page">
+  <div class="login-box">
+    <div class="login-logo">SOS <span>Natural</span> Pet</div>
+    <div class="login-sub">Área Exclusiva de Membros</div>
+    <h2>Acesse seu conteúdo</h2>
+    <p class="login-desc">Digite seu e-mail para entrar na área de membros e acessar o protocolo completo e todos os bônus.</p>
+    <div class="form-group">
+      <label for="lemail">Seu e-mail</label>
+      <input type="email" id="lemail" placeholder="seu@email.com"/>
+    </div>
+    <button class="btn-login" onclick="doLogin()">🐾 Acessar Minha Área</button>
+    <p class="login-sec">🔒 Ambiente seguro · Acesso imediato · Conteúdo digital</p>
+  </div>
+</div>
+
+<!-- ===== MEMBROS ===== -->
+<div id="members-area">
+
+  <header class="ma-header">
+    <button class="hamburger" onclick="toggleSb()">☰</button>
+    <div class="ma-logo">SOS <span>Natural</span> Pet</div>
+    <div class="ma-user">
+      <span class="user-email" id="hdr-email"></span>
+      <button class="btn-logout" onclick="doLogout()">Sair</button>
+    </div>
+  </header>
+
+  <div class="sb-overlay" id="sb-overlay" onclick="closeSb()"></div>
+
+  <div class="ma-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sb-section">Conteúdo</div>
+      <button class="sb-item active" onclick="show('home',this)"><span class="ico">🏠</span> Início</button>
+      <button class="sb-item" onclick="show('proto',this)"><span class="ico">📋</span> Protocolo Principal <span class="sb-badge">NOVO</span></button>
+      <div class="sb-section" style="margin-top:6px;">Bônus</div>
+      <button class="sb-item" onclick="show('b1',this)"><span class="ico">🍽️</span> Bônus 1 — 7 Ingredientes</button>
+      <button class="sb-item" onclick="show('b2',this)"><span class="ico">✅</span> Bônus 2 — Checklist</button>
+      <button class="sb-item" onclick="show('b3',this)"><span class="ico">🔍</span> Bônus 3 — Primeiros Sinais</button>
+      <button class="sb-item" onclick="show('b4',this)"><span class="ico">🧠</span> Bônus 4 — Ansiedade?</button>
+    </aside>
+
+    <main class="ma-content">
+
+      <!-- HOME -->
+      <section id="s-home" class="content-section active">
+        <div class="welcome-banner">
+          <h2>Bem-vindo(a) à sua Área de Membros! 🐾</h2>
+          <p>Você tem acesso completo ao Protocolo Anti-Lambedura e a todos os bônus. Clique nos cards abaixo ou use o menu lateral para navegar.</p>
+        </div>
+        <h3 style="font-size:.88rem;color:#aaa;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;">Acesso Rápido</h3>
+        <div class="quick-grid">
+          <div class="quick-card" onclick="show('proto',null)"><div class="qc-icon">📋</div><span class="qc-type">Produto Principal</span><h4>Protocolo Anti-Lambedura</h4><p>Rotina completa pós-passeio em 6 módulos</p></div>
+          <div class="quick-card" onclick="show('b1',null)"><div class="qc-icon">🍽️</div><span class="qc-type">Bônus 1</span><h4>7 Ingredientes Irritantes</h4><p>O que evitar na alimentação do seu cão</p></div>
+          <div class="quick-card" onclick="show('b2',null)"><div class="qc-icon">✅</div><span class="qc-type">Bônus 2</span><h4>Checklist Pós-Passeio</h4><p>Rotina de 2 minutos interativa</p></div>
+          <div class="quick-card" onclick="show('b3',null)"><div class="qc-icon">🔍</div><span class="qc-type">Bônus 3</span><h4>Primeiros Sinais de Irritação</h4><p>Identifique antes que vire problema</p></div>
+          <div class="quick-card" onclick="show('b4',null)"><div class="qc-icon">🧠</div><span class="qc-type">Bônus 4</span><h4>Ansiedade ou Irritação?</h4><p>Descubra a causa real do problema</p></div>
+        </div>
+        <div class="module-card" style="border-left-color:var(--yellow);">
+          <h3>💡 Por onde começar?</h3>
+          <p>Comece pelo <strong>Protocolo Principal</strong> — ele explica a causa do problema e apresenta a solução passo a passo. Os bônus aprofundam temas específicos que complementam o protocolo.</p>
+          <p>O <strong>Bônus 2 (Checklist)</strong> é especialmente prático para o dia a dia: use após cada passeio como guia interativo.</p>
+        </div>
+      </section>
+
+      <!-- PROTOCOLO -->
+      <section id="s-proto" class="content-section">
+        <div class="sec-header">
+          <span class="sec-tag">Produto Principal</span>
+          <h1>📋 Protocolo Anti-Lambedura — Pele &amp; Patas</h1>
+          <p>Guia completo com anatomia das patas, 3 níveis de limpeza, 3 receitas de spray, bálsamo noturno, calendário de cuidados e adaptações sazonais.</p>
+        </div>
+        <div class="module-card" style="border-left-color:var(--yellow);background:linear-gradient(135deg,#fffde7,#fff);">
+          <h3>📌 O que você vai aprender neste protocolo</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+            <div style="font-size:.85rem;color:var(--gray);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">✔</span>Anatomia das patas e por que são tão vulneráveis</div>
+            <div style="font-size:.85rem;color:var(--gray);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">✔</span>Os 8 erros que prolongam a irritação</div>
+            <div style="font-size:.85rem;color:var(--gray);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">✔</span>3 níveis de limpeza (2, 5 e 10 minutos)</div>
+            <div style="font-size:.85rem;color:var(--gray);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">✔</span>3 receitas de spray + bálsamo noturno</div>
+            <div style="font-size:.85rem;color:var(--gray);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">✔</span>Calendário completo de cuidados</div>
+            <div style="font-size:.85rem;color:var(--gray);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">✔</span>Adaptações por estação do ano</div>
+            <div style="font-size:.85rem;color:var(--gray);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">✔</span>Protocolo de emergência para crises agudas</div>
+            <div style="font-size:.85rem;color:var(--gray);display:flex;gap:8px;"><span style="color:var(--green);font-weight:700;">✔</span>Guia completo para a consulta veterinária</div>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <h3>🔎 Módulo 1 — Anatomia das Patas e a Raiz do Problema</h3>
+          <p>Para tratar o problema de verdade, você precisa entender o que está acontecendo na pele do seu cão. A pata não é só uma almofada — é um sistema complexo com quatro zonas distintas, cada uma com função e vulnerabilidade específicas.</p>
+          <p><strong>As 4 zonas da pata:</strong></p>
+          <ul class="steps">
+            <li class="step"><div class="step-num" style="font-size:1rem;">🔴</div><div><h4>Coxins digitais (4 almofadas pequenas)</h4><p>São a primeira linha de contato com o chão. Compostos de tecido adiposo coberto por epiderme grossa e queratinizada. Porosos — absorvem resíduos químicos do asfalto como uma esponja. Em dias de calor intenso, o asfalto pode chegar a 70°C, causando microqueimaduras invisíveis que só se manifestam horas depois.</p></div></li>
+            <li class="step"><div class="step-num" style="font-size:1rem;">🟠</div><div><h4>Coxim metacarpal/metatarsal (almofada central)</h4><p>Maior e mais exposta. Tem a superfície mais rugosa e por isso acumula mais resíduos. É onde geralmente aparecem os primeiros sinais de irritação — vermelhidão, ressecamento e rachaduras. Cães de raças maiores e mais pesadas são mais vulneráveis aqui.</p></div></li>
+            <li class="step"><div class="step-num" style="font-size:1rem;">🟡</div><div><h4>Espaço interdigital (entre os dedos)</h4><p>A zona mais vulnerável de todas. Ambiente quente e úmido por natureza — perfeito para fungos e bactérias. Mesmo 15 minutos de umidade residual após o passeio já são suficientes para iniciar a proliferação de Malassezia (fungo responsável pelo odor de "fritura"). A lambedura começa aqui em 70% dos casos.</p></div></li>
+            <li class="step"><div class="step-num" style="font-size:1rem;">🟢</div><div><h4>Pelo interdigital</h4><p>O pelo entre os dedos age como filtro, capturando pólen, esporos de fungo, ácaros e partículas do asfalto. Em cães com pelo mais longo entre os dedos, a quantidade de resíduos retidos após um passeio é até 3x maior. Esses resíduos ficam em contato direto com a pele por horas.</p></div></li>
+          </ul>
+          <p style="margin-top:6px;"><strong>O ciclo inflamatório — o que acontece biologicamente:</strong></p>
+          <div style="background:#fff;border-radius:12px;padding:20px;margin:14px 0;box-shadow:0 2px 8px rgba(0,0,0,.05);">
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;"><span style="background:var(--green);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;font-size:.75rem;">1</span><span>Irritante (químico, biológico ou físico) penetra nos poros dos coxins</span></div>
+              <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;"><span style="background:var(--green);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;font-size:.75rem;">2</span><span>Mastócitos da pele identificam o agressor e liberam <strong>histamina</strong></span></div>
+              <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;"><span style="background:var(--green);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;font-size:.75rem;">3</span><span>Histamina causa vasodilatação → vermelhidão, calor e <strong>coceira intensa</strong></span></div>
+              <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;"><span style="background:var(--orange);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;font-size:.75rem;">4</span><span>Cão lambe para aliviar → saliva cria <strong>umidade prolongada</strong></span></div>
+              <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;"><span style="background:var(--orange);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;font-size:.75rem;">5</span><span>Fungos e bactérias proliferam no ambiente úmido → <strong>infecção secundária</strong></span></div>
+              <div style="display:flex;gap:10px;align-items:center;font-size:.85rem;"><span style="background:var(--red);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0;font-size:.75rem;">6</span><span>Infecção causa mais coceira → mais lambedura → ciclo crônico estabelecido</span></div>
+            </div>
+          </div>
+          <p><strong>Os 4 tipos de irritantes que causam esse ciclo:</strong></p>
+          <table class="data-table">
+            <thead><tr><th>Tipo</th><th>Exemplos</th><th>Velocidade de ação</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Químicos urbanos</strong></td><td>Herbicidas, pesticidas, desengordurantes de calçada, óleo de veículo, fertilizantes de praça</td><td>Imediata (30 min)</td></tr>
+              <tr><td><strong>Biológicos</strong></td><td>Pólen de grama, esporos de fungo do solo, ácaros, fezes de outros animais</td><td>20–60 min após exposição</td></tr>
+              <tr><td><strong>Físicos</strong></td><td>Abrasão do asfalto, calor extremo, frio seco, sal nas calçadas (inverno)</td><td>Imediata a 2h</td></tr>
+              <tr><td><strong>Sistêmicos</strong></td><td>Alérgenos alimentares que chegam à pele via circulação sanguínea</td><td>2–24h após ingestão</td></tr>
+            </tbody>
+          </table>
+          <div class="info-box">💡 <strong>Por que certos cães são mais sensíveis?</strong> Raças como Bulldog, Shar-pei, Golden Retriever, Labrador e Poodle têm predisposição genética a atopia (pele hipersensível). Cães com histórico de alergias alimentares também têm a barreira cutânea comprometida — o que facilita a penetração de irritantes externos.</div>
+        </div>
+
+        <div class="module-card">
+          <h3>⚠️ Módulo 2 — Os 8 Erros Que Mantêm o Ciclo Ativo</h3>
+          <p>Muitos donos, mesmo tentando ajudar, perpetuam o problema sem perceber. Veja os 8 erros mais comuns — e exatamente o que fazer em vez disso:</p>
+          <div class="ic-grid">
+            <div class="ic-card"><div class="ic-num" style="background:var(--orange);">1</div><div><h4>Não limpar as patas após o passeio</h4><p>Sem limpeza, todos os resíduos ficam em contato direto com a pele por 4–8 horas (até o próximo passeio). Esse tempo prolongado é suficiente para desencadear ou amplificar a resposta inflamatória. <strong>Em vez disso:</strong> aplique o protocolo de limpeza nos primeiros 10 minutos após chegar em casa.</p></div></div>
+            <div class="ic-card"><div class="ic-num" style="background:var(--orange);">2</div><div><h4>Limpar com produtos humanos</h4><p>Álcool (pH 6–7), sabão de coco (pH 9–11) e detergente (pH 8–10) são alcalinos demais para a pele do cão, que tem pH natural de 6,2–7,4. Em vez de remover irritantes, criam microlesões que abrem caminho para infecções. <strong>Em vez disso:</strong> use água morna com vinagre de maçã diluído (pH 5–6, seguro para a pele canina).</p></div></div>
+            <div class="ic-card"><div class="ic-num" style="background:var(--orange);">3</div><div><h4>Deixar umidade entre os dedos</h4><p>A zona interdigital atinge 37°C e tem circulação de ar limitada. Com umidade residual, Malassezia pachydermatis (fungo natural da pele do cão) multiplica sua população em até 10x em 2 horas. É exatamente isso que causa o odor característico de "fritura" ou "Doritos". <strong>Em vez disso:</strong> seque minuciosamente com toalha de microfibra, usando a ponta para alcançar entre os dedos.</p></div></div>
+            <div class="ic-card"><div class="ic-num" style="background:var(--orange);">4</div><div><h4>Esfregar as patas com força</h4><p>A fricção agressiva abre microlesões na pele já sensibilizada E força os irritantes para dentro dos folículos pilosos. O resultado: irritação que parece piorar logo após a limpeza. <strong>Em vez disso:</strong> use movimentos suaves de "pressionar e soltar" — o objetivo é remover, não esfregar.</p></div></div>
+            <div class="ic-card"><div class="ic-num" style="background:var(--orange);">5</div><div><h4>Usar o mesmo algodão/pano nas 4 patas</h4><p>Se uma pata tem fungo ou bactéria, você está transferindo para as outras. É o equivalente a limpar 4 feridas com a mesma gaze. <strong>Em vez disso:</strong> separe algodões para cada pata — são baratos e essa troca faz diferença real na prevenção.</p></div></div>
+            <div class="ic-card"><div class="ic-num" style="background:var(--orange);">6</div><div><h4>Aplicar spray em patas ainda úmidas</h4><p>O spray calmante precisa penetrar na pele para funcionar. Se a pata estiver úmida, o spray fica na superfície, é diluído e perde eficácia em até 80%. <strong>Em vez disso:</strong> espere a secagem completa — patas completamente secas ao toque — antes de aplicar.</p></div></div>
+            <div class="ic-card"><div class="ic-num" style="background:var(--orange);">7</div><div><h4>Aplicar apenas quando está em crise</h4><p>O protocolo não é remédio de crise — é prevenção. Aplicar só quando a lambedura já está intensa é como usar protetor solar depois de queimar. O ciclo inflamatório já está estabelecido e levará mais tempo para se resolver. <strong>Em vez disso:</strong> aplique após TODOS os passeios, mesmo quando as patas parecem normais.</p></div></div>
+            <div class="ic-card"><div class="ic-num" style="background:var(--orange);">8</div><div><h4>Desistir depois de 3 dias sem resultado visível</h4><p>A pele tem ciclo de renovação de 21 dias. Resultados consistentes geralmente aparecem depois de 7–14 dias de protocolo diário. Parar antes desse prazo porque "não funcionou" é o erro mais comum que impede resultados. <strong>Em vez disso:</strong> comprometa-se com no mínimo 21 dias antes de avaliar. Anote os resultados diariamente para perceber melhorias sutis.</p></div></div>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <h3>🛁 Módulo 3 — Os 3 Níveis de Limpeza</h3>
+          <p>Nem todo passeio exige o mesmo nível de cuidado. Aqui estão três protocolos calibrados de acordo com a intensidade da exposição:</p>
+
+          <div style="background:#e8f5e9;border-radius:12px;padding:22px;margin:16px 0;">
+            <h4 style="color:var(--green);margin-bottom:14px;">🟢 Nível 1 — Limpeza Rápida (2 minutos) · Passeio urbano curto e seco</h4>
+            <p style="font-size:.85rem;color:var(--gray);margin-bottom:12px;"><em>Quando usar: passeio de 15 minutos ou menos, calçada seca, sem grama ou terra.</em></p>
+            <p style="font-size:.88rem;margin-bottom:10px;"><strong>Material:</strong> pano de microfibra levemente umedecido em água morna.</p>
+            <ul class="steps" style="margin:0;">
+              <li class="step" style="padding:12px;"><div class="step-num" style="width:26px;height:26px;font-size:.75rem;">1</div><div><h4 style="font-size:.88rem;">Passe o pano entre os dedos de cada pata</h4><p>30 segundos no total. Foco no espaço interdigital e coxins. Sem imersão necessária.</p></div></li>
+              <li class="step" style="padding:12px;"><div class="step-num" style="width:26px;height:26px;font-size:.75rem;">2</div><div><h4 style="font-size:.88rem;">Seque completamente</h4><p>Com a parte seca do mesmo pano. Concentre entre os dedos.</p></div></li>
+              <li class="step" style="padding:12px;"><div class="step-num" style="width:26px;height:26px;font-size:.75rem;">3</div><div><h4 style="font-size:.88rem;">Aplique o spray base</h4><p>1–2 jatos por pata como manutenção preventiva.</p></div></li>
+            </ul>
+          </div>
+
+          <div style="background:#fff8e1;border-radius:12px;padding:22px;margin:16px 0;">
+            <h4 style="color:#f57f17;margin-bottom:14px;">🟡 Nível 2 — Limpeza Padrão (5 minutos) · Passeio em parque, grama ou mais de 20 minutos</h4>
+            <p style="font-size:.85rem;color:var(--gray);margin-bottom:12px;"><em>Quando usar: maioria dos passeios diários, contato com grama, terra ou jardins.</em></p>
+            <p style="font-size:.88rem;margin-bottom:10px;"><strong>Material:</strong> bacia pequena, água morna, vinagre de maçã, algodão, toalha de microfibra.</p>
+            <ul class="steps" style="margin:0;">
+              <li class="step" style="padding:12px;"><div class="step-num" style="width:26px;height:26px;font-size:.75rem;">1</div><div><h4 style="font-size:.88rem;">Solução: 500ml água morna + 1 col. chá vinagre de maçã</h4><p>Temperatura: confortável para a sua mão, nunca quente.</p></div></li>
+              <li class="step" style="padding:12px;"><div class="step-num" style="width:26px;height:26px;font-size:.75rem;">2</div><div><h4 style="font-size:.88rem;">Imersão de 30 seg por pata</h4><p>Não esfregue. A solução trabalha por contato, amolecendo resíduos.</p></div></li>
+              <li class="step" style="padding:12px;"><div class="step-num" style="width:26px;height:26px;font-size:.75rem;">3</div><div><h4 style="font-size:.88rem;">Algodão entre todos os dedos (troque a cada pata)</h4><p>Movimento de pressionar e soltar. Inclua ao redor das unhas.</p></div></li>
+              <li class="step" style="padding:12px;"><div class="step-num" style="width:26px;height:26px;font-size:.75rem;">4</div><div><h4 style="font-size:.88rem;">Secagem completa com microfibra</h4><p>Prioridade: espaço interdigital. Use a ponta dobrada para alcançar fundo.</p></div></li>
+              <li class="step" style="padding:12px;"><div class="step-num" style="width:26px;height:26px;font-size:.75rem;">5</div><div><h4 style="font-size:.88rem;">Aplique o spray (2–3 jatos por pata) + distração 5 min</h4><p></p></div></li>
+            </ul>
+          </div>
+
+          <div style="background:#fce4ec;border-radius:12px;padding:22px;margin:16px 0;">
+            <h4 style="color:#c62828;margin-bottom:14px;">🔴 Nível 3 — Limpeza Profunda (10 minutos) · Trilha, praia, campo, dia de chuva ou lama</h4>
+            <p style="font-size:.85rem;color:var(--gray);margin-bottom:12px;"><em>Quando usar: exposição intensa a terra, lama, água parada, vegetação densa ou superfícies desconhecidas.</em></p>
+            <p style="font-size:.88rem;margin-bottom:10px;"><strong>Material:</strong> bacia, água morna, vinagre de maçã, algodão, shampoo neutro para pets, toalha de microfibra, spray.</p>
+            <ul class="steps" style="margin:0;">
+              <li class="step" style="padding:12px;"><div class="step-num" style="width:26px;height:26px;font-size:.75rem;">1</div><div><h4 style="font-size:.88rem;">Pré-lavagem: remova a sujeira grossa</h4><p>Com água morna pura, lave as patas para remover lama, areia e detritos visíveis antes da solução.</p></div></li>
+              <li class="step" style="padding:12px;"><div class="step-num" style="width:26px;height:26px;font-size:.75rem;">2</div><div><h4 style="font-size:.88rem;">Imersão de 2 minutos na solução com shampoo neutro</h4><p>Adicione 1 colher de chá de shampoo neutro para pets na solução de água + vinagre. O shampoo remove óleos e resíduos que a água sozinha não dissolve.</p></div></li>
+              <li class="step" style="padding:12px;"><div class="step-num" style="width:26px;height:26px;font-size:.75rem;">3</div><div><h4 style="font-size:.88rem;">Massagem com algodão ou escovinha macia</h4><p>Com movimentos suaves, limpe todos os espaços interdigitais, os sulcos dos coxins e ao redor de cada unha.</p></div></li>
+              <li class="step" style="padding:12px;"><div class="step-num" style="width:26px;height:26px;font-size:.75rem;">4</div><div><h4 style="font-size:.88rem;">Enxague completo com água limpa</h4><p>Remova todo o shampoo. Resíduo de shampoo pode irritar tanto quanto os resíduos do passeio.</p></div></li>
+              <li class="step" style="padding:12px;"><div class="step-num" style="width:26px;height:26px;font-size:.75rem;">5</div><div><h4 style="font-size:.88rem;">Secagem dupla: toalha + ar</h4><p>Seque com microfibra e, se possível, deixe as patas ao ar por 5 minutos antes de aplicar o spray.</p></div></li>
+              <li class="step" style="padding:12px;"><div class="step-num" style="width:26px;height:26px;font-size:.75rem;">6</div><div><h4 style="font-size:.88rem;">Spray intensivo (ver Módulo 4) + bálsamo noturno</h4><p>Após exposição intensa, use o spray intensivo e aplique o bálsamo de pata antes de dormir.</p></div></li>
+            </ul>
+          </div>
+          <div class="warn-box">⚠️ <strong>Regra de ouro:</strong> Se encontrar feridas abertas, sangramento ou inchaço em qualquer nível de limpeza, não continue com vinagre ou shampoo. Limpe apenas com água morna e consulte o veterinário.</div>
+        </div>
+
+        <div class="module-card">
+          <h3>🌿 Módulo 4 — As 3 Receitas de Spray + Bálsamo Noturno</h3>
+          <p>Três versões de spray para situações diferentes — mais uma receita de bálsamo para coxins ressecados e rachados:</p>
+
+          <div class="recipe-box">
+            <h4>🧪 Spray 1 — Base (uso diário, prevenção e manutenção)</h4>
+            <div class="method-label">INGREDIENTES</div>
+            <ul class="rl">
+              <li>200ml de chá de camomila concentrado (2 sachês, 10 min de infusão, completamente frio)</li>
+              <li>3 colheres de sopa de gel de aloe vera puro</li>
+              <li>1 colher de chá de óleo de coco extravirgem</li>
+              <li>5 gotas de óleo essencial de lavanda</li>
+            </ul>
+            <div class="method-label">MODO DE PREPARO</div>
+            <p class="method-text">Misture o chá frio com o aloe vera. Aqueça o coco nas palmas se necessário. Adicione e mexa. Adicione a lavanda. Frasco spray limpo. Geladeira, válido por 7 dias. Agite antes de usar.<br><br>
+            <strong>Uso:</strong> 2–3 jatos por pata após cada passeio. Massageie levemente. Não enxaguar.</p>
+          </div>
+
+          <div class="recipe-box" style="background:#1a237e;margin-top:16px;">
+            <h4>🔬 Spray 2 — Intensivo (crises e flares, uso por 5–7 dias)</h4>
+            <div class="method-label">INGREDIENTES</div>
+            <ul class="rl">
+              <li>150ml de chá de camomila concentrado</li>
+              <li>50ml de chá de calêndula (1 sachê ou 1 col. sopa de flores secas)</li>
+              <li>3 colheres de sopa de gel de aloe vera</li>
+              <li>1 colher de chá de hamamelis (witch hazel — encontrado em farmácias)</li>
+              <li>5 gotas de óleo essencial de lavanda</li>
+              <li>3 gotas de óleo essencial de tea tree (melaleuca) — <strong>só para cães</strong></li>
+            </ul>
+            <div class="method-label">MODO DE PREPARO E USO</div>
+            <p class="method-text">Prepare os dois chás separados e deixe esfriar. Misture tudo. Frasco spray. Geladeira, válido por 5 dias.<br><br>
+            <strong>Uso:</strong> 3 jatos por pata, 2–3x ao dia durante crise ativa. Interrompa ao melhorar e volte ao Spray 1.<br><br>
+            ⚠️ <strong>Tea tree:</strong> nunca use puro — sempre diluído como acima. Nunca use em gatos. A diluição desta receita é segura para cães.</p>
+          </div>
+
+          <div class="recipe-box" style="background:#004d40;margin-top:16px;">
+            <h4>❄️ Spray 3 — Refrescante de Verão (dias quentes, asfalto quente)</h4>
+            <div class="method-label">INGREDIENTES</div>
+            <ul class="rl">
+              <li>150ml de chá de camomila frio</li>
+              <li>50ml de chá de hortelã (10 folhas frescas em água fervente, 5 min, bem frio)</li>
+              <li>3 colheres de sopa de gel de aloe vera</li>
+              <li>1 colher de sopa de água de rosas (opcional)</li>
+            </ul>
+            <div class="method-label">MODO DE PREPARO E USO</div>
+            <p class="method-text">Misture os dois chás completamente frios com o aloe vera e a água de rosas. Guarde na geladeira — serve gelado. Validade: 5 dias.<br><br>
+            <strong>Uso:</strong> Aplique direto da geladeira nas patas após passeio em dias quentes. O frescor da hortelã alivia imediatamente microqueimaduras do asfalto quente.<br><br>
+            ⚠️ <strong>Hortelã é proibida em gatos</strong> — mentol pode ser tóxico para felinos.</p>
+          </div>
+
+          <div style="background:#3e2723;border-radius:14px;padding:28px;margin-top:16px;color:#fff;">
+            <h4 style="color:#ffcc80;margin-bottom:16px;">🌙 Bálsamo Noturno de Pata (para coxins secos, rachados ou após exposição intensa)</h4>
+            <div class="method-label" style="color:rgba(255,255,255,.5);">INGREDIENTES</div>
+            <ul class="rl" style="margin-bottom:16px;">
+              <li>2 colheres de sopa de manteiga de karité (shea butter)</li>
+              <li>1 colher de sopa de óleo de coco extravirgem</li>
+              <li>1 colher de chá de cera de abelha em pastilhas (encontrada em lojas de cosmética natural)</li>
+              <li>5 gotas de óleo essencial de lavanda</li>
+              <li>Conteúdo de 1 cápsula de vitamina E (500 UI — fure com alfinete e esprema)</li>
+            </ul>
+            <div class="method-label" style="color:rgba(255,255,255,.5);">MODO DE PREPARO</div>
+            <p class="method-text">Derreta karité + coco + cera em banho-maria (fogo baixo). Retire do calor. Quando amornar, adicione lavanda e vitamina E. Mexa e despeje em potinho pequeno de vidro. Deixe solidificar em temperatura ambiente (não geladeira — ficará duro demais). Validade: 3 meses.<br><br>
+            <strong>Uso:</strong> Aplique à noite, antes de dormir, nos coxins e espaços interdigitais. Quantidade de um grão de arroz por pata. Massageie até absorver. O karité penetra profundamente e age durante a noite. Em 3–5 dias de uso contínuo, coxins rachados mostram melhora visível.</p>
+          </div>
+
+          <p style="margin-top:20px;"><strong>Por que cada ingrediente-chave funciona:</strong></p>
+          <table class="data-table">
+            <thead><tr><th>Ingrediente</th><th>Mecanismo de ação</th><th>Benefício principal</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Camomila (apigenina)</strong></td><td>Inibe COX-2 e produção de histamina</td><td>Anti-inflamatório, reduz vermelhidão</td></tr>
+              <tr><td><strong>Aloe vera (acemanana)</strong></td><td>Forma barreira hidrofílica, estimula fibroblastos</td><td>Hidrata, cicatriza, antibacteriano</td></tr>
+              <tr><td><strong>Óleo de coco (ácido láurico)</strong></td><td>Destrói membrana de fungos e bactérias</td><td>Antifúngico, barreira protetora</td></tr>
+              <tr><td><strong>Lavanda (linalol)</strong></td><td>Inibe canais de dor, efeito ansiolítico</td><td>Reduz coceira, relaxante</td></tr>
+              <tr><td><strong>Hamamelis (taninos)</strong></td><td>Adstringente, reduz inflamação vascular</td><td>Seca áreas úmidas, anti-inflamatório</td></tr>
+              <tr><td><strong>Karité (ácido oleico)</strong></td><td>Penetra profundamente na camada córnea</td><td>Hidrata coxins secos e rachados</td></tr>
+              <tr><td><strong>Calêndula (flavonoides)</strong></td><td>Estimula granulação tecidual</td><td>Cicatriza feridas superficiais</td></tr>
+            </tbody>
+          </table>
+          <div class="info-box">💡 <strong>Onde encontrar os ingredientes:</strong> Gel de aloe vera puro — farmácias ou lojas de naturais. Óleos essenciais — aromaterapia ou manipulação. Karité e cera de abelha — lojas de cosmética natural ou online. Hamamelis — farmácias (solução aquosa).</div>
+        </div>
+
+        <div class="module-card">
+          <h3>📅 Módulo 5 — Calendário Completo de Cuidados</h3>
+          <p>O protocolo não é só o que acontece após o passeio. Para resultados duradouros, existe uma rotina semanal e mensal que faz toda a diferença:</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:16px 0;">
+            <div style="background:#e8f5e9;border-radius:12px;padding:18px;text-align:center;">
+              <div style="font-size:1.5rem;margin-bottom:8px;">🌅</div>
+              <h4 style="font-size:.88rem;color:var(--green);margin-bottom:8px;">DIÁRIO (após passeio)</h4>
+              <ul style="list-style:none;font-size:.78rem;color:var(--gray);text-align:left;display:grid;gap:4px;">
+                <li>✔ Limpeza nível 1, 2 ou 3</li>
+                <li>✔ Spray base ou intensivo</li>
+                <li>✔ Observação por 10 min</li>
+              </ul>
+            </div>
+            <div style="background:#fff8e1;border-radius:12px;padding:18px;text-align:center;">
+              <div style="font-size:1.5rem;margin-bottom:8px;">📅</div>
+              <h4 style="font-size:.88rem;color:#f57f17;margin-bottom:8px;">SEMANAL (1x semana)</h4>
+              <ul style="list-style:none;font-size:.78rem;color:var(--gray);text-align:left;display:grid;gap:4px;">
+                <li>✔ Inspeção completa das 4 zonas</li>
+                <li>✔ Limpeza profunda (nível 3)</li>
+                <li>✔ Bálsamo noturno</li>
+                <li>✔ Verificar o pelo interdigital</li>
+                <li>✔ Fotografia de registro</li>
+              </ul>
+            </div>
+            <div style="background:#fce4ec;border-radius:12px;padding:18px;text-align:center;">
+              <div style="font-size:1.5rem;margin-bottom:8px;">🗓️</div>
+              <h4 style="font-size:.88rem;color:#c62828;margin-bottom:8px;">MENSAL (1x mês)</h4>
+              <ul style="list-style:none;font-size:.78rem;color:var(--gray);text-align:left;display:grid;gap:4px;">
+                <li>✔ Corte das unhas</li>
+                <li>✔ Aparo do pelo interdigital</li>
+                <li>✔ Tratamento hidratante profundo</li>
+                <li>✔ Avaliação geral + ajuste</li>
+                <li>✔ Renovação dos sprays</li>
+              </ul>
+            </div>
+          </div>
+
+          <p><strong>Cuidado mensal das unhas — por que importa para as patas:</strong></p>
+          <p style="font-size:.88rem;color:var(--gray);">Unhas longas alteram a biomecânica da caminhada — o cão passa a apoiar mais o peso nos coxins laterais e no espaço interdigital para compensar. Isso aumenta a abrasão nessas áreas e potencializa as microlesões. A regra prática: quando você ouve as unhas batendo no chão ao caminhar, estão longas demais.</p>
+
+          <p><strong>Aparo do pelo interdigital — técnica segura:</strong></p>
+          <p style="font-size:.88rem;color:var(--gray);">Use tesoura de ponta arredondada (segurança). Corte somente o pelo que ultrapassa os coxins — não rase. Pelo muito curto remove a proteção natural; pelo muito longo acumula resíduos. O ideal é nivelado com o topo dos coxins.</p>
+        </div>
+
+        <div class="module-card">
+          <h3>🌦️ Módulo 6 — Adaptações Sazonais</h3>
+          <p>O protocolo tem uma versão para cada estação do ano. Ignorar essas variações é um dos motivos pelos quais muitos donos acham que o protocolo "parou de funcionar" — na verdade, o problema mudou e o cuidado precisa acompanhar:</p>
+
+          <div class="ic-grid">
+            <div class="ic-card" style="border-left:4px solid #ff7043;">
+              <div style="font-size:2rem;">☀️</div>
+              <div>
+                <h4>Verão — Asfalto Quente e Pele Ressecada</h4>
+                <p><strong>Risco principal:</strong> microqueimaduras nos coxins por asfalto quente (pode passar de 60°C). Coxins ressecados e rachados pela exposição ao calor.</p>
+                <p style="margin-top:8px;"><strong>Adaptações:</strong><br>
+                • <em>Teste dos 7 segundos:</em> encoste o dorso da mão no asfalto. Se não aguentar 7 segundos, o asfalto está quente demais para o cão. Prefira horários mais frescos (antes das 9h ou após as 18h).<br>
+                • Use o <strong>Spray 3 (Refrescante)</strong> após passeios em dias quentes.<br>
+                • Aplique o <strong>bálsamo noturno</strong> diariamente (e não só 1x/semana) durante os meses mais quentes.<br>
+                • Ofereça água extra antes e depois dos passeios — hidratação interna também afeta a saúde dos coxins.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid #42a5f5;">
+              <div style="font-size:2rem;">❄️</div>
+              <div>
+                <h4>Inverno — Ressecamento e Sal das Calçadas</h4>
+                <p><strong>Risco principal:</strong> ar seco resseca os coxins, aumentando rachaduras. Em cidades que usam sal para degelo, o NaCl nas calçadas é extremamente irritante.</p>
+                <p style="margin-top:8px;"><strong>Adaptações:</strong><br>
+                • Após passeios no inverno, priorize a limpeza completa para remover o sal.<br>
+                • O vinagre de maçã na solução de limpeza é especialmente importante no inverno — neutraliza o sal alcalino.<br>
+                • Aumente a frequência do bálsamo para 2x ao dia (manhã e noite).<br>
+                • Considere sapatilhas de silicone para cães se o pet tiver coxins muito sensíveis — são baratas e fazem diferença real em dias gelados.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid #66bb6a;">
+              <div style="font-size:2rem;">🌸</div>
+              <div>
+                <h4>Primavera — Pico de Pólens e Alergias</h4>
+                <p><strong>Risco principal:</strong> explosão de pólen de gramíneas, árvores e flores. Para cães com atopia, esta é a estação mais crítica do ano.</p>
+                <p style="margin-top:8px;"><strong>Adaptações:</strong><br>
+                • Aumente para Nível 2 de limpeza mesmo em passeios curtos — a concentração de pólen no pelo é alta.<br>
+                • Considere adicionar <strong>quercetina</strong> à alimentação durante a primavera. É chamada de "anti-histamínico natural" — presente em maçãs, mirtilos e brócolis. Consulte o veterinário sobre dose.<br>
+                • Use o Spray 2 (Intensivo) preventivamente em cães que historicamente pioram na primavera.<br>
+                • Após passeios em parques, um enxague rápido das patas com água ainda mais importante que o normal.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid #78909c;">
+              <div style="font-size:2rem;">🌧️</div>
+              <div>
+                <h4>Época de Chuvas — Prevenção Antifúngica</h4>
+                <p><strong>Risco principal:</strong> patas constantemente úmidas → explosão de Malassezia. Agua parada nas calçadas contém bactérias e protozoários.</p>
+                <p style="margin-top:8px;"><strong>Adaptações:</strong><br>
+                • Nível 3 de limpeza obrigatório após qualquer passeio na chuva.<br>
+                • Secagem mais longa — use um secador de cabelo na temperatura mais baixa para garantir que o espaço interdigital fique seco (segure a 30cm de distância).<br>
+                • Adicione 2 gotas extras de óleo de tea tree ao Spray 1 durante períodos chuvosos — reforço antifúngico.<br>
+                • Se o cheiro de "fritura" aparecer mesmo com o protocolo, é sinal de Malassezia ativa. Use o Spray 2 e, se não melhorar em 5 dias, consulte o veterinário.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <h3>🚨 Módulo 7 — Protocolo de Emergência e Guia Veterinário</h3>
+          <p><strong>O que fazer quando a crise aparece de repente:</strong></p>
+          <ul class="steps">
+            <li class="step"><div class="step-num">1</div><div><h4>Primeiros 10 minutos — compressa fria</h4><p>Enrole alguns cubos de gelo em pano limpo e aplique nas patas por 5–7 minutos. O frio reduz imediatamente a inflamação aguda e interrompe o ciclo de coceira temporariamente. Não aplique gelo diretamente na pele.</p></div></li>
+            <li class="step"><div class="step-num">2</div><div><h4>Limpeza Nível 3 completa</h4><p>Mesmo que pareça exagero, faça a limpeza mais profunda. Em crises agudas, o nível de contaminação e inflamação é maior.</p></div></li>
+            <li class="step"><div class="step-num">3</div><div><h4>Spray Intensivo (Spray 2) + frequência aumentada</h4><p>Aplique 3–4x ao dia durante a crise, com intervalo de pelo menos 3 horas entre as aplicações.</p></div></li>
+            <li class="step"><div class="step-num">4</div><div><h4>Colar elizabetano se a lambedura for compulsiva</h4><p>Se o cão não consegue parar de lamber mesmo com o spray, o colar elizabetano (aquele "cone") é a medida mais humana possível — impede que a lambedura amplifique a inflamação. Use até a crise diminuir.</p></div></li>
+            <li class="step"><div class="step-num">5</div><div><h4>Avalie em 24–48 horas</h4><p>Se melhorar: continue o protocolo intensivo por mais 3 dias, depois volte ao nível normal. Se não melhorar ou piorar: este é um caso para veterinário.</p></div></li>
+          </ul>
+
+          <hr/>
+          <p><strong>Guia completo para a consulta veterinária:</strong></p>
+          <p style="font-size:.88rem;color:var(--gray);">Quando for ao veterinário, estas informações vão acelerar o diagnóstico e melhorar o tratamento:</p>
+
+          <table class="data-table" style="margin-top:12px;">
+            <thead><tr><th>Leve registrado</th><th>Por que é importante</th></tr></thead>
+            <tbody>
+              <tr><td>Fotos das patas (antes/durante/depois)</td><td>Evolução visual é mais informativa do que descrição verbal</td></tr>
+              <tr><td>Quando a lambedura piora (hora, situação)</td><td>Ajuda a distinguir causa física de ansiedade</td></tr>
+              <tr><td>Ingredientes da ração atual</td><td>Essencial para investigar alergia alimentar</td></tr>
+              <tr><td>Locais dos passeios (parque, calçada, grama?)</td><td>Identifica possíveis alérgenos ambientais</td></tr>
+              <tr><td>Há quanto tempo ocorre + se piorou em alguma estação</td><td>Sazonalidade aponta para alergia ambiental</td></tr>
+              <tr><td>O que já foi testado e resultado</td><td>Evita repetir tentativas que não funcionaram</td></tr>
+            </tbody>
+          </table>
+
+          <p style="margin-top:16px;"><strong>Perguntas para fazer ao veterinário:</strong></p>
+          <div style="background:var(--green-light);border-radius:10px;padding:16px 20px;font-size:.87rem;color:var(--green-dark);display:grid;gap:8px;">
+            <div>✔ "Pode ser alergia alimentar? Devemos fazer uma dieta de eliminação?"</div>
+            <div>✔ "Existe componente fúngico (Malassezia) ativo? Precisa de antifúngico?"</div>
+            <div>✔ "Há sinais de pododermatite bacteriana que precise de antibiótico?"</div>
+            <div>✔ "É atopia? Quais as opções de tratamento de longo prazo?"</div>
+            <div>✔ "Posso continuar usando o protocolo natural como complemento ao tratamento?"</div>
+            <div>✔ "Há exame de pele (citologia) que possa confirmar o agente causador?"</div>
+          </div>
+
+          <div class="warn-box" style="margin-top:16px;">⚠️ <strong>Vá ao veterinário imediatamente — sem esperar — se:</strong> as patas tiverem pus, sangramento ativo, inchaço que piora nas primeiras 24h, ou se o cão parar de apoiar a pata no chão. Esses sinais indicam infecção estabelecida que não responde a cuidados caseiros.</div>
+        </div>
+      </section>
+
+      <!-- BÔNUS 1 -->
+      <section id="s-b1" class="content-section">
+        <div class="sec-header">
+          <span class="sec-tag">Bônus 1</span>
+          <h1>🍽️ Nutrição e Pele: O Guia Completo de Ingredientes</h1>
+          <p>12 ingredientes que pioram a pele + os que ajudam + suplementos naturais + 3 receitas de petiscos anti-inflamatórios.</p>
+        </div>
+
+        <div class="module-card">
+          <h3>📚 O Eixo Intestino-Pele: Por Que o que o Cão Come Aparece na Pele</h3>
+          <p>A pele é o maior órgão do corpo e funciona como um "espelho" do que acontece internamente. O intestino do cão abriga 70% do sistema imunológico — quando a mucosa intestinal é comprometida por ingredientes inadequados, ocorre um fenômeno chamado <strong>"intestino permeável"</strong>: fragmentos de proteína não digeridos cruzam a barreira intestinal, chegam à corrente sanguínea e são identificados como invasores pelo sistema imunológico.</p>
+          <p>Resultado: resposta inflamatória sistêmica que se manifesta na pele na forma de coceira, vermelhidão e lambedura. O ciclo completo leva de 2 a 48 horas entre a ingestão e a manifestação cutânea — o que dificulta a identificação da causa pelos donos.</p>
+          <div style="background:#fff;border-radius:12px;padding:18px;margin:14px 0;box-shadow:0 2px 8px rgba(0,0,0,.05);">
+            <p style="font-size:.85rem;font-weight:600;margin-bottom:10px;color:var(--green);">O ciclo alimentação-inflamação-pele:</p>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="font-size:.82rem;color:var(--gray);display:flex;gap:8px;align-items:center;"><span style="background:var(--red);color:#fff;border-radius:4px;padding:2px 8px;font-weight:700;flex-shrink:0;">1</span>Ingrediente irritante ou alérgeno ingerido</div>
+              <div style="font-size:.82rem;color:var(--gray);display:flex;gap:8px;align-items:center;"><span style="background:var(--red);color:#fff;border-radius:4px;padding:2px 8px;font-weight:700;flex-shrink:0;">2</span>Inflamação da mucosa intestinal (disbiose, permeabilidade aumentada)</div>
+              <div style="font-size:.82rem;color:var(--gray);display:flex;gap:8px;align-items:center;"><span style="background:var(--orange);color:#fff;border-radius:4px;padding:2px 8px;font-weight:700;flex-shrink:0;">3</span>Proteínas não digeridas entram na corrente sanguínea</div>
+              <div style="font-size:.82rem;color:var(--gray);display:flex;gap:8px;align-items:center;"><span style="background:var(--orange);color:#fff;border-radius:4px;padding:2px 8px;font-weight:700;flex-shrink:0;">4</span>Sistema imune identifica como ameaça e libera histamina e citocinas</div>
+              <div style="font-size:.82rem;color:var(--gray);display:flex;gap:8px;align-items:center;"><span style="background:var(--yellow);color:#000;border-radius:4px;padding:2px 8px;font-weight:700;flex-shrink:0;">5</span>Inflamação se manifesta na pele: coceira, vermelhidão, lambedura</div>
+            </div>
+          </div>
+          <div class="info-box">💡 Até 20% dos casos de dermatite em cães têm componente alimentar como causa ou agravante. A boa notícia: este é o fator mais fácil de controlar — basta mudar o que entra na tigela.</div>
+        </div>
+
+        <div class="module-card">
+          <h3>🚫 Os 12 Ingredientes Que Mais Irritam a Pele dos Cães</h3>
+          <div class="ic-grid">
+            <div class="ic-card"><div class="ic-num">1</div><div><h4>Trigo e Glúten</h4><p>O alergênico alimentar mais relatado em cães. O glúten danifica as vilosidades intestinais, reduz a absorção de nutrientes essenciais (zinco, vitamina E — ambos cruciais para a pele) e desencadeia resposta imune exagerada. Cães com coceira crônica nas patas melhoram consideravelmente ao remover o trigo da dieta. <em>No rótulo:</em> "farinha de trigo", "glúten de trigo", "amido de trigo".</p></div></div>
+            <div class="ic-card"><div class="ic-num">2</div><div><h4>Milho e Derivados</h4><p>Além de alérgeno comum, o milho tem índice glicêmico elevado — picos de glicose no sangue alimentam processos inflamatórios crônicos. O glúten de milho é uma proteína diferente do glúten de trigo, mas igualmente problemático para cães sensíveis. <em>No rótulo:</em> "milho", "farinha de milho", "amido de milho", "glúten de milho", "xarope de milho".</p></div></div>
+            <div class="ic-card"><div class="ic-num">3</div><div><h4>Soja e Farinha de Soja</h4><p>Contém fitoestrógenos (interferem no equilíbrio hormonal, que afeta a saúde da pele), lectinas (que aumentam a permeabilidade intestinal) e inibidores de protease (que reduzem a digestão de proteínas). Muito usada como proteína barata em rações populares. <em>No rótulo:</em> "soja", "farinha de soja", "proteína isolada de soja", "óleo de soja".</p></div></div>
+            <div class="ic-card"><div class="ic-num">4</div><div><h4>Corantes Artificiais (Red 40, Yellow 6, Blue 2, Sunset Yellow)</h4><p>Sem nenhum valor nutricional. Servem apenas para colorir e tornar a ração visualmente apetitosa para o dono. Estudos em humanos mostram relação com hipersensibilidade; em cães, o mecanismo é semelhante. Rações que parecem "coloridas" ou que têm peças em tons vivos quase sempre contêm corantes artificiais.</p></div></div>
+            <div class="ic-card"><div class="ic-num">5</div><div><h4>BHA, BHT e Etoxiquina</h4><p>BHA (butil-hidroxianisol) e BHT (butil-hidroxitolueno) são antioxidantes sintéticos usados como conservantes. A etoxiquina é ainda mais controversa — originalmente desenvolvida como pesticida, foi proibida em alimentos humanos em muitos países mas ainda é permitida em ração animal. Todos têm potencial pró-inflamatório em uso prolongado. <em>No rótulo:</em> aparecem pelo próprio nome.</p></div></div>
+            <div class="ic-card"><div class="ic-num">6</div><div><h4>Subprodutos não especificados</h4><p>"Subprodutos de aves" ou "subprodutos de carne" podem incluir penas, bicos, cascos, unhas e conteúdo intestinal. Além de baixo valor proteico, são altamente variáveis em composição — o que significa que a ração pode mudar de lote para lote, gerando reações imprevisíveis. Compare com "frango desidratado" ou "frango inteiro" — muito mais confiáveis.</p></div></div>
+            <div class="ic-card"><div class="ic-num">7</div><div><h4>Gordura Animal não especificada</h4><p>"Gordura animal" sem nomear a origem pode ser gordura de qualquer espécie (restos de frigorífico), submetida a processos que aumentam a oxidação lipídica. Gorduras oxidadas são pró-inflamatórias e deterioram a barreira cutânea. Prefira rações que especificam: "gordura de frango", "óleo de salmão".</p></div></div>
+            <div class="ic-card"><div class="ic-num">8</div><div><h4>Açúcar, Xarope e Melaço</h4><p>Presentes especialmente em petiscos e rações "palatabilizadas". Além de favorecerem a proliferação de Malassezia (fungo que ama açúcar), açúcares simples aumentam inflamação sistêmica via glicação de proteínas. Cães com candidíase ou Malassezia crônica pioram muito com dieta rica em açúcar.</p></div></div>
+            <div class="ic-card"><div class="ic-num">9</div><div><h4>Carragenana</h4><p>Espessante extraído de alga marinha, comum em rações úmidas (latas e sachês). Apesar de "natural", a carragenana provoca inflamação intestinal em mamíferos — tão significativa que é usada em laboratórios justamente para <em>induzir</em> inflamação em estudos científicos. Cães com sensibilidade intestinal reagem especialmente mal a ela.</p></div></div>
+            <div class="ic-card"><div class="ic-num">10</div><div><h4>Sal em Excesso (sódio)</h4><p>Causa retenção de líquidos que piora edema em áreas inflamadas. Interfere na absorção de zinco e magnésio — minerais essenciais para a integridade da barreira cutânea. O sódio adequado para cães é de 0,06–2g/100g de ração. Rações com mais de 3g/100g representam risco para pele sensível.</p></div></div>
+            <div class="ic-card"><div class="ic-num">11</div><div><h4>Propileno Glicol</h4><p>Umectante e conservante usado em algumas rações semiumidas para manter a textura. Tóxico para gatos. Em cães, causa oxidação das células vermelhas em doses mais altas e tem potencial irritante para a mucosa digestiva. Banido em rações para gatos pelo FDA, ainda permitido para cães.</p></div></div>
+            <div class="ic-card"><div class="ic-num">12</div><div><h4>Frango (como alérgeno — quando há sensibilização)</h4><p>Este é contraintuitivo: frango é uma proteína de qualidade, mas também o alérgeno alimentar mais comum em cães — justamente porque é o ingrediente mais usado em rações por décadas. Cães expostos à mesma proteína por anos podem desenvolver sensibilização. Se o cão sempre comeu frango e tem coceira crônica, testar uma proteína nova (cordeiro, peixe, javali) pode revelar a causa.</p></div></div>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <h3>✅ Os Ingredientes que AJUDAM a Pele</h3>
+          <p>Além de evitar o que piora, incluir ativamente os ingredientes certos faz diferença real:</p>
+          <table class="data-table">
+            <thead><tr><th>Ingrediente</th><th>Benefício para a pele</th><th>Como incluir</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Salmão / Sardinha / Atum</strong></td><td>Ômega-3 (EPA+DHA): reduz inflamação sistêmica, melhora barreira cutânea</td><td>Sardinha em água ou azeite 3x/sem. na ração</td></tr>
+              <tr><td><strong>Batata-doce</strong></td><td>Beta-caroteno (pró-vitamina A), fibra prebiótica para a microbiota</td><td>Cozida sem tempero, 1–2 col./dia</td></tr>
+              <tr><td><strong>Mirtilo (blueberry)</strong></td><td>Antioxidantes (antocianinas), vitamina C, anti-inflamatório</td><td>5–10 unidades/dia como petisco</td></tr>
+              <tr><td><strong>Abóbora</strong></td><td>Fibra solúvel, zinco, vitamina E e beta-caroteno</td><td>Cozida ou cru ralado, 1–2 col./dia</td></tr>
+              <tr><td><strong>Ovo caipira (gema)</strong></td><td>Biotina, lecitina, vitaminas A e D — essenciais para o pelo</td><td>1 ovo/dia (cão médio), 3x/semana</td></tr>
+              <tr><td><strong>Brócolis (pequena quantidade)</strong></td><td>Sulforafano (anti-inflamatório potente), vitamina C</td><td>Max. 10% da refeição, cru ou levemente cozido</td></tr>
+              <tr><td><strong>Azeite de oliva extra virgem</strong></td><td>Ácido oleico, polifenóis anti-inflamatórios</td><td>½–1 col. chá sobre a ração/dia</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="module-card">
+          <h3>💊 Guia de Suplementos Naturais Para a Saúde da Pele</h3>
+          <div class="ic-grid">
+            <div class="ic-card" style="border-left:4px solid var(--green);">
+              <div style="font-size:1.5rem;">🐟</div>
+              <div>
+                <h4>Óleo de Peixe (Ômega-3)</h4>
+                <p>O suplemento com maior evidência científica para dermatite em cães. EPA e DHA inibem produção de leucotrienos e prostaglandinas — moléculas centrais no processo inflamatório da pele.<br><br>
+                <strong>Dose:</strong> 20–55mg EPA+DHA por kg de peso corporal/dia. Para um cão de 10kg: ~200–550mg EPA+DHA/dia. Cápsulas de 1000mg de óleo de peixe geralmente contêm ~300mg EPA+DHA.<br><br>
+                <strong>Atenção:</strong> use óleo de peixe de qualidade (certificado IFOS ou similar). Óleo rançoso é pró-inflamatório — o oposto do que queremos. Guarde na geladeira após abrir.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid var(--green);">
+              <div style="font-size:1.5rem;">🍎</div>
+              <div>
+                <h4>Quercetina — O Anti-histamínico Natural</h4>
+                <p>Flavonoide encontrado em maçãs, cebola e brócolis. Inibe a liberação de histamina pelos mastócitos — o mesmo mecanismo dos anti-histamínicos convencionais, mas sem os efeitos colaterais de sedação.<br><br>
+                <strong>Dose:</strong> 5–10mg por kg de peso corporal, 2x ao dia. Comprimidos ou cápsulas para pets estão disponíveis em pet shops e manipulação veterinária.<br><br>
+                <strong>Quando usar:</strong> especialmente útil na primavera (pico de pólen) e quando há suspeita de alergia ambiental. Pode ser usado junto com o protocolo externo.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid var(--green);">
+              <div style="font-size:1.5rem;">🦠</div>
+              <div>
+                <h4>Probióticos — O Eixo Intestino-Pele</h4>
+                <p>A microbiota intestinal saudável é a primeira barreira contra alérgenos alimentares. Cães com disbiose intestinal (desequilíbrio da flora) têm pele mais sensível e reações mais intensas a alérgenos.<br><br>
+                <strong>Como usar:</strong> probióticos específicos para cães (Lactobacillus acidophilus + Bifidobacterium animalis). Disponíveis em sachês para pets. Iogurte natural integral (sem açúcar) também funciona: 1–2 colheres de sopa/dia.<br><br>
+                <strong>Quando ver resultado:</strong> 3–4 semanas de uso contínuo para estabilização da microbiota.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid var(--green);">
+              <div style="font-size:1.5rem;">🔩</div>
+              <div>
+                <h4>Zinco — Mineral Fundamental Para a Barreira Cutânea</h4>
+                <p>O zinco é essencial para a síntese de queratina (proteína estrutural da pele e do pelo), cicatrização e modulação imune. Deficiência de zinco é comum em cães com pele seca, pelo opaco e feridas que demoram a cicatrizar.<br><br>
+                <strong>Atenção:</strong> suplementação de zinco deve ser feita com orientação veterinária — excesso é tóxico. A maneira mais segura é incluir fontes alimentares: carne vermelha magra, semente de abóbora e frango são boas fontes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <h3>🍪 3 Receitas de Petiscos Anti-Inflamatórios</h3>
+          <p>Substitua petiscos industriais (cheios de corantes e conservantes) por estas opções naturais que ativamente ajudam a pele:</p>
+
+          <div class="recipe-box" style="margin-bottom:14px;">
+            <h4>🐟 Biscoito de Sardinha e Batata-Doce</h4>
+            <div class="method-label">INGREDIENTES (rende ~30 biscoitos)</div>
+            <ul class="rl">
+              <li>1 lata de sardinha em água (sem sal) — escorra bem</li>
+              <li>1 batata-doce média cozida e amassada (≈150g)</li>
+              <li>150g de farinha de arroz (sem glúten)</li>
+              <li>1 ovo</li>
+            </ul>
+            <div class="method-label">MODO DE PREPARO</div>
+            <p class="method-text">Misture todos os ingredientes até formar massa homogênea. Abra com rolo (~5mm de espessura). Corte em formatos pequenos. Asse a 180°C por 20–25 minutos até dourar. Esfrie completamente antes de guardar. Conserva-se 7 dias em pote fechado ou 30 dias no freezer.<br><br><strong>Benefícios:</strong> ômega-3 da sardinha + beta-caroteno da batata-doce + sem glúten.</p>
+          </div>
+
+          <div class="recipe-box" style="background:#1a237e;margin-bottom:14px;">
+            <h4>🫐 Bolinho de Mirtilo e Aveia (sem glúten)</h4>
+            <div class="method-label">INGREDIENTES (rende ~20 bolinhos)</div>
+            <ul class="rl">
+              <li>½ xícara de mirtilos frescos ou congelados</li>
+              <li>1 xícara de aveia em flocos finos</li>
+              <li>2 colheres de sopa de óleo de coco</li>
+              <li>1 ovo</li>
+              <li>1 colher de sopa de mel puro</li>
+            </ul>
+            <div class="method-label">MODO DE PREPARO</div>
+            <p class="method-text">Processe os mirtilos levemente. Misture todos os ingredientes. Forme bolinhas pequenas (tamanho de uva). Asse a 170°C por 15 minutos. Esfrie completamente.<br><br><strong>Benefícios:</strong> antocianinas dos mirtilos (anti-inflamatório potente) + ácido láurico do coco (antifúngico). Ideal para cães com coceira sazonal.</p>
+          </div>
+
+          <div class="recipe-box" style="background:#004d40;">
+            <h4>🥕 Palito de Cenoura e Frango com Cúrcuma</h4>
+            <div class="method-label">INGREDIENTES</div>
+            <ul class="rl">
+              <li>200g de peito de frango cozido e desfiado</li>
+              <li>1 cenoura média ralada</li>
+              <li>100g de farinha de aveia</li>
+              <li>½ colher de chá de cúrcuma (curcumina — anti-inflamatório natural)</li>
+              <li>1 colher de chá de azeite de oliva</li>
+              <li>1 ovo</li>
+            </ul>
+            <div class="method-label">MODO DE PREPARO</div>
+            <p class="method-text">Processe o frango com a cenoura. Misture com os demais ingredientes. Forme palitos ou use molde de silicone. Asse a 180°C por 25 minutos.<br><br><strong>Benefícios:</strong> curcumina inibe NF-κB (principal via inflamatória). A piperina da pimenta potencializa a curcumina, mas evite pimenta preta em excesso para cães.</p>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <h3>🏷️ Guia Completo de Leitura de Rótulo</h3>
+          <p>Regra de ouro: os ingredientes aparecem em ordem decrescente de quantidade. Nos 5 primeiros ingredientes está a maior parte da ração. Avalie assim:</p>
+          <table class="data-table">
+            <thead><tr><th>O que aparece</th><th>Significado</th><th>Avaliação</th></tr></thead>
+            <tbody>
+              <tr><td>Proteína nomeada em 1º (ex: "frango desidratado")</td><td>Base proteica de qualidade</td><td class="good">✔ Excelente</td></tr>
+              <tr><td>"Farinha de frango" em 1º</td><td>Proteína concentrada — aceitável</td><td class="good">✔ Bom</td></tr>
+              <tr><td>"Subprodutos" em 1º ou 2º</td><td>Baixo valor, alta variabilidade</td><td class="bad">✘ Evitar</td></tr>
+              <tr><td>Milho ou trigo em 1º, 2º ou 3º</td><td>Carboidrato inflamatório como base</td><td class="bad">✘ Evitar</td></tr>
+              <tr><td>"Tocoferóis mistos" como conservante</td><td>Vitamina E natural — ideal</td><td class="good">✔ Excelente</td></tr>
+              <tr><td>BHA, BHT ou etoxiquina</td><td>Conservantes sintéticos suspeitos</td><td class="bad">✘ Evitar</td></tr>
+              <tr><td>Qualquer corante (Red, Yellow, Blue)</td><td>Desnecessário, potencialmente irritante</td><td class="bad">✘ Evitar</td></tr>
+              <tr><td>"Óleo de salmão" ou "óleo de sardinha"</td><td>Ômega-3 de qualidade incluso</td><td class="good">✔ Excelente</td></tr>
+              <tr><td>"Inulina", "FOS" ou "MOS"</td><td>Prebióticos para microbiota intestinal</td><td class="good">✔ Bom</td></tr>
+              <tr><td>Lista com mais de 35 ingredientes</td><td>Quanto mais ingredientes, maior o risco de alérgeno incluso</td><td style="color:var(--orange);font-weight:600;">⚠ Cuidado</td></tr>
+            </tbody>
+          </table>
+          <div class="info-box">💡 <strong>Dieta de eliminação:</strong> se suspeitar de alergia alimentar, o padrão ouro é 8–12 semanas com uma única proteína nova (que o cão nunca comeu: cordeiro, javali, pato, cavalo) + um único carboidrato novo (batata-doce, quinoa). Sem petiscos da marca antiga durante o teste. Converse com o veterinário antes de iniciar.</div>
+        </div>
+      </section>
+
+      <!-- BÔNUS 2 -->
+      <section id="s-b2" class="content-section">
+        <div class="sec-header">
+          <span class="sec-tag">Bônus 2</span>
+          <h1>✅ Checklist Completo Pós-Passeio</h1>
+          <p>Checklist interativo principal + versões por contexto + kit de primeiros socorros + diário de evolução.</p>
+        </div>
+
+        <div class="module-card" style="margin-bottom:22px;">
+          <h3>🎯 Por Que um Checklist Muda Tudo?</h3>
+          <p>A consistência é o único fator que separa tutores que eliminam o problema dos que ficam em ciclo eterno. Não é o produto mais caro, não é o veterinário mais especializado — é a repetição diária do protocolo correto. O checklist existe para tornar essa repetição à prova de "esqueci" ou "tô com pressa".</p>
+          <p style="margin-top:10px;"><strong>Como a consistência funciona biologicamente:</strong> a pele leva 21–28 dias para renovar completamente seu ciclo celular. Isso significa que você só vai ver a melhora real depois de 3 semanas de protocolo consistente — não desista antes disso. Quem desiste na semana 2 nunca descobre que a solução estava funcionando.</p>
+          <div class="info-box" style="margin-top:12px;">💡 <strong>Dica de setup:</strong> Monte um "Kit de Patas" numa caixinha próxima à porta. Coloque: bacia pequena, algodão, toalha de microfibra, frasco spray e este checklist impresso. Coloque o gancho da coleira em cima do kit — quando guardar a coleira, você automaticamente verá o kit.</div>
+        </div>
+
+        <!-- CHECKLIST PRINCIPAL -->
+        <div class="module-card">
+          <h3>📋 Checklist Padrão — Pós-Passeio (2–3 minutos)</h3>
+          <p style="font-size:.85rem;color:var(--gray);margin-bottom:14px;">Use após todo passeio em condições normais (calçada, praça, rua pavimentada):</p>
+          <div class="prog-wrap">
+            <div class="prog-label">
+              <span style="font-weight:600;color:var(--green);font-size:.82rem;">Progresso de hoje</span>
+              <span id="prog-text" style="font-size:.8rem;color:var(--gray);">0 de 8 itens</span>
+            </div>
+            <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+          </div>
+          <ul class="checklist" style="margin-top:20px;" id="chklist">
+            <li class="chk-item"><input type="checkbox" id="c1" onchange="updChk()"/><label for="c1"><strong>🔎 1. Inspeção visual rápida</strong><span>Antes de qualquer limpeza, verifique as 4 patas: corpo estranho (pedras, espinhos, vidros), cortes visíveis, inchaço ou vermelhidão intensa. Se encontrar algo preocupante, trate antes de prosseguir. Gaste 20 segundos aqui — vale cada um.</span></label></li>
+            <li class="chk-item"><input type="checkbox" id="c2" onchange="updChk()"/><label for="c2"><strong>💧 2. Prepare a solução de limpeza</strong><span>500ml de água morna + 1 colher de chá de vinagre de maçã orgânico. O pH ácido do vinagre (cerca de 3.1) neutraliza resíduos alcalinos de cal e cimento e cria ambiente desfavorável para fungos. Teste a temperatura no pulso — confortável, nunca quente.</span></label></li>
+            <li class="chk-item"><input type="checkbox" id="c3" onchange="updChk()"/><label for="c3"><strong>🐾 3. Imersão (30 segundos por pata)</strong><span>Imersão passiva — não esfregue. A solução penetra entre os dedos e remove partículas invisíveis que o enxágue simples não remove. 30 segundos é o mínimo para o vinagre agir. Use o tempo para verificar a pata enquanto está submersa.</span></label></li>
+            <li class="chk-item"><input type="checkbox" id="c4" onchange="updChk()"/><label for="c4"><strong>🧹 4. Limpeza interdigital com algodão</strong><span>Algodão úmido na solução. Passe entre cada dedo com movimento de "pressionar e soltar" — nunca esfregar em vai-e-vem (causa microabrasões). Dedique 15 segundos por espaço interdigital. Troque o algodão a cada pata. Você vai se surpreender com o que fica no algodão.</span></label></li>
+            <li class="chk-item"><input type="checkbox" id="c5" onchange="updChk()"/><label for="c5"><strong>🏜️ 5. Secagem total — o passo mais crítico</strong><span>Toalha de microfibra. Seque pressionar e pressionar, não esfregar. Atenção máxima entre os dedos — este é o ambiente onde os fungos prosperam. Se a toalha continuar úmida depois de 45 segundos em uma pata, use uma segunda toalha. Pata que parece seca por fora pode ter umidade residual entre os dedos.</span></label></li>
+            <li class="chk-item"><input type="checkbox" id="c6" onchange="updChk()"/><label for="c6"><strong>🌿 6. Aplicação do spray calmante</strong><span>Agite bem o frasco (os óleos essenciais separam da fase aquosa). 2–3 jatos por pata em distância de 10cm. Massageie com os dedos por 10 segundos para penetrar entre os coxins e na região interdigital. Aplique nas 4 patas. Em dias de maior exposição (grama tratada, trilha), use 4–5 jatos.</span></label></li>
+            <li class="chk-item"><input type="checkbox" id="c7" onchange="updChk()"/><label for="c7"><strong>🎾 7. Distração por 5 minutos (não pule este!)</strong><span>O spray tem ingredientes que precisam secar e absorver. 5 minutos sem lambar = ingredientes ativos no lugar certo. Use: Kong com petisco, licking mat, sessão de "onde está?" com petisco escondido, carinho focado. Este passo parece inútil mas sem ele você está desperdiçando metade do benefício do spray.</span></label></li>
+            <li class="chk-item"><input type="checkbox" id="c8" onchange="updChk()"/><label for="c8"><strong>📝 8. Observação e registro (30 segundos)</strong><span>Depois que a distração acabar, observe por 5 minutos: ele foi lamber? Com que frequência? Mais ou menos que ontem? Anote no seu diário de evolução (modelo abaixo). Esses dados são o que vão mostrar que o protocolo está funcionando — e são o que o veterinário vai querer saber.</span></label></li>
+          </ul>
+          <div style="margin-top:20px;text-align:center;">
+            <button onclick="resetChk()" style="background:none;border:2px solid var(--green);color:var(--green);padding:10px 24px;border-radius:8px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.84rem;cursor:pointer;">↺ Resetar Checklist</button>
+          </div>
+        </div>
+
+        <!-- CHECKLISTS CONTEXTUAIS -->
+        <div class="module-card" style="margin-top:26px;">
+          <h3>🗺️ Checklists por Contexto — Adapte ao Tipo de Passeio</h3>
+          <p style="font-size:.85rem;color:var(--gray);margin-bottom:16px;">Cada ambiente tem riscos específicos. Use o checklist certo para cada situação:</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div style="background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-top:4px solid #1565c0;">
+              <h4 style="color:#1565c0;font-size:.92rem;margin-bottom:12px;">🏙️ Passeio Urbano (Calçada/Rua)</h4>
+              <ul style="font-size:.82rem;color:var(--gray);line-height:2;list-style:none;padding:0;">
+                <li>☐ Verificar sola dos coxins (asfalto quente = queimadura)</li>
+                <li>☐ Checar entre os dedos por resíduos de óleo ou graxa</li>
+                <li>☐ Atenção a resíduos de cal de obras recentes</li>
+                <li>☐ Verificar presença de sal no inverno (corrói os coxins)</li>
+                <li>☐ Imersão e limpeza padrão</li>
+                <li>☐ Secagem rigorosa + spray</li>
+                <li>☐ Em dias quentes: verificar se há bolhas nos coxins (queimadura)</li>
+              </ul>
+              <div style="margin-top:10px;background:#e3f2fd;border-radius:8px;padding:10px;font-size:.78rem;color:#1565c0;">
+                <strong>Teste do asfalto:</strong> coloque o dorso da sua mão no asfalto por 7 segundos. Se não conseguir manter, seu cão não deve andar sem proteção.
+              </div>
+            </div>
+
+            <div style="background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-top:4px solid #2e7d32;">
+              <h4 style="color:#2e7d32;font-size:.92rem;margin-bottom:12px;">🌿 Parque / Área com Grama</h4>
+              <ul style="font-size:.82rem;color:var(--gray);line-height:2;list-style:none;padding:0;">
+                <li>☐ Verificar espinhos, sementes grudadas entre os dedos</li>
+                <li>☐ Checar presença de carrapatos (especialmente entre os dedos)</li>
+                <li>☐ Atenção a herbicidas — use Spray 2 (intensivo) após grama pública</li>
+                <li>☐ Imersão mais longa (45–60 segundos) após grama</li>
+                <li>☐ Shampoo neutro nas patas se suspeitar de pesticida</li>
+                <li>☐ Secagem + spray calmante</li>
+                <li>☐ Na primavera: dobrar atenção (alto índice polínico)</li>
+              </ul>
+              <div style="margin-top:10px;background:#e8f5e9;border-radius:8px;padding:10px;font-size:.78rem;color:#2e7d32;">
+                <strong>Dica de primavera:</strong> coloque meias protetoras nas patas nos piores dias de pólen e adicione quercetina à alimentação.
+              </div>
+            </div>
+
+            <div style="background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-top:4px solid #6a1b9a;">
+              <h4 style="color:#6a1b9a;font-size:.92rem;margin-bottom:12px;">🌧️ Passeio em Dia Chuvoso</h4>
+              <ul style="font-size:.82rem;color:var(--gray);line-height:2;list-style:none;padding:0;">
+                <li>☐ Pré-passeio: aplicar óleo de coco nos coxins (barreira protetora)</li>
+                <li>☐ Imersão com solução de vinagre + 1 gota de tea tree (antifúngico)</li>
+                <li>☐ Limpeza interdigital com atenção redobrada</li>
+                <li>☐ SECAGEM COMPLETA — duas toalhas se necessário</li>
+                <li>☐ Checar com os dedos todos os espaços — umidade esconde entre dobras</li>
+                <li>☐ Spray 2 (intensivo com tea tree) após secagem</li>
+                <li>☐ Monitorar nas próximas 2h — umidade = risco máximo de fungo</li>
+              </ul>
+              <div style="margin-top:10px;background:#f3e5f5;border-radius:8px;padding:10px;font-size:.78rem;color:#6a1b9a;">
+                <strong>Regra da chuva:</strong> após passeio em dia muito chuvoso, aplique o Spray 2 na mesma noite, mesmo que já tenha aplicado o Spray 1 logo após o passeio.
+              </div>
+            </div>
+
+            <div style="background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-top:4px solid #e65100;">
+              <h4 style="color:#e65100;font-size:.92rem;margin-bottom:12px;">🏔️ Trilha / Mata / Praia</h4>
+              <ul style="font-size:.82rem;color:var(--gray);line-height:2;list-style:none;padding:0;">
+                <li>☐ Inspeção minuciosa com lanterna — espinhos, sementes farpadas</li>
+                <li>☐ Remover com pinça qualquer objeto incrustado (não arrancar)</li>
+                <li>☐ Na praia: areia úmida + sal — lavar com água doce primeiro</li>
+                <li>☐ Trilha: possível lama com microorganismos — shampoo neutro obrigatório</li>
+                <li>☐ Verificar coxins por abrasões (superfícies irregulares)</li>
+                <li>☐ Spray 2 (intensivo) + bálsamo noturno naquela noite</li>
+                <li>☐ Monitorar por 48h — reações podem aparecer com 24–36h de atraso</li>
+              </ul>
+              <div style="margin-top:10px;background:#fff3e0;border-radius:8px;padding:10px;font-size:.78rem;color:#e65100;">
+                <strong>Após praia:</strong> sal resseca os coxins rapidamente. Sempre aplique bálsamo de karité na noite após passeio na praia.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KIT DE PRIMEIROS SOCORROS -->
+        <div class="module-card" style="margin-top:26px;">
+          <h3>🩹 Kit de Primeiros Socorros para Patas</h3>
+          <p style="font-size:.85rem;color:var(--gray);margin-bottom:16px;">Monte este kit e deixe-o acessível. Em emergências, ter os materiais certos faz diferença entre uma pequena ferida e uma infecção:</p>
+
+          <table class="data-table">
+            <thead><tr><th>Item</th><th>Para que serve</th><th>Onde encontrar</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Soro fisiológico (0,9%)</strong></td><td>Lavar feridas abertas — não arde, não irrita, não interfere na cicatrização</td><td>Farmácia — R$3–8</td></tr>
+              <tr><td><strong>Iodopovidona (PVPI) diluída</strong></td><td>Antisséptico para feridas leves. Dilua 1:10 em água antes de aplicar</td><td>Farmácia — R$5–15</td></tr>
+              <tr><td><strong>Gaze estéril</strong></td><td>Curativo temporário, compressas</td><td>Farmácia — R$3</td></tr>
+              <tr><td><strong>Ataduras de crepe (5cm)</strong><td>Enfaixar pata após curativo em emergências</td><td>Farmácia — R$4</td></tr>
+              <tr><td><strong>Pinça de ponta fina</strong></td><td>Remover espinhos, sementes farpadas e corpo estranho pequeno</td><td>Farmácia/mercado — R$8</td></tr>
+              <tr><td><strong>Luva descartável</strong></td><td>Higiene e proteção ao manusear feridas</td><td>Farmácia — R$1–3</td></tr>
+              <tr><td><strong>Mel de manuka (ou mel puro)</strong></td><td>Cicatrizante natural comprovado para abrasões leves nos coxins</td><td>Empório/farmácia — R$25–50</td></tr>
+              <tr><td><strong>Aloe vera em gel puro</strong></td><td>Calmante imediato para vermelhidão e pequenas irritações</td><td>Farmácia/cosméticos — R$10</td></tr>
+              <tr><td><strong>Meias de proteção para cão</strong></td><td>Proteger a pata machucada durante cicatrização e evitar lambedura da ferida</td><td>Pet shop — R$15–30</td></tr>
+              <tr><td><strong>Lanterna pequena</strong></td><td>Iluminar a região interdigital para inspeção adequada</td><td>Em casa ou R$10</td></tr>
+              <tr><td><strong>Termômetro digital infravermelho</strong></td><td>Comparar temperatura entre patas para detectar inflamação localizada</td><td>Farmácia — R$30–60</td></tr>
+            </tbody>
+          </table>
+
+          <div class="warn-box" style="margin-top:14px;">⚠️ <strong>Nunca use na pata do cão:</strong> álcool 70% (destrói tecido em cicatrização), água oxigenada (inibe cicatrização), pomadas com corticóide sem prescrição, ou qualquer produto com xilitol. Em caso de ferida profunda ou sangramento que não para em 5 minutos: veterinário imediatamente.</div>
+
+          <div class="info-box" style="margin-top:12px;">🚨 <strong>Quando ir ao veterinário de emergência:</strong> sangramento que não cessa, osso aparente, corte profundo, corpo estranho que não sai com pinça, pata inchada com calor intenso, cão recusando apoiar o peso na pata ou sinais de dor forte.</div>
+        </div>
+
+        <!-- DIÁRIO DE EVOLUÇÃO -->
+        <div class="module-card" style="margin-top:26px;">
+          <h3>📓 Modelo de Diário de Evolução — Como Documentar a Melhora</h3>
+          <p style="font-size:.85rem;color:var(--gray);margin-bottom:14px;">Registrar a evolução serve para três propósitos: (1) confirmar que o protocolo está funcionando antes de você ver a melhora visual; (2) identificar padrões (piora aos sábados? após chuva?); (3) levar dados objetivos ao veterinário.</p>
+
+          <div style="background:#f9f9f9;border:1px solid #e0e0e0;border-radius:12px;padding:20px;font-size:.83rem;">
+            <strong style="font-size:.9rem;display:block;margin-bottom:14px;color:var(--green);">📋 Modelo de Registro Diário</strong>
+            <table class="data-table" style="font-size:.79rem;">
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Protocolo feito?</th>
+                  <th>Freq. lambedura<br>(0-5)</th>
+                  <th>Odor<br>(0=nenhum, 3=forte)</th>
+                  <th>Vermelhidão<br>(0=nenhuma, 3=intensa)</th>
+                  <th>Observações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>__/__</td><td>☐ Sim ☐ Não</td><td>___</td><td>___</td><td>___</td><td>________________________</td></tr>
+                <tr><td>__/__</td><td>☐ Sim ☐ Não</td><td>___</td><td>___</td><td>___</td><td>________________________</td></tr>
+                <tr><td>__/__</td><td>☐ Sim ☐ Não</td><td>___</td><td>___</td><td>___</td><td>________________________</td></tr>
+                <tr><td>__/__</td><td>☐ Sim ☐ Não</td><td>___</td><td>___</td><td>___</td><td>________________________</td></tr>
+                <tr><td>__/__</td><td>☐ Sim ☐ Não</td><td>___</td><td>___</td><td>___</td><td>________________________</td></tr>
+                <tr><td>__/__</td><td>☐ Sim ☐ Não</td><td>___</td><td>___</td><td>___</td><td>________________________</td></tr>
+                <tr><td>__/__</td><td>☐ Sim ☐ Não</td><td>___</td><td>___</td><td>___</td><td>________________________</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;">
+            <div style="background:var(--green-light);border-radius:10px;padding:16px;font-size:.82rem;">
+              <strong style="color:var(--green);display:block;margin-bottom:8px;">📈 Como interpretar os dados:</strong>
+              <ul style="color:var(--gray);line-height:1.9;padding-left:16px;">
+                <li><strong>Semana 1:</strong> pode piorar levemente — a rotina de limpeza mobiliza irritantes antes de removê-los</li>
+                <li><strong>Semana 2:</strong> estabilização. A frequência de lambedura começa a reduzir</li>
+                <li><strong>Semana 3:</strong> melhora clara e mensurável. Odor diminui, vermelhidão recua</li>
+                <li><strong>Semana 4+:</strong> manutenção. Resultado consolidado</li>
+              </ul>
+            </div>
+            <div style="background:#fff3e0;border-radius:10px;padding:16px;font-size:.82rem;">
+              <strong style="color:var(--orange);display:block;margin-bottom:8px;">🚩 Quando o diário mostra que precisa de ajuda:</strong>
+              <ul style="color:var(--gray);line-height:1.9;padding-left:16px;">
+                <li>Lambedura voltou a 4-5 após ter chegado a 1-2</li>
+                <li>Odor aumentando consistentemente</li>
+                <li>Vermelhidão não reduz após 10 dias</li>
+                <li>Padrão sem sentido (piora aleatória sem motivo identificável)</li>
+                <li>Esses sinais = levar o diário ao veterinário</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- DICAS DE CONSISTÊNCIA -->
+        <div class="module-card" style="margin-top:26px;">
+          <h3>🏆 O Sistema de Consistência — Como Nunca Pular um Dia</h3>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;">
+            <div style="background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.05);">
+              <h4 style="font-size:.88rem;margin-bottom:8px;color:var(--green);">📦 O Kit na Porta</h4>
+              <p style="font-size:.82rem;color:var(--gray);">Todos os materiais em uma caixinha à direita da porta. Gancho da coleira sobre o kit. Impossível guardar a coleira sem ver o kit. Barreira de entrada zero para o hábito.</p>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.05);">
+              <h4 style="font-size:.88rem;margin-bottom:8px;color:var(--green);">⏰ Alarme nos Primeiros 7 Dias</h4>
+              <p style="font-size:.82rem;color:var(--gray);">Coloque um alarme 5 minutos após o horário habitual de passeio. Só nos primeiros 7 dias — depois o hábito dispara automaticamente pela sensação das patas molhadas do cão.</p>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.05);">
+              <h4 style="font-size:.88rem;margin-bottom:8px;color:var(--green);">📸 Foto Semanal das Patas</h4>
+              <p style="font-size:.82rem;color:var(--gray);">Tire 4 fotos das patas todo domingo, mesmo ângulo, boa luz. Salve num álbum "Evolução das Patas" com a data. A comparação visível semana a semana é o combustível que mantém você motivado nos dias difíceis.</p>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.05);">
+              <h4 style="font-size:.88rem;margin-bottom:8px;color:var(--green);">🎯 Não Quebre Dois Dias Seguidos</h4>
+              <p style="font-size:.82rem;color:var(--gray);">Um dia perdido não estraga o progresso. Dois dias seguidos sim. Esta é a regra do atleta: o dia que você não treina não destrói a forma — dois dias seguidos começam a. Aplique o mesmo ao protocolo.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BÔNUS 3 -->
+      <section id="s-b3" class="content-section">
+        <div class="sec-header">
+          <span class="sec-tag">Bônus 3</span>
+          <h1>🔍 Guia Completo de Diagnóstico de Patas</h1>
+          <p>3 níveis de severidade · 5 condições específicas · protocolo de inspeção · guia para a consulta veterinária.</p>
+        </div>
+
+        <div class="module-card">
+          <h3>⏰ A Janela de Oportunidade — Por Que Detectar Cedo Muda Tudo</h3>
+          <p>A irritação nas patas segue uma progressão previsível com janelas de intervenção bem definidas. A diferença entre detectar no Nível 1 vs. Nível 3 é a diferença entre 3 dias de protocolo caseiro vs. 4 semanas de tratamento veterinário com antibióticos.</p>
+          <table class="data-table">
+            <thead><tr><th>Nível</th><th>Tempo típico sem intervenção</th><th>Tratamento</th><th>Custo estimado</th></tr></thead>
+            <tbody>
+              <tr><td class="good">Nível 1 — Leve</td><td>Resolve em 3–7 dias com protocolo</td><td>Protocolo caseiro</td><td class="good">R$ 0–15 (spray)</td></tr>
+              <tr><td style="color:#f57f17;font-weight:600;">Nível 2 — Moderado</td><td>Pode piorar para Nível 3 em 1–2 semanas</td><td>Protocolo intensivo ± vet</td><td style="color:#f57f17;">R$ 50–200</td></tr>
+              <tr><td class="bad">Nível 3 — Grave</td><td>Pode se tornar crônico sem tratamento</td><td>Veterinário obrigatório</td><td class="bad">R$ 200–800+</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sev-grid" style="margin-top:20px;">
+          <div class="sev-card sev-1">
+            <h4 style="color:#558b2f;">🟢 Nível 1 — Irritação Leve (Protocolo Caseiro Suficiente)</h4>
+            <p style="font-size:.84rem;color:#558b2f;margin-bottom:10px;"><strong>Sinais:</strong></p>
+            <ul class="sev-list">
+              <li>Lambe após passeio, para espontaneamente em menos de 5 minutos</li>
+              <li>Coxins levemente rosados — sem vermelhidão intensa nem calor ao toque</li>
+              <li>Cheiro levemente diferente (descrições: "pipoca ligeiramente ácida")</li>
+              <li>Pelagem levemente úmida entre os dedos logo após passeio</li>
+              <li>Sem mudança de comportamento fora do momento pós-passeio</li>
+            </ul>
+            <p style="font-size:.84rem;color:#558b2f;margin:10px 0 6px;"><strong>Causa mais provável:</strong> resíduos e irritantes do passeio, umidade residual, pequena carga de pólen.</p>
+            <div class="sev-action" style="color:#558b2f;">✅ <strong>Ação:</strong> Protocolo Nível 2 + Spray 1. Resultado esperado: 3–7 dias. Se não melhorar, avance para diagnóstico Nível 2.</div>
+          </div>
+
+          <div class="sev-card sev-2">
+            <h4 style="color:#e65100;">🟡 Nível 2 — Irritação Moderada (Atenção Ativa Necessária)</h4>
+            <p style="font-size:.84rem;color:#e65100;margin-bottom:10px;"><strong>Sinais:</strong></p>
+            <ul class="sev-list">
+              <li>Lambe com frequência, inclusive fora do horário pós-passeio</li>
+              <li>Vermelhidão visível nos coxins ou entre os dedos</li>
+              <li>Pelo entre os dedos avermelhado/ferrugíneo (mancha de saliva crônica)</li>
+              <li>Leve inchaço interdigital ao apertar suavemente</li>
+              <li>Cheiro fungoso ou fermentado persistente (o famoso "Frito")</li>
+              <li>Cão acorda à noite para lamber as patas</li>
+              <li>Escoriações superficiais por lambedura excessiva</li>
+            </ul>
+            <p style="font-size:.84rem;color:#e65100;margin:10px 0 6px;"><strong>Causa mais provável:</strong> Malassezia ativa, dermatite de contato moderada ou início de pododermatite.</p>
+            <div class="sev-action" style="color:#e65100;">⚠️ <strong>Ação:</strong> Protocolo Nível 3 + Spray 2 (intensivo) 2x/dia + bálsamo noturno. Se não melhorar em 7 dias: veterinário. Considere cortar acesso temporário à grama até melhora.</div>
+          </div>
+
+          <div class="sev-card sev-3">
+            <h4 style="color:#c62828;">🔴 Nível 3 — Irritação Grave (Veterinário Imediato)</h4>
+            <p style="font-size:.84rem;color:#c62828;margin-bottom:10px;"><strong>Sinais:</strong></p>
+            <ul class="sev-list">
+              <li>Feridas abertas, úlceras ou pele escarificada entre os dedos</li>
+              <li>Pus, secreção amarelada/esverdeada ou sangramento</li>
+              <li>Inchaço significativo — dedo visivelmente maior</li>
+              <li>Nódulo ou caroço entre os dedos (possível cisto interdigital)</li>
+              <li>Cão manqueja, recusa apoiar a pata ou reage a dor ao toque</li>
+              <li>Cheiro intenso e persistente mesmo após limpeza cuidadosa</li>
+              <li>Pelo completamente avermelhado/marrom escuro por lambedura crônica intensa</li>
+              <li>Febre, prostração, perda de apetite ou outros sinais sistêmicos</li>
+            </ul>
+            <div class="sev-action" style="color:#c62828;">🚨 <strong>Ação:</strong> NÃO aplique protocolos caseiros sem orientação. Leve ao veterinário hoje ou amanhã cedo. Infecção estabelecida requer diagnóstico (citologia) e tratamento prescrito.</div>
+          </div>
+        </div>
+
+        <div class="module-card" style="margin-top:26px;">
+          <h3>🦠 Guia das 5 Condições Mais Comuns nas Patas</h3>
+          <p>Saber o nome do problema ajuda a conversar melhor com o veterinário e pesquisar informações confiáveis:</p>
+
+          <div class="ic-grid">
+            <div class="ic-card" style="border-left:4px solid #7cb342;">
+              <div style="font-size:1.5rem;">🍄</div>
+              <div>
+                <h4>1. Malasseziose Interdigital (o "pé de atleta canino")</h4>
+                <p><strong>O que é:</strong> proliferação excessiva do fungo Malassezia pachydermatis, que é parte da microbiota normal da pele do cão, mas em condições de umidade e calor se multiplica de forma patológica.</p>
+                <p style="margin-top:6px;"><strong>Sinais característicos:</strong> cheiro forte de "fritura" ou fermento, pelo avermelhado entre os dedos, coceira intensa especialmente à noite, pele levemente oleosa ao toque.</p>
+                <p style="margin-top:6px;"><strong>Cuidado caseiro:</strong> Spray Intensivo com tea tree diluído (Spray 2) + secagem rigorosa. Óleo de coco aplicado diariamente tem ação antifúngica comprovada contra Malassezia.</p>
+                <p style="margin-top:6px;"><strong>Quando vai ao vet:</strong> se não melhorar em 7 dias — pode precisar de shampoo antifúngico com cetoconazol ou clorhexidina prescrito.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid #ffa000;">
+              <div style="font-size:1.5rem;">🔴</div>
+              <div>
+                <h4>2. Cisto Interdigital (Furunculose Interdigital)</h4>
+                <p><strong>O que é:</strong> nódulo inflamatório que se forma entre os dedos, geralmente por infecção bacteriana de um folículo piloso obstruído ou por corpo estranho (espinho, fragmento de grama). Muito mais comum do que parece — frequentemente confundido com "alergia".</p>
+                <p style="margin-top:6px;"><strong>Sinais característicos:</strong> caroço visível e palpável entre dois dedos, frequentemente avermelhado ou com líquido (pode ser transparente ou com pus), dor ao toque, lambedura obsessiva localizada naquele ponto.</p>
+                <p style="margin-top:6px;"><strong>Cuidado caseiro (apenas para fase inicial):</strong> compressa morna 3x/dia (abre o cisto gradualmente). Infusão de calêndula tem ação anti-inflamatória e cicatrizante no local.</p>
+                <p style="margin-top:6px;"><strong>Quando vai ao vet:</strong> se o cisto tiver mais de 1cm, não reduzir em 5 dias ou se reaparecer. O veterinário pode drenar e prescrever antibiótico.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid #ef5350;">
+              <div style="font-size:1.5rem;">🧫</div>
+              <div>
+                <h4>3. Pododermatite Bacteriana</h4>
+                <p><strong>O que é:</strong> infecção bacteriana das patas, geralmente por Staphylococcus intermedius ou pseudintermedius. Pode ser superficial (piodermite) ou profunda (mais grave). Frequentemente se desenvolve em cima de uma irritação não tratada.</p>
+                <p style="margin-top:6px;"><strong>Sinais característicos:</strong> pápulas (bolinhas vermelhas), pústulas (bolinhas com pus), crostas, odor intenso, coceira intensa. Em casos graves: tecido necrótico ou fistulas que drenam espontaneamente.</p>
+                <p style="margin-top:6px;"><strong>NÃO trate em casa:</strong> pododermatite bacteriana requer antibiótico sistêmico prescrito pelo veterinário, geralmente por 3–6 semanas. Tratamento incompleto gera resistência.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid #1565c0;">
+              <div style="font-size:1.5rem;">🌿</div>
+              <div>
+                <h4>4. Dermatite de Contato</h4>
+                <p><strong>O que é:</strong> reação inflamatória da pele ao contato direto com substâncias irritantes ou alergênicas. Pode ser irritativa (qualquer cão que tiver contato suficiente reage) ou alérgica (só cães sensibilizados reagem a concentrações baixas).</p>
+                <p style="margin-top:6px;"><strong>Agentes comuns:</strong> herbicidas de parques, cimento úmido, alguns tipos de grama tratada, resíduos de produtos de limpeza de piso, borracha de tapetes.</p>
+                <p style="margin-top:6px;"><strong>Como identificar:</strong> a reação é localizada nas áreas de contato (patas, barriga, focinho). Melhora significativa durante férias em locais diferentes. Piora previsível ao retornar ao ambiente habitual.</p>
+                <p style="margin-top:6px;"><strong>Cuidado caseiro:</strong> identificar e eliminar o agente + protocolo completo. Vinagre de maçã na solução de limpeza é especialmente eficaz para neutralizar resíduos alcalinos de herbicidas.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid #6a1b9a;">
+              <div style="font-size:1.5rem;">🧬</div>
+              <div>
+                <h4>5. Dermatite Atópica (Atopia)</h4>
+                <p><strong>O que é:</strong> condição genética de hipersensibilidade imunológica a alérgenos ambientais (pólen, ácaros, fungos, epitélio humano). Uma das doenças mais comuns em cães — afeta até 15% da população canina. Crônica por natureza, mas muito gerenciável com o protocolo certo.</p>
+                <p style="margin-top:6px;"><strong>Sinais característicos:</strong> coceira nas patas, ouvidos, virilha, axilas e ao redor dos olhos (padrão de distribuição característico). Inicio entre 1–3 anos de idade. Padrão sazonal (primavera = pior) ou perene (ácaros domésticos = ano todo).</p>
+                <p style="margin-top:6px;"><strong>Tratamento:</strong> não tem cura, mas tem controle eficaz. Combinação de: imunoterapia alérgeno-específica (a mais eficaz em longo prazo), apoquel ou cytopoint (alopáticos), protocolo natural (complementar). O protocolo anti-lambedura reduz significativamente os flares em cães atópicos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <h3>👁️ Protocolo de Inspeção Semanal — Os 5 Passos</h3>
+          <ul class="steps">
+            <li class="step"><div class="step-num">👆</div><div><h4>1. Cor e uniformidade dos coxins</h4><p>Saudáveis: rosa claro a preto (depende da raça), uniforme, sem manchas. <strong>Alerta:</strong> vermelhidão localizada = irritação ativa. Escurecimento progressivo = lambedura crônica (a saliva contém porfirina que mancha de ferrugem). Rachaduras profundas = ressecamento grave — aplique bálsamo imediatamente.</p></div></li>
+            <li class="step"><div class="step-num">👃</div><div><h4>2. Avaliação olfativa</h4><p>Cheiro saudável: neutro ou levemente "pipoca" (é o cheiro natural dos coxins). <strong>Alerta amarelo:</strong> cheiro de fermento leve = Malassezia incipiente. <strong>Alerta vermelho:</strong> cheiro forte de peixe podre ou queijo = infecção bacteriana ativa. Este sinal olfativo precede os sinais visuais em 24–72 horas — confie no seu nariz.</p></div></li>
+            <li class="step"><div class="step-num">🖐️</div><div><h4>3. Temperatura comparativa</h4><p>Passe o dorso da mão em cada pata e compare. Todas devem estar na mesma temperatura. <strong>Alerta:</strong> uma pata mais quente que as outras indica processo inflamatório localizado — verifique essa pata com mais atenção. Calor + inchaço em uma pata isolada = provável cisto ou infecção localizada.</p></div></li>
+            <li class="step"><div class="step-num">🔦</div><div><h4>4. Inspeção interdigital com luz</h4><p>Use a lanterna do celular. Abra cada espaço entre os dedos com cuidado. Pele saudável: rosa pálido, seca ao toque, sem lesões. <strong>Alerta leve:</strong> umidade excessiva, pelo ligeiramente avermelhado. <strong>Alerta grave:</strong> pápulas, pústulas, nódulos, crostas ou pele com textura diferente.</p></div></li>
+            <li class="step"><div class="step-num">📸</div><div><h4>5. Registro fotográfico semanal</h4><p>Tire 1 foto de cada pata (4 fotos no total) com boa iluminação, sempre do mesmo ângulo. Guarde num álbum separado com a data. Este banco de imagens é o documento mais valioso que você pode levar ao veterinário — mostra evolução, piora ou melhora de forma objetiva e irrefutável. Muitos diagnósticos são acelerados em semanas por causa dessas fotos.</p></div></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- BÔNUS 4 -->
+      <section id="s-b4" class="content-section">
+        <div class="sec-header">
+          <span class="sec-tag">Bônus 4</span>
+          <h1>🧠 Ansiedade ou Irritação? Guia Completo de Diagnóstico e Resolução</h1>
+          <p>Avaliação de 10 pontos · 4 tipos de ansiedade · calmantes naturais · técnicas de treino · atividades de enriquecimento.</p>
+        </div>
+
+        <div class="module-card">
+          <h3>❓ Por Que a Confusão É Tão Comum?</h3>
+          <p>Cães ansiosos lambem as patas. Cães com irritação física também lambem as patas. O comportamento externo é idêntico. A causa é completamente diferente. E o tratamento para uma não resolve a outra.</p>
+          <p>Além disso, existe um terceiro cenário — o mais comum na prática: os dois problemas coexistem e se retroalimentam. A irritação causa desconforto que aumenta o estresse → o estresse amplifica a percepção de coceira → mais lambedura → mais irritação. Compreender qual veio primeiro é a chave para quebrar o ciclo.</p>
+          <div class="warn-box">⚠️ <strong>Erro frequente:</strong> tratar só a ansiedade quando há irritação ativa é como tomar calmante para dor de dente — atenua o comportamento mas não resolve o problema físico. E vice-versa: tratar só a pele quando a ansiedade é o motor principal gera resultados temporários que sempre regridem.</div>
+        </div>
+
+        <div class="module-card">
+          <h3>📋 Avaliação de 10 Pontos — Descubra o Fator Primário</h3>
+          <p>Para cada afirmação, marque SIM ou NÃO conforme o comportamento do seu cão. Conte os SIM de cada coluna ao final:</p>
+          <table class="data-table" id="assessment-table">
+            <thead><tr><th>#</th><th>Afirmação</th><th>Indica</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>A lambedura aumenta consistentemente após os passeios (mais de 5 em 7 dias)</td><td class="good">Físico</td></tr>
+              <tr><td>2</td><td>As patas têm cheiro forte, vermelhidão ou calor detectável</td><td class="good">Físico</td></tr>
+              <tr><td>3</td><td>O pelo entre os dedos está avermelhado/ferrugíneo (mancha de saliva)</td><td class="good">Físico</td></tr>
+              <tr><td>4</td><td>Piora em certas estações do ano (especialmente primavera)</td><td class="good">Físico/Alergia</td></tr>
+              <tr><td>5</td><td>Melhora visível nos dias em que o passeio é em local diferente (outra praça)</td><td class="good">Físico/Contato</td></tr>
+              <tr><td>6</td><td>A lambedura ocorre independente de passeio — em casa, em repouso</td><td style="color:var(--orange);font-weight:600;">Ansiedade</td></tr>
+              <tr><td>7</td><td>Piora quando você está prestes a sair de casa ou quando há visitas</td><td style="color:var(--orange);font-weight:600;">Ansiedade</td></tr>
+              <tr><td>8</td><td>Acompanha outros comportamentos ansiosos: tremor, latido excessivo, destruição</td><td style="color:var(--orange);font-weight:600;">Ansiedade</td></tr>
+              <tr><td>9</td><td>Lambe outras superfícies além das patas (tapetes, cobertores, paredes)</td><td style="color:var(--orange);font-weight:600;">Ansiedade</td></tr>
+              <tr><td>10</td><td>Para de lamber imediatamente quando você oferece atenção ou distração</td><td style="color:var(--orange);font-weight:600;">Ansiedade</td></tr>
+            </tbody>
+          </table>
+          <div style="background:var(--green-light);border-radius:10px;padding:16px 20px;margin-top:14px;font-size:.87rem;display:grid;gap:6px;">
+            <div><strong>Afirmações 1–5: maioria SIM</strong> → causa física predominante. Foco no protocolo externo + alimentação.</div>
+            <div><strong>Afirmações 6–10: maioria SIM</strong> → ansiedade predominante. Foco em enriquecimento, treino e, se necessário, suporte veterinário comportamental.</div>
+            <div><strong>SIM em ambas as colunas</strong> → caso misto. Trate o físico primeiro (2 semanas), depois avalie o componente ansioso que permanece.</div>
+          </div>
+        </div>
+
+        <div class="compare-grid">
+          <div class="cmp-card">
+            <h4 style="color:var(--orange);">😰 Sinais de Ansiedade (Comportamental)</h4>
+            <ul>
+              <li>Lambe em momentos de estresse (visitas, trovoadas, solidão, mudanças na rotina)</li>
+              <li>Lambedura sem relação com passeio ou atividade específica</li>
+              <li>Lambe outras superfícies: tapetes, cobertores, sofá</li>
+              <li>Piora quando você está para sair ou já saiu</li>
+              <li>Acompanha: tremor, ofegar excessivo, latido, destruição</li>
+              <li>Sem sinais físicos nas patas (sem odor, vermelhidão ou inchaço)</li>
+              <li>Para imediatamente com atenção, carinho ou distração</li>
+              <li>Comportamento desde filhote ou começou após mudança de ambiente</li>
+            </ul>
+          </div>
+          <div class="cmp-card">
+            <h4 style="color:var(--green);">🐾 Sinais de Irritação Física</h4>
+            <ul>
+              <li>Lambedura concentrada exclusivamente nas patas</li>
+              <li>Piora consistente após passeios (padrão previsível)</li>
+              <li>Sinais físicos detectáveis: vermelhidão, calor, odor, mancha ferrugínea</li>
+              <li>Piora sazonal (primavera = pólens) ou após chuva (fungos)</li>
+              <li>Melhora com protocolo de limpeza + spray</li>
+              <li>Não acompanha outros comportamentos ansiosos</li>
+              <li>Pode ocorrer mesmo quando o cão está relaxado e de bom humor</li>
+              <li>Começou após mudança de ração, novo local de passeio ou nova estação</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="module-card" style="margin-top:20px;">
+          <h3>😟 Os 4 Tipos de Ansiedade — Identificando o Gatilho Específico</h3>
+          <div class="ic-grid">
+            <div class="ic-card" style="border-left:4px solid var(--orange);">
+              <div style="font-size:1.5rem;">🚪</div>
+              <div>
+                <h4>Ansiedade de Separação</h4>
+                <p><strong>Como identificar:</strong> o cão fica agitado quando você pega as chaves, veste casaco ou mostra qualquer ritual de saída. A lambedura começa antes de você sair e se intensifica nas primeiras horas de solidão.</p>
+                <p style="margin-top:8px;"><strong>Sinais distintos:</strong> destruição de itens com seu cheiro (travesseiros, roupas), urina ou fezes mesmo sendo adestrado, câmeras mostram lambedura compulsiva enquanto está sozinho.</p>
+                <p style="margin-top:8px;"><strong>Abordagem:</strong> dessensibilização gradual (ver técnicas abaixo) + Kong congelado como calmante na saída + em casos graves, veterinário comportamental pode prescrever medicação de suporte.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid var(--orange);">
+              <div style="font-size:1.5rem;">⛈️</div>
+              <div>
+                <h4>Fobia a Ruídos (Trovões, Fogos, Obras)</h4>
+                <p><strong>Como identificar:</strong> lambedura intensa e outros comportamentos de medo (esconder, tremor, ofegar) especificamente durante e após barulhos altos. Pode não haver correlação com passeios.</p>
+                <p style="margin-top:8px;"><strong>Sinais distintos:</strong> começa a lamber horas antes de uma tempestade (cães detectam mudança de pressão atmosférica). Pior em fins de ano (fogos). Melhor em ambientes com ruído branco.</p>
+                <p style="margin-top:8px;"><strong>Abordagem:</strong> camiseta de compressão (ThunderShirt), ruído branco ou música específica para cães (Through a Dog's Ear), espaço seguro previamente treinado. Florais de Bach podem ajudar como suporte.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid var(--orange);">
+              <div style="font-size:1.5rem;">👥</div>
+              <div>
+                <h4>Ansiedade Social</h4>
+                <p><strong>Como identificar:</strong> lambedura e comportamentos ansiosos quando há visitas, crianças na casa, outros cães ou ambientes movimentados. O cão pode "usar" a lambedura como comportamento de deslocamento quando não consegue se afastar do estressor.</p>
+                <p style="margin-top:8px;"><strong>Abordagem:</strong> permitir que o cão tenha um espaço para se retirar (quarto, caixote) sem ser obrigado a interagir. Reforçar positivamente comportamentos calmos perto dos gatilhos, sempre no próprio ritmo do cão.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid var(--orange);">
+              <div style="font-size:1.5rem;">🌀</div>
+              <div>
+                <h4>Ansiedade Generalizada (TAG Canina)</h4>
+                <p><strong>Como identificar:</strong> estado constante de alerta e vigilância sem gatilho específico identificável. O cão está tenso mesmo em momentos que deveriam ser relaxantes. Lambedura ocorre em múltiplos contextos sem padrão claro.</p>
+                <p style="margin-top:8px;"><strong>Sinais distintos:</strong> hiperalerta, músculos tensos, cauda baixa frequentemente, dificuldade de relaxar completamente mesmo em casa.</p>
+                <p style="margin-top:8px;"><strong>Abordagem:</strong> este tipo responde melhor a um programa estruturado de enriquecimento ambiental + rotina previsível + exercício adequado + avaliação veterinária comportamental.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <h3>🌿 Calmantes Naturais — O Que Funciona e Como Usar</h3>
+          <div class="ic-grid">
+            <div class="ic-card" style="border-left:4px solid var(--green);">
+              <div style="font-size:1.5rem;">🍵</div>
+              <div>
+                <h4>L-Triptofano e L-Teanina</h4>
+                <p>O L-triptofano é precursor da serotonina (hormônio do bem-estar). A L-teanina é um aminoácido do chá verde que promove relaxamento sem sedação. Ambos estão disponíveis em suplementos específicos para pets (Zylkène, Adaptil Calm, etc.).<br><br>
+                <strong>Uso:</strong> dose conforme o peso, 30–60 min antes de situações estressantes (visitas, viagens). Para uso contínuo: consulte o veterinário.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid var(--green);">
+              <div style="font-size:1.5rem;">💧</div>
+              <div>
+                <h4>Florais de Bach</h4>
+                <p>Embora sem mecanismo científico estabelecido, relatos de melhora são consistentes na literatura popular e de tutores. Os mais usados para ansiedade canina: <strong>Rescue Remedy</strong> (combinação para situações de estresse agudo) e <strong>Mimulus</strong> (medos identificáveis).<br><br>
+                <strong>Uso:</strong> 4 gotas na água ou diretamente na gengiva, 4x ao dia durante período de estresse. Seguro para combinar com qualquer outro tratamento.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid var(--green);">
+              <div style="font-size:1.5rem;">💜</div>
+              <div>
+                <h4>Adaptil (DAP — Feromônio Apaziguador)</h4>
+                <p>Versão sintética do feromônio apaziguador que a cadela produz para seus filhotes. Disponível em difusor, spray e coleira. Estudos controlados mostram redução de comportamentos ansiosos em cães expostos.<br><br>
+                <strong>Uso:</strong> difusor para ansiedade crônica em casa. Spray (aplique no ambiente, nunca diretamente no cão) antes de situações pontuais. Coleira para cães com ansiedade fora de casa.</p>
+              </div>
+            </div>
+            <div class="ic-card" style="border-left:4px solid var(--green);">
+              <div style="font-size:1.5rem;">🎵</div>
+              <div>
+                <h4>Música Calmante para Cães</h4>
+                <p>A série <em>Through a Dog's Ear</em> foi desenvolvida especificamente para o sistema auditivo canino — frequências e ritmos que estudos mostram reduzir o cortisol. Disponível no Spotify e YouTube.<br><br>
+                <strong>Uso:</strong> deixe tocando quando o cão ficar sozinho ou durante trovoadas. Volume baixo, como música ambiente. Crie a associação aos poucos — coloque junto a você antes de sair para o cão aprender que o som = segurança.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="module-card">
+          <h3>🎯 Técnicas de Treino Para Interromper a Lambedura</h3>
+          <ul class="steps">
+            <li class="step"><div class="step-num">1</div><div><h4>Comando "Deixa" (Leave It) Adaptado</h4><p><strong>Objetivo:</strong> ensinar o cão a parar de lamber no comando.<br><br>
+            <strong>Passo a passo:</strong><br>
+            • Quando o cão começar a lamber, diga "deixa" em tom firme mas calmo (não raiva).<br>
+            • No milissegundo em que ele parar (mesmo que por 0,5 segundo), marque o momento com um "sim!" e ofereça petisco.<br>
+            • Repita 10x por sessão, 2x por dia.<br>
+            • Gradualmente aumente o tempo que ele precisa ficar sem lamber antes de receber o petisco.<br>
+            • Em 2–3 semanas, o comando funcionará de forma consistente.</p></div></li>
+            <li class="step"><div class="step-num">2</div><div><h4>Redirecionamento com Licking Mat</h4><p><strong>Objetivo:</strong> redirecionar a necessidade de lamber para um objeto seguro que satisfaça o comportamento sem machucar as patas.<br><br>
+            O licking mat (tapete de lamber) é especialmente eficaz porque lamber libera oxitocina e tem efeito calmante natural. Espalhe pasta de amendoim natural (sem xilitol), iogurte natural ou purê de abóbora. Congele para durar mais.<br><br>
+            <strong>Timing:</strong> ofereça ANTES do momento de estresse (antes de sair de casa, antes de uma tempestade), não depois que o ciclo já começou.</p></div></li>
+            <li class="step"><div class="step-num">3</div><div><h4>Dessensibilização Gradual (Para Ansiedade de Separação)</h4><p><strong>Objetivo:</strong> quebrara associação entre "rituais de saída = abandono".<br><br>
+            <strong>Como fazer:</strong><br>
+            • Semana 1: Vista o casaco, fique em casa 10 minutos. Tire o casaco. Repita 5x/dia.<br>
+            • Semana 2: Pegue as chaves, abra a porta, feche e volte imediatamente. Repita.<br>
+            • Semana 3: Saia por 30 segundos, volte antes de qualquer sinal de ansiedade.<br>
+            • Aumente gradualmente o tempo de ausência semana a semana.<br>
+            • O objetivo é que ele aprenda que você SEMPRE volta, e que a saída não é uma catástrofe.</p></div></li>
+          </ul>
+        </div>
+
+        <div class="module-card">
+          <h3>🎮 Guia de Enriquecimento Ambiental — 10 Atividades</h3>
+          <p>Cães com excesso de energia mental não gasta e sem estimulação adequada desenvolvem comportamentos compulsivos como lambedura. O enriquecimento não é luxo — é necessidade básica de bem-estar:</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;">
+            <div style="background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.05);">
+              <h4 style="font-size:.88rem;margin-bottom:6px;">1. Kong Congelado</h4>
+              <p style="font-size:.82rem;color:var(--gray);">Recheie com pasta de amendoim natural, ração amolecida, purê de batata-doce ou frango desfiado. Congele por 4h. Um cão ocupado com o Kong não está lambendo as patas.</p>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.05);">
+              <h4 style="font-size:.88rem;margin-bottom:6px;">2. Sniffari (Passeio Olfativo)</h4>
+              <p style="font-size:.82rem;color:var(--gray);">Deixe o cão cheirar livremente durante o passeio sem puxar a guia. 20 minutos de "sniffari" cansa mentalmente tanto quanto 1h de caminhada normal — e satisfaz o instinto de caça.</p>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.05);">
+              <h4 style="font-size:.88rem;margin-bottom:6px;">3. Snuffle Mat (Tapete de Farejar)</h4>
+              <p style="font-size:.82rem;color:var(--gray);">Esconda petiscos nas tiras de borracha do tapete. O cão usa 10–15 minutos só para encontrar tudo. Pode ser feito com um tapete de borracha furado e fleece cortado.</p>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.05);">
+              <h4 style="font-size:.88rem;margin-bottom:6px;">4. Alimentação por Puzzles</h4>
+              <p style="font-size:.82rem;color:var(--gray);">Substitua a tigela normal por um brinquedo puzzle ou jogo de inteligência 3–4 vezes por semana. O tempo para obter a comida satisfaz o instinto de forrageamento.</p>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.05);">
+              <h4 style="font-size:.88rem;margin-bottom:6px;">5. Nosework (Busca por Aroma)</h4>
+              <p style="font-size:.82rem;color:var(--gray);">Esconda petiscos em caixas ou cômodos. Comece fácil (caixa à vista) e aumente a dificuldade. Um cão que passa 15 min procurando está completamente focado — não lambe.</p>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.05);">
+              <h4 style="font-size:.88rem;margin-bottom:6px;">6. Treino de Novos Comandos</h4>
+              <p style="font-size:.82rem;color:var(--gray);">Sessões de 5 minutos de treino positivo são extremamente cansativas mentalmente. Ensinar "fica", "pega", "deixa" ou truques simples usa mais energia que uma corrida.</p>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.05);">
+              <h4 style="font-size:.88rem;margin-bottom:6px;">7. Massagem de Relaxamento</h4>
+              <p style="font-size:.82rem;color:var(--gray);">5 minutos de massagem suave nas costas, pescoço e orelhas libera ocitocina em cães e donos. Faça isso como ritual após o protocolo de limpeza das patas — cria associação positiva.</p>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.05);">
+              <h4 style="font-size:.88rem;margin-bottom:6px;">8. Socialização Controlada</h4>
+              <p style="font-size:.82rem;color:var(--gray);">Para cães com ansiedade social: encontros breves e positivos com outros cães ou pessoas calmas. Sem forçar — o cão deve poder se aproximar no próprio ritmo.</p>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.05);">
+              <h4 style="font-size:.88rem;margin-bottom:6px;">9. Chewing (Mastigar)</h4>
+              <p style="font-size:.82rem;color:var(--gray);">Mastigar libera serotonina. Ofereça itens seguros para mastigar: hoof (casco bovino), osso cozido desidratado, brinquedos de borracha dura. Um cão que mastiga não está lambendo.</p>
+            </div>
+            <div style="background:#fff;border-radius:10px;padding:16px;box-shadow:0 2px 6px rgba(0,0,0,.05);">
+              <h4 style="font-size:.88rem;margin-bottom:6px;">10. Rotina Previsível</h4>
+              <p style="font-size:.82rem;color:var(--gray);">Cães ansiosos prosperam em rotinas. Horários fixos de passeio, alimentação e interação reduzem a ansiedade porque o cão "sabe o que esperar". Imprevisibilidade na rotina alimenta ansiedade generalizada.</p>
+            </div>
+          </div>
+
+          <div class="info-box" style="margin-top:20px;">💡 <strong>Regra de ouro:</strong> trate a causa física primeiro, sempre. Um cão com patas irritadas que também é ansioso vai melhorar a ansiedade em parte quando as patas melhorarem — o desconforto físico constante alimenta o estresse. Se após 3 semanas de protocolo com patas saudáveis a lambedura persistir sem causa física: aí é hora de focar no comportamental com todas as ferramentas acima.</div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+// LOGIN
+document.getElementById('lemail').addEventListener('keypress',e=>{ if(e.key==='Enter') doLogin(); });
+document.getElementById('lemail').addEventListener('input',function(){ this.style.borderColor='#e0e0e0'; });
+
+function doLogin(){
+  const em = document.getElementById('lemail').value.trim();
+  if(!em || !em.includes('@')){
+    document.getElementById('lemail').style.borderColor='#c62828';
+    document.getElementById('lemail').placeholder='Digite um e-mail válido';
+    return;
+  }
+  localStorage.setItem('sn-email', em);
+  enterArea(em);
+}
+function enterArea(em){
+  document.getElementById('login-page').style.display='none';
+  document.getElementById('members-area').style.display='block';
+  document.getElementById('hdr-email').textContent=em;
+}
+function doLogout(){
+  localStorage.removeItem('sn-email');
+  document.getElementById('members-area').style.display='none';
+  document.getElementById('login-page').style.display='flex';
+  document.getElementById('lemail').value='';
+}
+const saved=localStorage.getItem('sn-email');
+if(saved) enterArea(saved);
+
+// NAV
+function show(id, btn){
+  document.querySelectorAll('.content-section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('s-'+id).classList.add('active');
+  document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
+  const target = btn || document.querySelector(`.sb-item[onclick*="'${id}'"]`);
+  if(target) target.classList.add('active');
+  closeSb();
+  window.scrollTo(0,0);
+}
+
+// SIDEBAR
+function toggleSb(){ document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sb-overlay').classList.toggle('active'); }
+function closeSb(){ document.getElementById('sidebar').classList.remove('open'); document.getElementById('sb-overlay').classList.remove('active'); }
+
+// CHECKLIST
+function updChk(){
+  const boxes=document.querySelectorAll('#chklist input[type="checkbox"]');
+  const total=boxes.length;
+  let checked=0;
+  boxes.forEach(b=>{
+    const item=b.closest('.chk-item');
+    if(b.checked){ item.classList.add('done'); checked++; }
+    else item.classList.remove('done');
+  });
+  const pct=Math.round(checked/total*100);
+  document.getElementById('prog-fill').style.width=pct+'%';
+  document.getElementById('prog-text').textContent=checked+' de '+total+' itens';
+}
+function resetChk(){
+  document.querySelectorAll('#chklist input[type="checkbox"]').forEach(b=>{ b.checked=false; b.closest('.chk-item').classList.remove('done'); });
+  document.getElementById('prog-fill').style.width='0%';
+  document.getElementById('prog-text').textContent='0 de 8 itens';
+}
+</script>
+</body>
+</html>
