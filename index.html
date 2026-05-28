@@ -21,6 +21,16 @@
   <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=803667875791462&ev=PageView&noscript=1" /></noscript>
   <!-- End Meta Pixel Code -->
+
+  <!-- Google Ads Tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18193572588"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18193572588');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style"
@@ -198,14 +208,14 @@
 
     /* TESTIMONIALS */
     .testi { background: var(--light); }
-    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 20px; margin-top: 32px; }
-    .tcard {
-      background: #fff; border-radius: 12px; padding: 24px 20px;
-      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    .testi-imgs {
+      display: flex; flex-direction: column; gap: 24px;
+      margin-top: 32px; max-width: 480px;
     }
-    .tcard .stars { color: var(--yellow); font-size: 1rem; margin-bottom: 10px; }
-    .tcard p { font-size: .92rem; color: var(--gray); font-style: italic; margin-bottom: 14px; line-height: 1.6; }
-    .tcard .author { font-weight: 700; font-size: .88rem; color: var(--dark); }
+    .testi-imgs img {
+      width: 100%; border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.10);
+    }
 
     /* STACK */
     .stack { background: linear-gradient(160deg, #1b5e20 0%, #2e7d32 100%); color: #fff; }
@@ -477,24 +487,12 @@
   <section class="sec testi">
     <div class="wrap">
       <p class="tag">Resultados reais</p>
-      <h2 class="h2">Veja o Que Alguns Donos Relataram <em>Depois de Aplicar a Rotina</em></h2>
+      <h2 class="h2">Veja o Que Outros Donos <em>Relataram</em></h2>
 
-      <div class="testi-grid">
-        <div class="tcard">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"Eu achava que meu cachorro só tinha mania de lamber as patas. Depois que comecei a aplicar a rotina pós-passeio, ele ficou muito mais tranquilo."</p>
-          <div class="author">— Fernanda M.</div>
-        </div>
-        <div class="tcard">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"Eu já tinha trocado shampoo, alimentação e até brinquedos. O protocolo me ajudou a perceber erros simples que eu fazia todos os dias."</p>
-          <div class="author">— Ricardo A.</div>
-        </div>
-        <div class="tcard">
-          <div class="stars">⭐⭐⭐⭐⭐</div>
-          <p>"Gostei porque é algo simples de aplicar. Não parece aquelas soluções complicadas que a gente nunca consegue manter."</p>
-          <div class="author">— Camila R.</div>
-        </div>
+      <div class="testi-imgs">
+        <img src="test01.webp" alt="Depoimento de cliente — chihuahua"/>
+        <img src="test02.webp" alt="Depoimento de cliente — caramelo"/>
+        <img src="test03.webp" alt="Depoimento de cliente — bull terrier"/>
       </div>
     </div>
   </section>
@@ -679,44 +677,32 @@
   </div>
 
   <script>
-    /* COUNTDOWN */
+    // Timer
     (function(){
-      const end = Date.now() + 10 * 60 * 1000;
-      function pad(n){ return String(n).padStart(2,'0'); }
-      function tick(){
-        const diff = Math.max(0, end - Date.now());
-        const m = Math.floor(diff / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        const el = document.getElementById('bar-timer');
-        if(el) el.textContent = pad(m) + ':' + pad(s);
-        if(diff > 0) setTimeout(tick, 1000);
-      }
-      tick();
+      const el=document.getElementById('bar-timer');
+      let s=9*60+59;
+      setInterval(()=>{
+        if(s<=0)s=9*60+59;
+        const m=Math.floor(s/60),sec=s%60;
+        el.textContent=(m<10?'0':'')+m+':'+(sec<10?'0':'')+sec;
+        s--;
+      },1000);
     })();
 
-    /* FAQ */
-    document.querySelectorAll('.faq-q').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        const open = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if(!open) item.classList.add('open');
+    // FAQ
+    document.querySelectorAll('.faq-q').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const item=btn.closest('.faq-item');
+        const isOpen=item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+        if(!isOpen) item.classList.add('open');
       });
     });
 
-    /* MODAL */
-    function openModal(e){
-      e.preventDefault();
-      document.getElementById('modal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal(){
-      document.getElementById('modal').classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    document.getElementById('modal').addEventListener('click', function(e){
-      if(e.target === this) closeModal();
-    });
+    // Modal
+    function openModal(e){ e.preventDefault(); document.getElementById('modal').classList.add('active'); }
+    function closeModal(){ document.getElementById('modal').classList.remove('active'); }
+    document.getElementById('modal').addEventListener('click',function(e){ if(e.target===this) closeModal(); });
   </script>
 </body>
 </html>
