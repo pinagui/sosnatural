@@ -1173,6 +1173,33 @@
       line-height: 1.6;
     }
 
+    /* ====== GUILT / EMOTIONAL SECTIONS ====== */
+    .guilt{background:#fff;}
+    .guilt-story{background:var(--light);border-radius:var(--radius);padding:28px 26px;margin:24px 0;line-height:2;}
+    .guilt-story p{font-size:.97rem;color:var(--dark);margin-bottom:10px;}
+    .guilt-story p:last-child{margin-bottom:0;}
+    .guilt-reveal{margin:24px 0;display:grid;gap:8px;}
+    .guilt-reveal .gr-item{display:flex;gap:10px;align-items:center;
+      background:#fff3f3;border-left:4px solid var(--red);border-radius:0 var(--radius) var(--radius) 0;
+      padding:12px 16px;font-size:.95rem;font-weight:600;color:var(--dark);}
+    .guilt-reveal .gr-item::before{content:"🔴";flex-shrink:0;}
+    .guilt-q{background:var(--green-d);color:#fff;border-radius:var(--radius);padding:24px 26px;margin-top:24px;font-size:1rem;line-height:1.85;font-style:italic;}
+    .guilt-q em{color:var(--yellow);font-style:normal;font-weight:700;}
+
+    .deeper{background:var(--orange-l);}
+    .deeper-box{border-left:5px solid var(--orange);border-radius:0 var(--radius) var(--radius) 0;
+      padding:26px;background:#fff;font-size:.97rem;line-height:1.85;}
+    .deeper-box p{margin-bottom:12px;color:var(--dark);}
+    .deeper-box p:last-child{margin-bottom:0;}
+    .deeper-box .punch{font-size:1.1rem;font-weight:700;color:var(--green-d);margin-top:16px;padding-top:16px;border-top:2px solid #ffe0cc;}
+
+    .resp{background:linear-gradient(160deg,var(--green-d),var(--green));color:#fff;text-align:center;}
+    .resp-inner{max-width:600px;margin:0 auto;}
+    .resp-inner p{font-size:1rem;color:#c8f0cc;line-height:1.8;margin-bottom:16px;}
+    .resp-inner .resp-punch{font-family:'Montserrat',sans-serif;font-weight:900;
+      font-size:1.25rem;color:#fff;margin:24px 0 8px;}
+    .resp-inner .resp-sub{font-size:.9rem;color:rgba(255,255,255,.6);margin-bottom:28px;}
+
     /* ====== MOBILE ====== */
     @media(max-width:640px) {
 
@@ -1278,7 +1305,7 @@
       <li>🐾 Para cães que lambem ou mordem as patas</li>
     </ul>
 
-    <a href="#planos" class="btn btn-orange">🔥 QUERO PARAR COM ISSO HOJE</a>
+    <a href="#planos" class="btn btn-orange">🐾 QUERO AGIR ANTES QUE PIORE</a>
     <p class="hero-sub2">Acesso imediato · Funciona em qualquer celular · Conteúdo digital</p>
 
     <div class="social-proof">
@@ -1332,8 +1359,7 @@
           <span class="agit-tag">🍄 Esporos de fungo</span>
           <span class="agit-tag">🌾 Pólen acumulado</span>
         </div>
-        <p>Esses irritantes ficam em contato direto com a pele por <strong>4 a 8 horas</strong> — tempo mais que
-          suficiente para desencadear vermelhidão, coceira e o ciclo de lambedura compulsiva.</p>
+        <p>Enquanto você prepara o jantar, trabalha ou dorme — esses resíduos continuam em contato com a pele dele, silenciosamente iniciando o ciclo.</p>
         <p><strong>O problema não está na rua. Está no que você traz de volta para casa sem perceber.</strong></p>
         <p
           style="margin-top:16px;padding-top:16px;border-top:1px solid #ffcc80;color:var(--orange);font-weight:700;font-size:.95rem;">
@@ -1342,6 +1368,37 @@
 
       <img src="2.webp" alt="Cachorro irritado após passeio"
         style="margin:28px auto 0;max-width:480px;width:100%;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.12);" />
+    </div>
+  </section>
+
+  <!-- ====== CULPA / TARDE DEMAIS ====== -->
+  <section class="sec guilt">
+    <div class="wrap">
+      <p class="eyebrow">O que ninguém percebe a tempo</p>
+      <h2 class="title">O momento em que a maioria dos donos percebe <em>tarde demais</em></h2>
+
+      <div class="guilt-story">
+        <p>Tudo parece normal.</p>
+        <p>Ele continua comendo. Brincando. Pedindo carinho.</p>
+        <p>Então você ignora.</p>
+        <p>Até que um dia você olha para a pata — e percebe.</p>
+      </div>
+
+      <div class="guilt-reveal">
+        <div class="gr-item">Vermelhidão entre os dedos</div>
+        <div class="gr-item">Pele sensível ao toque</div>
+        <div class="gr-item">Lambedura constante que não para</div>
+      </div>
+
+      <div class="guilt-q">
+        E nesse momento surge a pergunta que ninguém quer fazer:<br><br>
+        <em>"Será que isso já estava acontecendo há semanas?"</em><br><br>
+        Na maioria dos casos — sim.
+      </div>
+
+      <div style="text-align:center;margin-top:32px;">
+        <a href="#planos" class="btn btn-orange" style="max-width:420px;">🐾 Quero agir antes que piore</a>
+      </div>
     </div>
   </section>
 
@@ -1384,6 +1441,40 @@
     </div>
   </section>
 
+  <!-- ====== DOR DA DONA ====== -->
+  <section class="sec deeper">
+    <div class="wrap">
+      <p class="eyebrow">O que realmente machuca</p>
+      <h2 class="title">O que mais dói <em>não é a consulta</em></h2>
+
+      <div class="deeper-box">
+        <p>A maioria das pessoas acha que o pior cenário é gastar R$300, R$500 ou R$800 no veterinário.</p>
+        <p>Mas pergunte para qualquer dona que já passou por isso.</p>
+        <p>O que realmente machuca é outra coisa.</p>
+        <p>É olhar para a pata machucada. Ver o cachorro desconfortável. E pensar:</p>
+        <p><em style="color:var(--orange);font-weight:700;">"E se eu tivesse percebido antes?"</em><br>
+        <em style="color:var(--orange);font-weight:700;">"E se eu tivesse feito alguma coisa antes?"</em><br>
+        <em style="color:var(--orange);font-weight:700;">"E se isso pudesse ter sido evitado?"</em></p>
+        <p class="punch">Porque ninguém quer sentir que falhou com alguém que depende totalmente dela.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== RESPONSABILIDADE ====== -->
+  <section class="sec resp">
+    <div class="wrap resp-inner">
+      <p class="eyebrow" style="color:var(--yellow);">A virada</p>
+      <h2 class="title title-w">Não é culpa sua.<br><em>Mas agora é sua responsabilidade.</em></h2>
+
+      <p>Até hoje você não sabia. Ninguém te ensinou.</p>
+      <p>Ninguém explicou que os primeiros sinais aparecem muito antes das feridas. Muito antes das consultas. Muito antes dos gastos.</p>
+      <p class="resp-punch">Mas agora você sabe.</p>
+      <p class="resp-sub">E quando você sabe, pode agir. Em apenas alguns minutos. Antes que o ciclo avance.</p>
+
+      <a href="#planos" class="btn btn-orange" style="max-width:420px;">🐾 Quero proteger as patas dele hoje</a>
+    </div>
+  </section>
+
   <!-- ====== SOLUÇÃO ====== -->
   <section class="sec product">
     <div class="wrap">
@@ -1404,7 +1495,7 @@
         style="margin:28px auto 0;max-width:480px;width:100%;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.12);" />
 
       <div style="text-align:center;margin-top:32px;">
-        <a href="#planos" class="btn btn-orange" style="max-width:420px;">🔥 QUERO PARAR COM ISSO HOJE</a>
+        <a href="#planos" class="btn btn-orange" style="max-width:420px;">🐾 QUERO PROTEGER AS PATAS DELE HOJE</a>
       </div>
     </div>
   </section>
@@ -1530,7 +1621,7 @@
             <li>Método Pós-Passeio completo</li>
             <li>Acesso imediato após pagamento</li>
           </ul>
-          <a href="#" class="btn btn-green" onclick="openModal(event)">✅ QUERO PARAR COM ISSO HOJE</a>
+          <a href="#" class="btn btn-green" onclick="openModal(event)">🐾 QUERO AGIR ANTES QUE PIORE</a>
         </div>
 
         <!-- KIT COMPLETO -->
@@ -1549,7 +1640,7 @@
             <li>Bônus 3 — Guia de Diagnóstico</li>
             <li>Bônus 4 — Ansiedade ou Irritação?</li>
           </ul>
-          <a href="#" class="btn btn-orange">🔥 SIM, QUERO RESOLVER DE VEZ</a>
+          <a href="#" class="btn btn-orange">🐾 SIM, QUERO PROTEGER AS PATAS DELE</a>
         </div>
       </div>
 
@@ -1613,8 +1704,7 @@
     <h2>Ajude seu cachorro a <em>interromper o ciclo</em> que começa depois dos passeios</h2>
     <p>Cada passeio sem o método é mais um dia de irritação acumulada. Comece hoje com a rotina de 5 minutos que
       neutraliza o problema na raiz.</p>
-    <a href="#planos" class="btn btn-orange" style="max-width:420px;font-size:1.1rem;padding:22px;">🐾 QUERO PARAR COM
-      ISSO HOJE</a>
+    <a href="#planos" class="btn btn-orange" style="max-width:420px;font-size:1.1rem;padding:22px;">🐾 QUERO INTERROMPER ESSE CICLO</a>
     <p style="margin-top:16px;font-size:.78rem;color:rgba(255,255,255,.4);">Pagamento seguro · Acesso imediato · 7 dias
       de garantia</p>
   </section>
@@ -1652,7 +1742,7 @@
       <div class="mprice"><sup>R$</sup>47,90</div>
       <p style="font-size:.8rem;color:#999;margin-top:4px;">pagamento único · acesso imediato · acesso vitalício</p>
 
-      <a href="#" class="btn btn-orange">🔥 SIM, QUERO RESOLVER DE VEZ</a>
+      <a href="#" class="btn btn-orange">🐾 SIM, QUERO PROTEGER AS PATAS DELE</a>
       <a class="skip" onclick="closeModal()">Não, quero continuar só com o essencial.</a>
     </div>
   </div>
